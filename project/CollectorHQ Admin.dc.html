@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#f6f0e1}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-width:1200px;min-height:100vh;display:grid;grid-template-columns:230px 1fr">
+
+  <!-- sidebar -->
+  <div style="background:#17130f;color:#b5aa9c;padding:22px 0;display:flex;flex-direction:column;min-height:100vh;box-sizing:border-box">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:10px;padding:0 22px;margin-bottom:8px;text-decoration:none;color:inherit">
+      <div style="width:34px;height:34px;background:#e6392f;border:2.5px solid #f6f0e1;border-radius:7px;display:grid;place-items:center;font:20px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg)">C</div>
+      <span style="font:15px 'Archivo Black',sans-serif;color:#f6f0e1">HQ ADMIN</span>
+    </a>
+    <div style="font:600 10px 'IBM Plex Mono',monospace;color:#6f675c;padding:16px 22px 8px">OPERATIONS</div>
+    <div style="display:flex;flex-direction:column;font:700 14px 'Space Grotesk',sans-serif">
+      <sc-for list="{{ navOps }}" as="n" hint-placeholder-count="4">
+        <span onClick="{{ n.onPick }}" style="cursor:pointer;padding:11px 22px;background:{{ n.bg }};color:{{ n.fg }};border-left:5px solid {{ n.edge }}">{{ n.label }}</span>
+      </sc-for>
+    </div>
+    <div style="font:600 10px 'IBM Plex Mono',monospace;color:#6f675c;padding:18px 22px 8px">REVENUE</div>
+    <div style="display:flex;flex-direction:column;font:700 14px 'Space Grotesk',sans-serif">
+      <sc-for list="{{ navRev }}" as="n" hint-placeholder-count="3">
+        <span onClick="{{ n.onPick }}" style="cursor:pointer;padding:11px 22px;background:{{ n.bg }};color:{{ n.fg }};border-left:5px solid {{ n.edge }}">{{ n.label }}</span>
+      </sc-for>
+    </div>
+    <div style="font:600 10px 'IBM Plex Mono',monospace;color:#6f675c;padding:18px 22px 8px">PLATFORM</div>
+    <div style="display:flex;flex-direction:column;font:700 14px 'Space Grotesk',sans-serif">
+      <sc-for list="{{ navPlat }}" as="n" hint-placeholder-count="3">
+        <span onClick="{{ n.onPick }}" style="cursor:pointer;padding:11px 22px;background:{{ n.bg }};color:{{ n.fg }};border-left:5px solid {{ n.edge }}">{{ n.label }}</span>
+      </sc-for>
+    </div>
+    <span style="flex:1"></span>
+    <div style="padding:0 22px;font:600 11px 'IBM Plex Mono',monospace;color:#6f675c">v2.4.1 · ALL SYSTEMS GO ●</div>
+  </div>
+
+  <!-- main -->
+  <div style="padding:28px 36px 50px;box-sizing:border-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px">
+      <div>
+        <h1 style="margin:0;font:28px 'Archivo Black',sans-serif;text-transform:uppercase">{{ pageTitle }}</h1>
+        <div style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70;margin-top:4px">MONDAY, JUL 6 2026 · LIVE</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <span style="font:700 12px 'IBM Plex Mono',monospace;background:#fff;border:2.5px solid #17130f;border-radius:999px;padding:6px 14px;box-shadow:2px 2px 0 #17130f">LAST 30 DAYS ▾</span>
+        <div style="width:38px;height:38px;border-radius:50%;background:#e6392f;border:2.5px solid #17130f;display:grid;place-items:center;font:800 14px 'Space Grotesk',sans-serif;color:#fff">A</div>
+      </div>
+    </div>
+
+    <!-- ============ OVERVIEW ============ -->
+    <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:26px">
+        <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+          <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate({{ k.tilt }}deg)">
+            <div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;letter-spacing:.06em;margin-bottom:8px">{{ k.label }}</div>
+            <div style="font:28px 'Archivo Black',sans-serif">{{ k.value }}</div>
+            <div style="font:800 12px 'Space Grotesk',sans-serif;color:{{ k.deltaColor }};margin-top:4px">{{ k.delta }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin-bottom:26px">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:20px;box-shadow:4px 4px 0 #17130f">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
+            <span style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase">Revenue mix</span>
+            <span style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">MRR $6,410</span>
+          </div>
+          <svg width="100%" height="150" viewBox="0 0 520 150" preserveAspectRatio="none" style="display:block">
+            <polyline points="0,120 40,116 80,110 120,112 160,102 200,96 240,99 280,88 320,84 360,78 400,72 440,66 480,60 520,52" fill="none" stroke="#e6392f" stroke-width="3"></polyline>
+            <polyline points="0,138 40,136 80,134 120,132 160,131 200,128 240,126 280,122 320,121 360,117 400,114 440,110 480,108 520,104" fill="none" stroke="#f7931a" stroke-width="3" stroke-dasharray="7 5"></polyline>
+            <polyline points="0,144 40,143 80,143 120,141 160,141 200,139 240,138 280,138 320,136 360,135 400,134 440,133 480,131 520,130" fill="none" stroke="#3a7bd5" stroke-width="3" stroke-dasharray="2 5"></polyline>
+          </svg>
+          <div style="display:flex;gap:20px;margin-top:12px;font:700 12px 'Space Grotesk',sans-serif">
+            <span><span style="display:inline-block;width:14px;height:4px;background:#e6392f;border-radius:2px;vertical-align:middle;margin-right:6px"></span>Memberships $4,890</span>
+            <span><span style="display:inline-block;width:14px;height:4px;background:#f7931a;border-radius:2px;vertical-align:middle;margin-right:6px"></span>Donations $980</span>
+            <span><span style="display:inline-block;width:14px;height:4px;background:#3a7bd5;border-radius:2px;vertical-align:middle;margin-right:6px"></span>Ads $540</span>
+          </div>
+        </div>
+        <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:14px;padding:20px;box-shadow:4px 4px 0 #e6392f">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
+            <span style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase;color:#ffd23f">Scans today</span>
+            <span style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">API HEALTHY ●</span>
+          </div>
+          <div style="font:38px 'Archivo Black',sans-serif">14,208</div>
+          <div style="font:800 12px 'Space Grotesk',sans-serif;color:#7fe08a;margin-bottom:14px">▲ 11% vs yesterday</div>
+          <div style="display:flex;align-items:flex-end;gap:5px;height:70px">
+            <div style="flex:1;height:32%;background:#3d372f;border-radius:3px 3px 0 0"></div>
+            <div style="flex:1;height:45%;background:#3d372f;border-radius:3px 3px 0 0"></div>
+            <div style="flex:1;height:38%;background:#3d372f;border-radius:3px 3px 0 0"></div>
+            <div style="flex:1;height:58%;background:#3d372f;border-radius:3px 3px 0 0"></div>
+            <div style="flex:1;height:52%;background:#3d372f;border-radius:3px 3px 0 0"></div>
+            <div style="flex:1;height:70%;background:#ffd23f;border-radius:3px 3px 0 0"></div>
+            <div style="flex:1;height:88%;background:#e6392f;border-radius:3px 3px 0 0"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font:600 9.5px 'IBM Plex Mono',monospace;color:#6f675c;margin-top:6px"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>NOW</span></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:20px;box-shadow:4px 4px 0 #17130f">
+          <span style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase">Quick actions</span>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px">
+            <span onClick="{{ goLeaders }}" style="cursor:pointer;font:800 12.5px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:999px;padding:8px 16px;background:#ffd23f;box-shadow:2px 2px 0 #17130f">★ Review {{ pendingCount }} leader apps</span>
+            <span onClick="{{ goFlags }}" style="cursor:pointer;font:800 12.5px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:999px;padding:8px 16px;background:#fff;box-shadow:2px 2px 0 #17130f">🚩 {{ openFlagCount }} open flags</span>
+            <span onClick="{{ goThemes }}" style="cursor:pointer;font:800 12.5px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:999px;padding:8px 16px;background:#fff;box-shadow:2px 2px 0 #17130f">🎨 Festive theme: {{ themeName }}</span>
+          </div>
+        </div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:20px;box-shadow:4px 4px 0 #17130f">
+          <span style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase">Latest activity</span>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;font:600 12.5px 'IBM Plex Mono',monospace;color:#4a4238">
+            <span>10:42 · @topdeck_tess upgraded to Member</span>
+            <span>10:31 · donation $25 (BTC) — anon</span>
+            <span>10:18 · grading batch #241 shipped (18 cards)</span>
+            <span>09:55 · @shady_pulls reported by 3 users</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ USERS ============ -->
+    <sc-if value="{{ isUsers }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 110px;gap:10px;padding:12px 20px;background:#17130f;color:#ffd23f;font:800 11px 'IBM Plex Mono',monospace">
+        <span>USER</span><span>TIER</span><span>CARDS</span><span>VAULT</span><span>JOINED</span><span>ACTION</span>
+      </div>
+      <sc-for list="{{ users }}" as="u" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 110px;gap:10px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12);align-items:center;opacity:{{ u.opacity }}">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:34px;height:34px;border-radius:50%;background:{{ u.color }};border:2.5px solid #17130f;display:grid;place-items:center;font:800 13px 'Space Grotesk',sans-serif;color:#fff;flex:none">{{ u.initial }}</div>
+            <div><div style="font:800 14px 'Space Grotesk',sans-serif">{{ u.handle }}</div><div style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ u.status }}</div></div>
+          </div>
+          <span style="font:800 11px 'Space Grotesk',sans-serif"><span style="background:{{ u.tierBg }};color:{{ u.tierFg }};border:2px solid #17130f;border-radius:999px;padding:2px 10px">{{ u.tier }}</span></span>
+          <span style="font:700 13px 'IBM Plex Mono',monospace">{{ u.cards }}</span>
+          <span style="font:700 13px 'IBM Plex Mono',monospace;color:#e6392f">{{ u.vault }}</span>
+          <span style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">{{ u.joined }}</span>
+          <button onClick="{{ u.onBan }}" style="font:800 11.5px 'Space Grotesk',sans-serif;background:{{ u.banBg }};color:{{ u.banFg }};border:2.5px solid #17130f;padding:7px 0;border-radius:9px;box-shadow:2px 2px 0 #17130f;cursor:pointer">{{ u.banLabel }}</button>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+
+    <!-- ============ CARD DATABASE ============ -->
+    <sc-if value="{{ isCards }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
+        <span style="font:800 13.5px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:10px 20px;border-radius:10px;box-shadow:3px 3px 0 #17130f;cursor:pointer">+ ADD CARD</span>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:10px;padding:12px 20px;background:#17130f;color:#ffd23f;font:800 11px 'IBM Plex Mono',monospace">
+          <span>CARD</span><span>GAME</span><span>SET №</span><span>PRICE</span><span>7-DAY</span><span>SCANS (30D)</span>
+        </div>
+        <sc-for list="{{ dbCards }}" as="d" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr;gap:10px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12);align-items:center">
+            <span style="font:800 14px 'Space Grotesk',sans-serif">{{ d.name }}</span>
+            <span style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">{{ d.game }}</span>
+            <span style="font:600 12px 'IBM Plex Mono',monospace">{{ d.set }}</span>
+            <span style="font:700 13.5px 'IBM Plex Mono',monospace;color:#e6392f">{{ d.price }}</span>
+            <span style="font:800 12.5px 'Space Grotesk',sans-serif;color:{{ d.deltaColor }}">{{ d.delta }}</span>
+            <span style="font:700 13px 'IBM Plex Mono',monospace">{{ d.scans }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:14px;font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">204,318 cards indexed · 14 TCGs · price feed updated 6 min ago</div>
+    </div>
+    </sc-if>
+
+    <!-- ============ FLAGS ============ -->
+    <sc-if value="{{ isFlags }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <sc-for list="{{ flags }}" as="f" hint-placeholder-count="4">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;padding:16px 20px;display:flex;align-items:center;gap:16px;opacity:{{ f.opacity }}">
+          <span style="font:800 10px 'IBM Plex Mono',monospace;background:{{ f.chipBg }};color:#fff;border-radius:5px;padding:4px 9px;flex:none">{{ f.type }}</span>
+          <div style="flex:1">
+            <div style="font:800 14.5px 'Space Grotesk',sans-serif">{{ f.title }}</div>
+            <div style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ f.meta }}</div>
+          </div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:8px">
+              <button onClick="{{ f.onResolve }}" style="font:800 12px 'Space Grotesk',sans-serif;color:#fff;background:#1c9e4f;border:2.5px solid #17130f;padding:8px 14px;border-radius:9px;box-shadow:2px 2px 0 #17130f;cursor:pointer">RESOLVE</button>
+              <button onClick="{{ f.onDismiss }}" style="font:800 12px 'Space Grotesk',sans-serif;background:#fff;border:2.5px solid #17130f;padding:8px 14px;border-radius:9px;box-shadow:2px 2px 0 #17130f;cursor:pointer">DISMISS</button>
+            </div>
+          </sc-if>
+          <sc-if value="{{ f.closed }}" hint-placeholder-val="{{ false }}">
+            <span style="font:800 12px 'IBM Plex Mono',monospace;color:{{ f.closedColor }}">{{ f.closedLabel }}</span>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    </sc-if>
+
+    <!-- ============ MEMBERSHIPS ============ -->
+    <sc-if value="{{ isMembers }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:26px">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(-.4deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">PAYING MEMBERS</div><div style="font:28px 'Archivo Black',sans-serif">1,306</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#1c9e4f;margin-top:4px">▲ 4.8% MoM</div></div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(.4deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">MRR</div><div style="font:28px 'Archivo Black',sans-serif">$4,890</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#1c9e4f;margin-top:4px">▲ 5.2% MoM</div></div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(-.3deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">CHURN (30D)</div><div style="font:28px 'Archivo Black',sans-serif">2.1%</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#1c9e4f;margin-top:4px">▼ 0.4pt MoM</div></div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(.3deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">YEARLY PLANS</div><div style="font:28px 'Archivo Black',sans-serif">41%</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#1c9e4f;margin-top:4px">▲ 3pt MoM</div></div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+        <div style="padding:14px 20px;background:#ffd23f;border-bottom:3px solid #17130f;font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">Recent subscriptions</div>
+        <sc-for list="{{ subs }}" as="s" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12);align-items:center">
+            <span style="font:800 14px 'Space Grotesk',sans-serif">{{ s.handle }}</span>
+            <span style="font:800 11px 'Space Grotesk',sans-serif"><span style="background:{{ s.planBg }};color:{{ s.planFg }};border:2px solid #17130f;border-radius:999px;padding:2px 10px">{{ s.plan }}</span></span>
+            <span style="font:700 13px 'IBM Plex Mono',monospace;color:#e6392f">{{ s.amount }}</span>
+            <span style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">{{ s.when }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ DONATIONS ============ -->
+    <sc-if value="{{ isDonations }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:26px">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(-.4deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">DONATIONS (30D)</div><div style="font:28px 'Archivo Black',sans-serif">$980</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#c0362c;margin-top:4px">▼ 2.1% MoM</div></div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(.4deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">ALL-TIME</div><div style="font:28px 'Archivo Black',sans-serif">$18,240</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#8a7f70;margin-top:4px">since 2024</div></div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(-.3deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">BTC SHARE</div><div style="font:28px 'Archivo Black',sans-serif">34%</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#f7931a;margin-top:4px">₿ 0.0041 (30d)</div></div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+        <div style="padding:14px 20px;background:#ffd23f;border-bottom:3px solid #17130f;font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">♥ Recent donations</div>
+        <sc-for list="{{ donations }}" as="d" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:10px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12);align-items:center">
+            <span style="font:800 14px 'Space Grotesk',sans-serif">{{ d.name }}</span>
+            <span style="font:800 11px 'IBM Plex Mono',monospace"><span style="background:{{ d.methodBg }};color:#fff;border-radius:5px;padding:3px 9px">{{ d.method }}</span></span>
+            <span style="font:700 13.5px 'IBM Plex Mono',monospace;color:#e6392f">{{ d.amount }}</span>
+            <span style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">{{ d.note }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ AD SLOTS ============ -->
+    <sc-if value="{{ isAds }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:26px">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(-.4deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">AD REVENUE (30D)</div><div style="font:28px 'Archivo Black',sans-serif">$540</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#1c9e4f;margin-top:4px">▲ 9.3% MoM</div></div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(.4deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">IMPRESSIONS (30D)</div><div style="font:28px 'Archivo Black',sans-serif">182k</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#8a7f70;margin-top:4px">RPM $2.97</div></div>
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:18px;box-shadow:4px 4px 0 #17130f;transform:rotate(-.3deg)"><div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:8px">AVG CTR</div><div style="font:28px 'Archivo Black',sans-serif">1.8%</div><div style="font:800 12px 'Space Grotesk',sans-serif;color:#1c9e4f;margin-top:4px">TCG niche ▲</div></div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+        <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr 120px;gap:10px;padding:12px 20px;background:#17130f;color:#ffd23f;font:800 11px 'IBM Plex Mono',monospace">
+          <span>SLOT</span><span>CURRENT AD</span><span>REV (30D)</span><span>CTR</span><span>STATUS</span>
+        </div>
+        <sc-for list="{{ adSlots }}" as="a" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr 120px;gap:10px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12);align-items:center;opacity:{{ a.opacity }}">
+            <span style="font:800 14px 'Space Grotesk',sans-serif">{{ a.slot }}</span>
+            <span style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ a.ad }}</span>
+            <span style="font:700 13.5px 'IBM Plex Mono',monospace;color:#e6392f">{{ a.rev }}</span>
+            <span style="font:700 13px 'IBM Plex Mono',monospace">{{ a.ctr }}</span>
+            <button onClick="{{ a.onToggle }}" style="font:800 11.5px 'Space Grotesk',sans-serif;background:{{ a.stBg }};color:{{ a.stFg }};border:2.5px solid #17130f;padding:7px 0;border-radius:9px;box-shadow:2px 2px 0 #17130f;cursor:pointer">{{ a.stLabel }}</button>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ LEADER APPLICATIONS ============ -->
+    <sc-if value="{{ isLeaders }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start">
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:3px solid #17130f;background:#ffd23f">
+          <span style="font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">★ Pending applications</span>
+          <span style="font:800 12px 'Space Grotesk',sans-serif;background:#e6392f;color:#fff;border:2px solid #17130f;border-radius:999px;padding:2px 10px">{{ pendingCount }} PENDING</span>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ applications }}" as="a" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:14px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12)">
+              <div style="width:38px;height:38px;border-radius:50%;background:{{ a.color }};border:2.5px solid #17130f;display:grid;place-items:center;font:800 14px 'Space Grotesk',sans-serif;color:#fff;flex:none">{{ a.initial }}</div>
+              <div style="flex:1"><div style="font:800 14px 'Space Grotesk',sans-serif">{{ a.handle }}</div><div style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">{{ a.meta }}</div></div>
+              <sc-if value="{{ a.pending }}" hint-placeholder-val="{{ true }}">
+                <div style="display:flex;gap:8px">
+                  <button onClick="{{ a.approve }}" style="font:800 12px 'Space Grotesk',sans-serif;color:#fff;background:#1c9e4f;border:2.5px solid #17130f;padding:8px 14px;border-radius:9px;box-shadow:2px 2px 0 #17130f;cursor:pointer">APPROVE</button>
+                  <button onClick="{{ a.reject }}" style="font:800 12px 'Space Grotesk',sans-serif;background:#fff;border:2.5px solid #17130f;padding:8px 14px;border-radius:9px;box-shadow:2px 2px 0 #17130f;cursor:pointer">REJECT</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ a.decided }}" hint-placeholder-val="{{ false }}">
+                <span style="font:800 12px 'IBM Plex Mono',monospace;color:{{ a.decisionColor }}">{{ a.decision }}</span>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #e6392f;overflow:hidden">
+        <div style="padding:14px 20px;border-bottom:2px solid rgba(246,240,225,.2);font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase;color:#ffd23f">Active leaders (24)</div>
+        <div style="display:flex;flex-direction:column;font:600 13px 'Space Grotesk',sans-serif">
+          <div style="display:flex;justify-content:space-between;padding:12px 20px;border-top:2px dashed rgba(246,240,225,.15)"><span style="color:#fff;font-weight:800">@grail_goblin</span><span style="color:#b5aa9c">8.2k followers</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 20px;border-top:2px dashed rgba(246,240,225,.15)"><span style="color:#fff;font-weight:800">@sleeved_up</span><span style="color:#b5aa9c">5.6k followers</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 20px;border-top:2px dashed rgba(246,240,225,.15)"><span style="color:#fff;font-weight:800">@pull_rate_pete</span><span style="color:#b5aa9c">3.1k followers</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 20px;border-top:2px dashed rgba(246,240,225,.15)"><span style="color:#fff;font-weight:800">@mint_mika</span><span style="color:#b5aa9c">2.4k followers</span></div>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ FESTIVE THEMES ============ -->
+    <sc-if value="{{ isThemes }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <p style="margin:0 0 20px;font:500 14.5px 'Space Grotesk',sans-serif;color:#4a4238;max-width:560px">The active theme adds a festive banner and decorations to the public landing page. Only one theme can be live at a time.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+        <sc-for list="{{ themes }}" as="t" hint-placeholder-count="3">
+          <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+            <div style="height:90px;background:{{ t.swatch }};border-bottom:3px solid #17130f;display:grid;place-items:center;font:34px 'Archivo Black',sans-serif;color:{{ t.swatchFg }}">{{ t.icon }}</div>
+            <div style="padding:16px 18px 20px">
+              <div style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase;margin-bottom:4px">{{ t.name }}</div>
+              <div style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:14px">{{ t.desc }}</div>
+              <button onClick="{{ t.onActivate }}" style="width:100%;font:800 13px 'Space Grotesk',sans-serif;background:{{ t.btnBg }};color:{{ t.btnFg }};border:2.5px solid #17130f;padding:10px 0;border-radius:10px;box-shadow:2px 2px 0 #17130f;cursor:pointer">{{ t.btnLabel }}</button>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ PARTNER SHOPS ============ -->
+    <sc-if value="{{ isShops }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start">
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+        <div style="padding:14px 20px;background:#ffd23f;border-bottom:3px solid #17130f;font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">🏪 Partner shops</div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 130px;gap:10px;padding:12px 20px;background:#17130f;color:#ffd23f;font:800 11px 'IBM Plex Mono',monospace">
+          <span>SHOP</span><span>PREORDERS</span><span>ORDERS 30D</span><span>STATUS</span><span>ACTION</span>
+        </div>
+        <sc-for list="{{ shops }}" as="s" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 130px;gap:10px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12);align-items:center">
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="width:34px;height:34px;border-radius:9px;background:{{ s.color }};border:2.5px solid #17130f;display:grid;place-items:center;font:800 13px 'Space Grotesk',sans-serif;color:#fff;flex:none">{{ s.initial }}</div>
+              <div><div style="font:800 14px 'Space Grotesk',sans-serif">{{ s.name }}</div><div style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ s.city }}</div></div>
+            </div>
+            <span style="font:700 13px 'IBM Plex Mono',monospace">{{ s.open }} open</span>
+            <span style="font:700 13px 'IBM Plex Mono',monospace;color:#e6392f">{{ s.orders }}</span>
+            <span style="font:800 11px 'Space Grotesk',sans-serif"><span style="background:{{ s.stBg }};color:{{ s.stFg }};border:2px solid #17130f;border-radius:999px;padding:2px 10px">{{ s.status }}</span></span>
+            <button onClick="{{ s.onReset }}" style="font:800 11px 'Space Grotesk',sans-serif;background:#fff;border:2.5px solid #17130f;padding:7px 0;border-radius:9px;box-shadow:2px 2px 0 #17130f;cursor:pointer">{{ s.resetLabel }}</button>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #e6392f;padding:22px">
+        <div style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase;color:#ffd23f;margin-bottom:6px">+ Create shop account</div>
+        <p style="margin:0 0 16px;font:500 12.5px/1.5 'Space Grotesk',sans-serif;color:#b5aa9c">Shop accounts are invite-only. The owner receives a temporary password and must change it on first login.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          <input placeholder="Shop name" style="font:600 13.5px 'Space Grotesk',sans-serif;border:2.5px solid #f6f0e1;border-radius:9px;padding:11px 13px;background:#fff;color:#17130f;outline:none" />
+          <input placeholder="Owner email" style="font:600 13.5px 'Space Grotesk',sans-serif;border:2.5px solid #f6f0e1;border-radius:9px;padding:11px 13px;background:#fff;color:#17130f;outline:none" />
+          <input placeholder="City / location" style="font:600 13.5px 'Space Grotesk',sans-serif;border:2.5px solid #f6f0e1;border-radius:9px;padding:11px 13px;background:#fff;color:#17130f;outline:none" />
+        </div>
+        <span onClick="{{ genTempPw }}" style="cursor:pointer;display:block;text-align:center;font:800 14px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;border-radius:10px;padding:12px 0">CREATE &amp; GENERATE TEMP PASSWORD</span>
+        <sc-if value="{{ tempPw }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:14px;background:rgba(255,210,63,.12);border:2px dashed #ffd23f;border-radius:10px;padding:12px 14px">
+            <div style="font:600 10px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:4px">TEMP PASSWORD — SEND TO OWNER</div>
+            <div style="font:800 18px 'IBM Plex Mono',monospace;color:#ffd23f;letter-spacing:.1em">{{ tempPw }}</div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ LUCKY DRAW ============ -->
+    <sc-if value="{{ isDraw }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:start">
+      <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #ffd23f;padding:24px">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+          <span style="font:40px 'Archivo Black',sans-serif;transform:rotate(6deg)">🎰</span>
+          <div>
+            <div style="font:800 16px 'Space Grotesk',sans-serif;text-transform:uppercase;color:#ffd23f">July draw — sealed OP-11 booster box</div>
+            <div style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70">ends Jul 31 · prize claimed at any partner shop</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px">
+          <div style="border:2px dashed rgba(246,240,225,.25);border-radius:10px;padding:12px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8a7f70">ENTRIES</div><div style="font:24px 'Archivo Black',sans-serif">8,412</div></div>
+          <div style="border:2px dashed rgba(246,240,225,.25);border-radius:10px;padding:12px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8a7f70">PLAYERS</div><div style="font:24px 'Archivo Black',sans-serif">2,306</div></div>
+          <div style="border:2px dashed rgba(246,240,225,.25);border-radius:10px;padding:12px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8a7f70">CLAIM WINDOW</div><div style="font:24px 'Archivo Black',sans-serif">14 d</div></div>
+        </div>
+        <sc-if value="{{ noWinner }}" hint-placeholder-val="{{ true }}">
+          <span onClick="{{ runDraw }}" style="cursor:pointer;display:block;text-align:center;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;border-radius:12px;padding:14px 0">🎲 RUN THE DRAW</span>
+        </sc-if>
+        <sc-if value="{{ winner }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#f6f0e1;color:#17130f;border:3px solid #ffd23f;border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:14px">
+            <span style="font:30px 'Archivo Black',sans-serif;transform:rotate(-6deg)">🏆</span>
+            <div style="flex:1">
+              <div style="font:800 16px 'Space Grotesk',sans-serif">{{ winner }}</div>
+              <div style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70">claim code {{ winnerCode }} · notified by email + in-app</div>
+            </div>
+            <span onClick="{{ runDraw }}" style="cursor:pointer;font:800 11.5px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:999px;padding:7px 14px;background:#fff;box-shadow:2px 2px 0 #17130f">REDRAW</span>
+          </div>
+        </sc-if>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+        <div style="padding:14px 20px;background:#ffd23f;border-bottom:3px solid #17130f;font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">Past winners</div>
+        <sc-for list="{{ pastWinners }}" as="w" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:12px;padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12)">
+            <div style="flex:1"><div style="font:800 14px 'Space Grotesk',sans-serif">{{ w.user }}</div><div style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">{{ w.prize }} · {{ w.month }}</div></div>
+            <span style="font:800 10.5px 'Space Grotesk',sans-serif;background:{{ w.stBg }};color:{{ w.stFg }};border:2px solid #17130f;border-radius:999px;padding:3px 10px">{{ w.status }}</span>
+          </div>
+        </sc-for>
+        <div style="padding:13px 20px;border-top:2px dashed rgba(23,19,15,.12);font:600 11.5px/1.5 'IBM Plex Mono',monospace;color:#8a7f70">Prizes are handed over in person at partner shops. Shops verify the claim code from their dashboard.</div>
+      </div>
+    </div>
+    </sc-if>
+
+    <!-- ============ SETTINGS ============ -->
+    <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;max-width:980px">
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;padding:22px">
+        <div style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase;margin-bottom:16px">Platform toggles</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ toggles }}" as="t" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:14px">
+              <span onClick="{{ t.onToggle }}" style="cursor:pointer;width:52px;height:28px;border:2.5px solid #17130f;border-radius:999px;background:{{ t.trackBg }};position:relative;flex:none;box-shadow:2px 2px 0 #17130f"><span style="position:absolute;top:2px;left:{{ t.knobLeft }};width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid #17130f;box-sizing:border-box;transition:left .15s"></span></span>
+              <div style="flex:1"><div style="font:800 14px 'Space Grotesk',sans-serif">{{ t.label }}</div><div style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">{{ t.desc }}</div></div>
+              <span style="font:800 11px 'IBM Plex Mono',monospace;color:{{ t.stateColor }}">{{ t.stateLabel }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;padding:22px">
+        <div style="font:800 15px 'Space Grotesk',sans-serif;text-transform:uppercase;margin-bottom:16px">Limits &amp; pricing</div>
+        <div style="display:flex;flex-direction:column;gap:14px;font:600 13.5px 'Space Grotesk',sans-serif">
+          <div style="display:flex;justify-content:space-between;align-items:center;border:2.5px solid #17130f;border-radius:10px;padding:11px 15px"><span>Rookie scans / day</span><span style="font:800 15px 'IBM Plex Mono',monospace">15</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border:2.5px solid #17130f;border-radius:10px;padding:11px 15px"><span>Member price / mo</span><span style="font:800 15px 'IBM Plex Mono',monospace;color:#e6392f">$4.99</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border:2.5px solid #17130f;border-radius:10px;padding:11px 15px"><span>Member price / yr</span><span style="font:800 15px 'IBM Plex Mono',monospace;color:#e6392f">$39</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border:2.5px solid #17130f;border-radius:10px;padding:11px 15px"><span>Grading fee (member / rookie)</span><span style="font:800 15px 'IBM Plex Mono',monospace">$18 / $24</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border:2.5px solid #17130f;border-radius:10px;padding:11px 15px"><span>Repair fee (member / rookie)</span><span style="font:800 15px 'IBM Plex Mono',monospace">$9 / $12</span></div>
+          <span style="text-align:center;font:800 14px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:12px 0;border-radius:10px;box-shadow:3px 3px 0 #17130f;cursor:pointer;margin-top:4px">SAVE CHANGES</span>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    tab: 'overview',
+    decisions: {},
+    bans: {},
+    flagStates: {},
+    adPaused: {},
+    theme: 'default',
+    tempPw: null,
+    drawWinner: null,
+    shopResets: {},
+    toggles: { signups: true, ads: true, maintenance: false, feed: true },
+  };
+  renderVals() {
+    const t = this.state.tab;
+    const pick = (id) => () => this.setState({ tab: id });
+    const navItem = (id, label) => ({
+      label,
+      onPick: pick(id),
+      bg: t === id ? '#e6392f' : 'transparent',
+      fg: t === id ? '#fff' : '#b5aa9c',
+      edge: t === id ? '#ffd23f' : 'transparent',
+    });
+
+    // leader applications
+    const apps = [
+      { id: 'a1', handle: '@binder_baron', meta: '2,140 cards · member 14 mo · vault $38k', initial: 'B', color: '#3a7bd5' },
+      { id: 'a2', handle: '@psa10dreams', meta: '860 cards · member 9 mo · vault $21k', initial: 'P', color: '#e6392f' },
+      { id: 'a3', handle: '@topdeck_tess', meta: '1,420 cards · member 22 mo · vault $52k', initial: 'T', color: '#1c9e4f' },
+    ];
+    const decisions = this.state.decisions;
+    const pendingCount = apps.filter(a => !decisions[a.id]).length;
+
+    // flags
+    const flagDefs = [
+      { id: 'f1', type: 'PRICE ERROR', chipBg: '#e6392f', title: 'Charizard 4/102 — price feed spike ($48k?)', meta: 'auto-detected · 2 h ago · price feed' },
+      { id: 'f2', type: 'DUPLICATE', chipBg: '#f7931a', title: 'OP01-120 listed twice in OP-01 set', meta: 'reported by @sleeved_up · 5 h ago' },
+      { id: 'f3', type: 'USER REPORT', chipBg: '#e6392f', title: '@shady_pulls — fake grading claims', meta: '3 reports · 1 d ago · community' },
+      { id: 'f4', type: 'SCAN MISS', chipBg: '#3a7bd5', title: 'Kayou Naruto T4 — 12 failed recognitions', meta: 'auto-detected · 1 d ago · scanner' },
+    ];
+    const fs = this.state.flagStates;
+    const openFlagCount = flagDefs.filter(f => !fs[f.id]).length;
+
+    // ads
+    const adDefs = [
+      { id: 'ad1', slot: 'Explore — leaderboard', ad: 'TCG Release Calendar', rev: '$186', ctr: '2.1%' },
+      { id: 'ad2', slot: 'Community — sidebar', ad: 'Local Card Shop Finder', rev: '$142', ctr: '1.7%' },
+      { id: 'ad3', slot: 'Rookie vault — top banner', ad: 'CardHaven Preorders', rev: '$124', ctr: '1.9%' },
+      { id: 'ad4', slot: 'Rookie vault — footer', ad: 'MintCondition Supplies', rev: '$88', ctr: '1.4%' },
+    ];
+    const ap = this.state.adPaused;
+
+    // settings toggles
+    const tg = this.state.toggles;
+    const toggleDefs = [
+      { id: 'signups', label: 'New sign-ups', desc: 'allow new account creation' },
+      { id: 'ads', label: 'Ad serving', desc: 'show ads to Rookie users' },
+      { id: 'feed', label: 'Community feed', desc: 'posting & comments' },
+      { id: 'maintenance', label: 'Maintenance mode', desc: 'locks the site for everyone' },
+    ];
+
+    const themeNames = { default: 'None', christmas: 'Christmas', cny: 'Lunar New Year' };
+    const titles = {
+      overview: 'Overview', users: 'Users', cards: 'Card database', flags: 'Reports & flags',
+      members: 'Memberships', donations: 'Donations', ads: 'Ad slots',
+      leaders: 'Leader applications', themes: 'Festive themes', settings: 'Settings',
+      shops: 'Partner shops', draw: 'Lucky draw',
+    };
+
+    return {
+      pageTitle: titles[t],
+      isOverview: t === 'overview', isUsers: t === 'users', isCards: t === 'cards', isFlags: t === 'flags',
+      isMembers: t === 'members', isDonations: t === 'donations', isAds: t === 'ads',
+      isLeaders: t === 'leaders', isThemes: t === 'themes', isSettings: t === 'settings',
+      isShops: t === 'shops', isDraw: t === 'draw',
+      tempPw: this.state.tempPw,
+      genTempPw: () => this.setState({ tempPw: 'HQ-' + Math.random().toString(36).slice(2, 8).toUpperCase() }),
+      winner: this.state.drawWinner,
+      noWinner: !this.state.drawWinner,
+      winnerCode: 'HQ-' + (this.state.drawWinner ? this.state.drawWinner.replace('@', '').slice(0, 2).toUpperCase() : '') + '7K',
+      runDraw: () => {
+        const pool = ['@mint_mika', '@binder_baron', '@topdeck_tess', '@hokage_hoarder', '@pull_rate_pete', '@sleeved_up'];
+        this.setState({ drawWinner: pool[Math.floor(Math.random() * pool.length)] });
+      },
+      shops: [
+        { id: 's1', name: 'Dragon\u2019s Den TCG', city: 'SINGAPORE', initial: 'D', color: '#1c9e4f', open: 4, orders: 128, status: 'ACTIVE', stBg: '#1c9e4f', stFg: '#fff' },
+        { id: 's2', name: 'Mint Condition', city: 'MANILA', initial: 'M', color: '#3a7bd5', open: 2, orders: 86, status: 'ACTIVE', stBg: '#1c9e4f', stFg: '#fff' },
+        { id: 's3', name: 'Top Deck Games', city: 'KUALA LUMPUR', initial: 'T', color: '#f7931a', open: 3, orders: 64, status: 'ACTIVE', stBg: '#1c9e4f', stFg: '#fff' },
+        { id: 's4', name: 'Cardboard Castle', city: 'BANGKOK', initial: 'C', color: '#9b59b6', open: 0, orders: 0, status: 'INVITED', stBg: '#ffd23f', stFg: '#17130f' },
+      ].map(s => ({
+        ...s,
+        resetLabel: this.state.shopResets[s.id] ? '\u2714 PW SENT' : 'RESET PW',
+        onReset: () => this.setState(st => ({ shopResets: { ...st.shopResets, [s.id]: true } })),
+      })),
+      pastWinners: [
+        { user: '@grail_goblin', prize: 'Prismatic Evolutions ETB', month: 'JUN 2026', status: 'CLAIMED', stBg: '#1c9e4f', stFg: '#fff' },
+        { user: '@psa10dreams', prize: '$50 store credit', month: 'MAY 2026', status: 'CLAIMED', stBg: '#1c9e4f', stFg: '#fff' },
+        { user: '@sleeved_up', prize: 'Kayou Tier 4 box', month: 'APR 2026', status: 'EXPIRED', stBg: '#fff', stFg: '#8a7f70' },
+      ],
+      navOps: [navItem('overview', '📊 Overview'), navItem('users', '👥 Users'), navItem('cards', '🗃 Card database'), navItem('flags', '🚩 Reports & flags')],
+      navRev: [navItem('members', '💳 Memberships'), navItem('donations', '♥ Donations'), navItem('ads', '📢 Ad slots')],
+      navPlat: [navItem('leaders', '★ Leader applications'), navItem('shops', '🏪 Partner shops'), navItem('draw', '🎰 Lucky draw'), navItem('themes', '🎨 Festive themes'), navItem('settings', '⚙ Settings')],
+      goLeaders: pick('leaders'), goFlags: pick('flags'), goThemes: pick('themes'),
+      themeName: themeNames[this.state.theme],
+      openFlagCount,
+      pendingCount,
+      kpis: [
+        { label: 'TOTAL USERS', value: '12,483', delta: '▲ 6.1% MoM', deltaColor: '#1c9e4f', tilt: -0.4 },
+        { label: 'PAYING MEMBERS', value: '1,306', delta: '▲ 4.8% MoM', deltaColor: '#1c9e4f', tilt: 0.4 },
+        { label: 'MRR', value: '$6,410', delta: '▲ 5.2% MoM', deltaColor: '#1c9e4f', tilt: -0.3 },
+        { label: 'DONATIONS (30D)', value: '$980', delta: '▼ 2.1% MoM', deltaColor: '#c0362c', tilt: 0.3 },
+      ],
+      applications: apps.map(a => {
+        const d = decisions[a.id];
+        return {
+          ...a,
+          pending: !d, decided: !!d,
+          decision: d === 'approved' ? '✔ APPROVED' : '✕ REJECTED',
+          decisionColor: d === 'approved' ? '#1c9e4f' : '#c0362c',
+          approve: () => this.setState(s => ({ decisions: { ...s.decisions, [a.id]: 'approved' } })),
+          reject: () => this.setState(s => ({ decisions: { ...s.decisions, [a.id]: 'rejected' } })),
+        };
+      }),
+      users: [
+        { id: 'u1', handle: '@grail_goblin', status: 'leader · active', initial: 'G', color: '#e6392f', tier: 'MEMBER', tierBg: '#ffd23f', tierFg: '#17130f', cards: '3,904', vault: '$112,480', joined: 'Jan 2024' },
+        { id: 'u2', handle: '@hokage_hoarder', status: 'active', initial: 'H', color: '#3a7bd5', tier: 'MEMBER', tierBg: '#ffd23f', tierFg: '#17130f', cards: '214', vault: '$31,240', joined: 'Mar 2025' },
+        { id: 'u3', handle: '@binder_baron', status: 'active', initial: 'B', color: '#1c9e4f', tier: 'ROOKIE', tierBg: '#fff', tierFg: '#8a7f70', cards: '67', vault: '$4,380', joined: 'Nov 2025' },
+        { id: 'u4', handle: '@sleeved_up', status: 'leader · active', initial: 'S', color: '#f7931a', tier: 'MEMBER', tierBg: '#ffd23f', tierFg: '#17130f', cards: '2,118', vault: '$64,900', joined: 'Jun 2024' },
+        { id: 'u5', handle: '@shady_pulls', status: '3 reports open', initial: 'S', color: '#8a7f70', tier: 'ROOKIE', tierBg: '#fff', tierFg: '#8a7f70', cards: '31', vault: '$890', joined: 'May 2026' },
+        { id: 'u6', handle: '@mint_mika', status: 'leader · active', initial: 'M', color: '#9b59b6', tier: 'MEMBER', tierBg: '#ffd23f', tierFg: '#17130f', cards: '1,240', vault: '$27,300', joined: 'Feb 2025' },
+      ].map(u => {
+        const banned = this.state.bans[u.id];
+        return {
+          ...u,
+          status: banned ? 'BANNED' : u.status,
+          opacity: banned ? 0.5 : 1,
+          banLabel: banned ? 'UNBAN' : 'BAN',
+          banBg: banned ? '#fff' : '#17130f', banFg: banned ? '#17130f' : '#fff',
+          onBan: () => this.setState(s => ({ bans: { ...s.bans, [u.id]: !s.bans[u.id] } })),
+        };
+      }),
+      dbCards: [
+        { name: 'Monkey D. Luffy OP05-119', game: 'ONE PIECE', set: 'OP-05 #119', price: '$1,240', delta: '▲12.2%', deltaColor: '#1c9e4f', scans: '4,182' },
+        { name: 'Umbreon VMAX Alt Art', game: 'POKÉMON', set: 'EVS #215', price: '$612', delta: '▲8.4%', deltaColor: '#1c9e4f', scans: '3,940' },
+        { name: 'Shanks OP01-120', game: 'ONE PIECE', set: 'OP-01 #120', price: '$389', delta: '▼3.6%', deltaColor: '#c0362c', scans: '2,871' },
+        { name: 'Charizard ex SIR', game: 'POKÉMON', set: 'OBF #223', price: '$204', delta: '▼1.2%', deltaColor: '#c0362c', scans: '2,644' },
+        { name: 'Zoro OP01-025 Alt', game: 'ONE PIECE', set: 'OP-01 #025', price: '$178', delta: '▲4.4%', deltaColor: '#1c9e4f', scans: '1,988' },
+        { name: 'The One Ring (Foil)', game: 'MAGIC', set: 'LTR #246', price: '$148', delta: '▲5.1%', deltaColor: '#1c9e4f', scans: '1,412' },
+        { name: 'Naruto Uzumaki Kayou SP', game: 'NARUTO', set: 'T4-W5 SP', price: '$96', delta: '▲6.8%', deltaColor: '#1c9e4f', scans: '1,206' },
+      ],
+      flags: flagDefs.map(f => {
+        const st = fs[f.id];
+        return {
+          ...f,
+          open: !st, closed: !!st,
+          opacity: st ? 0.55 : 1,
+          closedLabel: st === 'resolved' ? '✔ RESOLVED' : '— DISMISSED',
+          closedColor: st === 'resolved' ? '#1c9e4f' : '#8a7f70',
+          onResolve: () => this.setState(s => ({ flagStates: { ...s.flagStates, [f.id]: 'resolved' } })),
+          onDismiss: () => this.setState(s => ({ flagStates: { ...s.flagStates, [f.id]: 'dismissed' } })),
+        };
+      }),
+      subs: [
+        { handle: '@topdeck_tess', plan: 'YEARLY', planBg: '#17130f', planFg: '#ffd23f', amount: '$39.00', when: 'today 10:42' },
+        { handle: '@pull_rate_pete', plan: 'MONTHLY', planBg: '#ffd23f', planFg: '#17130f', amount: '$4.99', when: 'today 08:15' },
+        { handle: '@mint_mika', plan: 'YEARLY', planBg: '#17130f', planFg: '#ffd23f', amount: '$39.00', when: 'yesterday' },
+        { handle: '@hokage_hoarder', plan: 'MONTHLY', planBg: '#ffd23f', planFg: '#17130f', amount: '$4.99', when: 'yesterday' },
+        { handle: '@grail_goblin', plan: 'YEARLY', planBg: '#17130f', planFg: '#ffd23f', amount: '$39.00', when: '2 days ago' },
+      ],
+      donations: [
+        { name: 'anon', method: 'BTC', methodBg: '#f7931a', amount: '$25.00', note: '"keep the servers alive"' },
+        { name: '@binder_baron', method: 'BANK', methodBg: '#3a7bd5', amount: '$10.00', note: 'wall of fame: yes' },
+        { name: 'anon', method: 'BTC', methodBg: '#f7931a', amount: '$120.00', note: '₿ 0.0011 · whale ♥' },
+        { name: '@mint_mika', method: 'BANK', methodBg: '#3a7bd5', amount: '$5.00', note: 'monthly supporter' },
+        { name: '@topdeck_tess', method: 'BANK', methodBg: '#3a7bd5', amount: '$50.00', note: 'wall of fame: yes' },
+      ],
+      adSlots: adDefs.map(a => {
+        const paused = ap[a.id];
+        return {
+          ...a,
+          opacity: paused ? 0.55 : 1,
+          stLabel: paused ? 'PAUSED ▶' : 'LIVE ⏸',
+          stBg: paused ? '#fff' : '#1c9e4f', stFg: paused ? '#17130f' : '#fff',
+          onToggle: () => this.setState(s => ({ adPaused: { ...s.adPaused, [a.id]: !s.adPaused[a.id] } })),
+        };
+      }),
+      themes: [
+        { id: 'default', name: 'No theme', desc: 'standard HQ look, year-round', icon: '—', swatch: '#f6f0e1', swatchFg: '#17130f' },
+        { id: 'christmas', name: 'Christmas', desc: 'snow + holiday event banner (Dec)', icon: '❄', swatch: '#0f4d2e', swatchFg: '#fff' },
+        { id: 'cny', name: 'Lunar New Year', desc: 'lanterns + red-packet pulls (Jan/Feb)', icon: '🏮', swatch: '#b3121b', swatchFg: '#ffd23f' },
+      ].map(th => {
+        const active = this.state.theme === th.id;
+        return {
+          ...th,
+          btnLabel: active ? '✔ ACTIVE' : 'ACTIVATE',
+          btnBg: active ? '#17130f' : '#fff', btnFg: active ? '#ffd23f' : '#17130f',
+          onActivate: () => this.setState({ theme: th.id }),
+        };
+      }),
+      toggles: toggleDefs.map(d => {
+        const on = tg[d.id];
+        return {
+          ...d,
+          trackBg: on ? '#1c9e4f' : '#fff',
+          knobLeft: on ? '26px' : '2px',
+          stateLabel: on ? 'ON' : 'OFF',
+          stateColor: on ? '#1c9e4f' : '#8a7f70',
+          onToggle: () => this.setState(s => ({ toggles: { ...s.toggles, [d.id]: !s.toggles[d.id] } })),
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

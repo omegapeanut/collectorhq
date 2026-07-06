@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#f6f0e1}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-width:1200px;min-height:100vh">
+
+  <!-- nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:3px solid #17130f">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:40px;height:40px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:26px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:21px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+    </a>
+    <div style="display:flex;gap:26px;font:700 14.5px 'Space Grotesk',sans-serif;align-items:center">
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none"><span>Explore</span></a>
+      <a href="CollectorHQ Community.dc.html" style="color:inherit;text-decoration:none"><span>Community</span></a>
+      <a href="CollectorHQ Leader.dc.html" style="color:inherit;text-decoration:none"><span>Leaders</span></a>
+      <span style="border-bottom:3px solid #e6392f;padding-bottom:1px">Pricing</span>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none"><span style="display:inline-block;background:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:3px 13px;transform:rotate(-2deg)">Support Us ♥</span></a>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center">
+      <a href="CollectorHQ Login.dc.html" style="color:inherit;text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif">Log in</a>
+      <a href="CollectorHQ Login.dc.html" style="text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:10px 20px;border-radius:10px;box-shadow:3px 3px 0 #17130f">CREATE ACCOUNT</a>
+    </div>
+  </div>
+
+  <!-- header -->
+  <div style="text-align:center;padding:56px 48px 10px;background:radial-gradient(circle, rgba(230,57,47,.13) 1.6px, transparent 1.6px) 0 0/14px 14px, #f6f0e1">
+    <div style="display:inline-block;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.14em;background:#e6392f;color:#fff;border:2px solid #17130f;padding:4px 14px;border-radius:999px;transform:rotate(1.5deg);margin-bottom:14px">PRICING</div>
+    <h1 style="margin:0 0 10px;font:48px 'Archivo Black',sans-serif;text-transform:uppercase">Pick your rank</h1>
+    <p style="margin:0 auto 18px;font:500 16.5px/1.6 'Space Grotesk',sans-serif;color:#4a4238;max-width:520px">Start free forever. Go Member when you want unlimited scans and zero ads.</p>
+    <div style="display:inline-flex;border:3px solid #17130f;border-radius:999px;background:#fff;box-shadow:3px 3px 0 #17130f;overflow:hidden;margin-bottom:34px">
+      <span onClick="{{ pickMonthly }}" style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;padding:9px 20px;white-space:nowrap;background:{{ monthlyBg }};color:{{ monthlyFg }}">MONTHLY</span>
+      <span onClick="{{ pickYearly }}" style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;padding:9px 20px;white-space:nowrap;background:{{ yearlyBg }};color:{{ yearlyFg }};border-left:3px solid #17130f">YEARLY −35%</span>
+    </div>
+  </div>
+
+  <!-- plans -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;max-width:1240px;margin:0 auto;padding:0 48px 30px">
+    <div style="background:#fff;border:3px solid #17130f;border-radius:18px;padding:30px;box-shadow:6px 6px 0 #17130f;transform:rotate(-.6deg)">
+      <div style="font:22px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:4px">Rookie</div>
+      <div style="font:38px 'Archivo Black',sans-serif;color:#e6392f;margin-bottom:14px">FREE</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:500 14.5px 'Space Grotesk',sans-serif;color:#4a4238;margin-bottom:22px">
+        <span>✔ 15 scans a day</span>
+        <span>✔ Track unlimited cards</span>
+        <span>✔ Live pricing &amp; basic filters</span>
+        <span>✔ Community feed</span>
+        <span style="color:#8a7f70">— Supported by ads</span>
+      </div>
+      <a href="CollectorHQ Login.dc.html" style="color:inherit;text-decoration:none;display:inline-block;font:800 15px 'Space Grotesk',sans-serif;border:3px solid #17130f;padding:12px 24px;border-radius:12px;box-shadow:3px 3px 0 #17130f">START FREE</a>
+    </div>
+    <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:18px;padding:30px;box-shadow:6px 6px 0 #e6392f;transform:rotate(.6deg);position:relative">
+      <div style="position:absolute;top:-16px;right:22px;background:#ffd23f;color:#17130f;border:2.5px solid #17130f;border-radius:999px;padding:4px 14px;font:800 12px 'Space Grotesk',sans-serif;transform:rotate(3deg)">MOST POPULAR</div>
+      <div style="font:22px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:4px;color:#ffd23f">Member</div>
+      <div style="font:38px 'Archivo Black',sans-serif;margin-bottom:2px">{{ memberPrice }}<span style="font:700 15px 'Space Grotesk',sans-serif;color:#b5aa9c">{{ memberUnit }}</span></div>
+      <div style="font:600 12.5px 'Space Grotesk',sans-serif;color:#b5aa9c;margin-bottom:14px">{{ memberNote }}</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:500 14.5px 'Space Grotesk',sans-serif;margin-bottom:22px">
+        <span style="color:#ffd23f">★ Unlimited scans, zero ads</span>
+        <span>✔ All filters + CSV export</span>
+        <span>✔ Grading &amp; repair discounts</span>
+        <span>✔ Custom profile backgrounds</span>
+        <span>✔ Can apply for Leader status</span>
+      </div>
+      <a href="CollectorHQ Login.dc.html" style="text-decoration:none;display:inline-block;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;padding:12px 24px;border-radius:12px">GO MEMBER →</a>
+    </div>
+    <div style="background:#fff;border:3px solid #17130f;border-radius:18px;padding:30px;box-shadow:6px 6px 0 #1c9e4f;transform:rotate(-.5deg);position:relative">
+      <div style="position:absolute;top:-16px;right:22px;background:#1c9e4f;color:#fff;border:2.5px solid #17130f;border-radius:999px;padding:4px 14px;font:800 12px 'Space Grotesk',sans-serif;transform:rotate(-3deg)">INVITE ONLY</div>
+      <div style="font:22px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:4px;color:#1c9e4f">Shop</div>
+      <div style="font:38px 'Archivo Black',sans-serif;margin-bottom:2px">🏪</div>
+      <div style="font:600 12.5px 'Space Grotesk',sans-serif;color:#8a7f70;margin-bottom:14px">For physical TCG shops — by invitation</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font:500 14.5px 'Space Grotesk',sans-serif;color:#4a4238;margin-bottom:22px">
+        <span style="color:#1c9e4f;font-weight:700">★ Everything in Member</span>
+        <span>✔ Stock showcase page</span>
+        <span>✔ Open preorders to all collectors</span>
+        <span>✔ Featured on the home page</span>
+        <span>✔ Lucky draw claim point</span>
+      </div>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none;display:inline-block;font:800 15px 'Space Grotesk',sans-serif;border:3px solid #17130f;padding:12px 24px;border-radius:12px;box-shadow:3px 3px 0 #1c9e4f">REQUEST AN INVITE</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="max-width:900px;margin:0 auto;padding:30px 48px 50px">
+    <h2 style="margin:0 0 22px;text-align:center;font:28px 'Archivo Black',sans-serif;text-transform:uppercase">Straight answers</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:20px 22px;box-shadow:4px 4px 0 #17130f;transform:rotate({{ q.tilt }}deg)">
+          <div style="font:800 15px 'Space Grotesk',sans-serif;margin-bottom:6px">{{ q.q }}</div>
+          <p style="margin:0;font:500 13.5px/1.55 'Space Grotesk',sans-serif;color:#4a4238">{{ q.a }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- support strip -->
+  <div style="margin:0 48px 60px;background:#ffd23f;border:3px solid #17130f;border-radius:20px;box-shadow:6px 6px 0 #17130f;padding:30px 40px;display:flex;align-items:center;gap:26px;transform:rotate(-.4deg)">
+    <div style="font:48px 'Archivo Black',sans-serif;transform:rotate(-6deg)">♥</div>
+    <div style="flex:1">
+      <div style="font:22px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:4px">Not into subscriptions? Support the HQ.</div>
+      <div style="font:500 14.5px 'Space Grotesk',sans-serif;color:#4a4238">One-off donations keep the servers running. Supporters get a spot on the wall of fame.</div>
+    </div>
+    <a href="CollectorHQ Support Us.dc.html" style="text-decoration:none;font:800 15px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:13px 24px;border-radius:12px;box-shadow:3px 3px 0 #17130f;white-space:nowrap">DONATE →</a>
+  </div>
+
+  <!-- footer -->
+  <div style="background:#17130f;color:#b5aa9c;padding:36px 48px;display:flex;justify-content:space-between;align-items:center">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;background:#e6392f;border:2.5px solid #f6f0e1;border-radius:6px;display:grid;place-items:center;font:18px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg)">C</div>
+      <span style="font:16px 'Archivo Black',sans-serif;color:#f6f0e1">COLLECTORHQ</span>
+    </div>
+    <div style="display:flex;gap:28px;font:500 13.5px 'Space Grotesk',sans-serif">
+      <a href="CollectorHQ Landing.dc.html" style="color:inherit;text-decoration:none">Home</a>
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none">Explore</a>
+      <a href="CollectorHQ Community.dc.html" style="color:inherit;text-decoration:none">Community</a>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none">Support Us</a>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { yearly: false };
+  renderVals() {
+    const y = this.state.yearly;
+    return {
+      pickMonthly: () => this.setState({ yearly: false }),
+      pickYearly: () => this.setState({ yearly: true }),
+      monthlyBg: y ? '#fff' : '#17130f', monthlyFg: y ? '#17130f' : '#ffd23f',
+      yearlyBg: y ? '#17130f' : '#fff', yearlyFg: y ? '#ffd23f' : '#17130f',
+      memberPrice: y ? '$39' : '$4.99',
+      memberUnit: y ? '/yr' : '/mo',
+      memberNote: y ? 'That\u2019s $3.25/mo \u2014 save 35%' : 'or $39/yr \u2014 save 35%',
+      faqs: [
+        { q: 'Can I cancel anytime?', a: 'Yes. Cancel in one tap; you keep Member perks until the end of your billing period. Your vault and cards are never locked.', tilt: -0.4 },
+        { q: 'What happens to my scans if I downgrade?', a: 'Nothing. Every card you\u2019ve scanned stays in your vault with live pricing \u2014 you just drop back to 15 new scans a day.', tilt: 0.4 },
+        { q: 'How accurate are the prices?', a: 'We aggregate recent sales across major marketplaces and update daily \u2014 raw, graded and sealed tracked separately.', tilt: 0.3 },
+        { q: 'Do donations unlock Member perks?', a: 'Donations keep the HQ alive and put you on the supporters wall, but they\u2019re separate from Member subscriptions.', tilt: -0.3 },
+        { q: 'How do I get a Shop account?', a: 'Shop accounts are invite-only for physical TCG stores. Request an invite and our team will set up your account \u2014 you\u2019ll get a temporary password to change on first login.', tilt: 0.4 },
+        { q: 'How does the lucky draw work?', a: 'Every scan during the month earns entries. Winners get a claim code and pick up their prize in person at a partner shop.', tilt: -0.4 },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

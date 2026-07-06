@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>body{margin:0;background:#f6f0e1}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-width:1200px;min-height:100vh">
+
+  <!-- demo switcher -->
+  <div style="background:#17130f;color:#b5aa9c;text-align:center;padding:7px 0;font:700 12px 'IBM Plex Mono',monospace">DEMO — logged-in view:&nbsp; <a href="CollectorHQ Vault.dc.html" style="color:#ffd23f;text-decoration:none">★ MEMBER</a> &nbsp;·&nbsp; <span style="color:#fff;border-bottom:2px solid #e6392f">ROOKIE (FREE)</span></div>
+
+  <!-- logged-in nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:#f6f0e1;border-bottom:3px solid #17130f">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:40px;height:40px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:26px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:21px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+    </a>
+    <div style="display:flex;gap:26px;font:700 14.5px 'Space Grotesk',sans-serif;align-items:center">
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none"><span>Explore</span></a>
+      <a href="CollectorHQ Scan.dc.html" style="color:inherit;text-decoration:none"><span>Scan</span></a>
+      <span style="border-bottom:3px solid #e6392f;padding-bottom:1px">My Vault</span>
+      <a href="CollectorHQ Community.dc.html" style="color:inherit;text-decoration:none"><span>Community</span></a>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <span style="font:800 11px 'Space Grotesk',sans-serif;background:#fff;border:2px solid #17130f;border-radius:999px;padding:3px 11px;transform:rotate(-2deg);color:#8a7f70">ROOKIE</span>
+      <image-slot id="rookie-avatar" src="art/av-b.png" placeholder="you" shape="circle" style="width:40px;height:40px;border:2.5px solid #17130f"></image-slot>
+      <div>
+        <div style="font:800 13.5px 'Space Grotesk',sans-serif">@binder_baron</div>
+        <a href="CollectorHQ Login.dc.html" style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70;text-decoration:none">log out</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- vault header -->
+  <div style="padding:36px 48px 26px;background:radial-gradient(circle, rgba(230,57,47,.13) 1.6px, transparent 1.6px) 0 0/14px 14px, #f6f0e1;border-bottom:3px solid #17130f;display:flex;align-items:center;gap:24px">
+    <div style="flex:1">
+      <div style="font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.12em;color:#8a7f70;margin-bottom:4px">YOUR VAULT · 67 CARDS</div>
+      <div style="display:flex;align-items:baseline;gap:14px">
+        <span style="font:52px 'Archivo Black',sans-serif;letter-spacing:-.01em">$4,380</span>
+        <span style="font:800 17px 'Space Grotesk',sans-serif;color:#1c9e4f">▲ $212 (5.1%) this week</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:14px">
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:14px 20px;box-shadow:4px 4px 0 #17130f;transform:rotate(-1deg)">
+        <div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">GRADED</div>
+        <div style="font:24px 'Archivo Black',sans-serif">4</div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:14px 20px;box-shadow:4px 4px 0 #17130f;transform:rotate(1deg)">
+        <div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">SCANS LEFT TODAY</div>
+        <div style="font:24px 'Archivo Black',sans-serif;color:#e6392f">6<span style="font:700 14px 'Space Grotesk',sans-serif;color:#8a7f70">/15</span></div>
+      </div>
+      <a href="CollectorHQ Scan.dc.html" style="text-decoration:none;align-self:center;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #17130f;padding:14px 22px;border-radius:12px;box-shadow:4px 4px 0 #17130f">⚡ SCAN A CARD</a>
+    </div>
+  </div>
+
+  <!-- ad banner (free tier) -->
+  <div style="margin:26px 48px 0;border:3px dashed #8a7f70;border-radius:14px;padding:16px 22px;display:flex;align-items:center;gap:16px;background:repeating-linear-gradient(-45deg,#fdf9ef,#fdf9ef 12px,#f3ecdc 12px,#f3ecdc 24px)">
+    <div style="flex:1;background:#fff;border:1px solid #dadce0;border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:16px;font-family:Arial,sans-serif">
+      <span style="font:400 11px Arial,sans-serif;color:#006621;border:1px solid #006621;border-radius:3px;padding:1px 5px;flex:none">Ad</span>
+      <div style="flex:1">
+        <div style="font:400 16px Arial,sans-serif;color:#1a0dab">One Piece OP-09 &amp; Prismatic Evolutions — Preorder Now</div>
+        <div style="font:400 12px Arial,sans-serif;color:#006621">www.cardhavenshop.com/preorders</div>
+        <div style="font:400 12.5px Arial,sans-serif;color:#545454">Guaranteed release-day shipping on sealed boxes. Singles, sleeves &amp; toploaders in stock.</div>
+      </div>
+      <span style="font:700 13px Arial,sans-serif;color:#fff;background:#1a73e8;border-radius:4px;padding:8px 16px;flex:none;cursor:pointer">Shop Now</span>
+    </div>
+    <a href="CollectorHQ Pricing.dc.html" style="text-decoration:none;font:800 12.5px 'Space Grotesk',sans-serif;color:#e6392f;border-bottom:2.5px solid #e6392f;white-space:nowrap">Remove ads →</a>
+  </div>
+
+  <!-- vault tabs -->
+  <div style="display:flex;gap:10px;padding:24px 48px 0">
+    <span onClick="{{ goDash }}" style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;border:3px solid #17130f;border-radius:999px;padding:10px 22px;background:{{ dashBg }};color:{{ dashFg }};box-shadow:3px 3px 0 #17130f">🏠 DASHBOARD</span>
+    <span onClick="{{ goAll }}" style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;border:3px solid #17130f;border-radius:999px;padding:10px 22px;background:{{ allBg }};color:{{ allFg }};box-shadow:3px 3px 0 #17130f">🗂 ALL CARDS · 67</span>
+  </div>
+
+  <!-- all cards binder -->
+  <sc-if value="{{ isAll }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:30px 48px 60px">
+    <div style="display:flex;align-items:center;gap:10px;background:#fff;border:3px solid #17130f;border-radius:999px;box-shadow:3px 3px 0 #17130f;padding:4px 8px 4px 18px;max-width:520px;margin-bottom:26px">
+      <span style="font:16px 'Space Grotesk',sans-serif">🔍</span>
+      <input onChange="{{ onSearch }}" placeholder="Search your cards — name, set, game…" style="flex:1;border:none;outline:none;background:transparent;font:600 14.5px 'Space Grotesk',sans-serif;padding:10px 0;color:#17130f" />
+    </div>
+    <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:30px 0 50px;font:800 15px 'Space Grotesk',sans-serif;color:#8a7f70">No cards match your search — try another name or set.</div>
+    </sc-if>
+    <div style="display:flex;flex-direction:column;gap:34px">
+      <sc-for list="{{ series }}" as="sg" hint-placeholder-count="3">
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;border-bottom:3px solid #17130f;padding-bottom:10px">
+            <span style="font:800 11px 'IBM Plex Mono',monospace;background:{{ sg.chipBg }};color:{{ sg.chipFg }};border:2px solid #17130f;border-radius:5px;padding:3px 9px">{{ sg.game }}</span>
+            <h2 style="margin:0;font:22px 'Archivo Black',sans-serif;text-transform:uppercase">{{ sg.name }}</h2>
+            <span style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">{{ sg.count }} cards · {{ sg.value }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+            <sc-for list="{{ sg.cards }}" as="bc" hint-placeholder-count="4">
+              <a href="CollectorHQ Card.dc.html?card={{ bc.id }}" style="display:block;text-decoration:none;color:inherit;background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden" style-hover="box-shadow:6px 6px 0 #e6392f;transform:translateY(-2px)">
+                <image-slot id="{{ bc.slotId }}" src="{{ bc.art }}" placeholder="drop card photo" shape="rect" style="display:block;width:100%;height:auto;aspect-ratio:5/7;border-bottom:3px solid #17130f"></image-slot>
+                <div style="padding:12px 14px">
+                  <div style="font:800 15px 'Space Grotesk',sans-serif">{{ bc.name }}</div>
+                  <div style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70;margin:3px 0 7px">{{ bc.sub }}</div>
+                  <div style="font:20px 'Archivo Black',sans-serif;color:#e6392f">{{ bc.price }}</div>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isDash }}" hint-placeholder-val="{{ true }}">
+  <div>
+  <!-- services -->
+  <div style="padding:30px 48px 8px">
+    <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:18px">
+      <h2 style="margin:0;font:24px 'Archivo Black',sans-serif;text-transform:uppercase">Card services</h2>
+      <a href="CollectorHQ Pricing.dc.html" style="text-decoration:none;font:700 12px 'Space Grotesk',sans-serif;background:#fff;color:#17130f;border:2px solid #17130f;border-radius:999px;padding:3px 11px;transform:rotate(2deg);display:inline-block">★ Members pay 25% less →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+      <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;padding:24px;transform:rotate(-.4deg);display:flex;gap:20px;align-items:flex-start">
+        <div style="width:64px;height:64px;background:#e6392f;border:3px solid #17130f;border-radius:14px;display:grid;place-items:center;font:32px 'Archivo Black',sans-serif;transform:rotate(-4deg);flex:none">🏆</div>
+        <div style="flex:1">
+          <div style="font:19px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:6px">Send for grading</div>
+          <p style="margin:0 0 12px;font:500 13.5px/1.5 'Space Grotesk',sans-serif;color:#4a4238">Pick cards below, we handle the PSA/BGS submission, insured shipping both ways, and the grade lands straight in your vault.</p>
+          <div style="font:700 13px 'IBM Plex Mono',monospace;color:#e6392f">$24/card <span style="color:#8a7f70">· members pay $18</span></div>
+        </div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;padding:24px;transform:rotate(.4deg);display:flex;gap:20px;align-items:flex-start">
+        <div style="width:64px;height:64px;background:#ffd23f;border:3px solid #17130f;border-radius:14px;display:grid;place-items:center;font:32px 'Archivo Black',sans-serif;transform:rotate(4deg);flex:none">🔧</div>
+        <div style="flex:1">
+          <div style="font:19px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:6px">Card repair &amp; cleaning</div>
+          <p style="margin:0 0 12px;font:500 13.5px/1.5 'Space Grotesk',sans-serif;color:#4a4238">Surface cleaning, whitening removal and pro pressing before grading — small fixes that turn a 8 into a 9.</p>
+          <div style="font:700 13px 'IBM Plex Mono',monospace;color:#e6392f">$12/card <span style="color:#8a7f70">· members pay $9</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- cards + service tray -->
+  <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:26px;padding:30px 48px 60px;align-items:start">
+    <div>
+      <h2 style="margin:0 0 16px;font:24px 'Archivo Black',sans-serif;text-transform:uppercase">Your top cards</h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
+          <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;padding:14px 18px;display:flex;gap:16px;align-items:center;transform:rotate({{ c.tilt }}deg)">
+            <a href="CollectorHQ Card.dc.html?card={{ c.cid }}" style="display:flex;gap:16px;align-items:center;flex:1;text-decoration:none;color:inherit">
+              <image-slot id="{{ c.slotId }}" src="{{ c.art }}" placeholder="card" shape="rounded" radius="6" style="width:50px;height:70px;border:2px solid #17130f;flex:none"></image-slot>
+              <div style="flex:1">
+                <div style="font:700 10px 'IBM Plex Mono',monospace;color:#8a7f70;letter-spacing:.06em">{{ c.game }} · {{ c.condition }}</div>
+                <div style="font:800 15.5px 'Space Grotesk',sans-serif">{{ c.name }}</div>
+                <div style="font:18px 'Archivo Black',sans-serif;color:#e6392f">{{ c.price }} <span style="font:800 12px 'Space Grotesk',sans-serif;color:{{ c.deltaColor }}">{{ c.delta }}</span></div>
+              </div>
+            </a>
+            <div style="display:flex;gap:8px">
+              <span onClick="{{ c.onGrade }}" style="cursor:pointer;font:800 12px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:999px;padding:7px 14px;background:{{ c.gradeBg }};color:{{ c.gradeFg }};box-shadow:2px 2px 0 #17130f;white-space:nowrap">🏆 {{ c.gradeLabel }}</span>
+              <span onClick="{{ c.onRepair }}" style="cursor:pointer;font:800 12px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:999px;padding:7px 14px;background:{{ c.repairBg }};color:{{ c.repairFg }};box-shadow:2px 2px 0 #17130f;white-space:nowrap">🔧 {{ c.repairLabel }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- service tray -->
+    <div style="position:sticky;top:20px;background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:16px;box-shadow:6px 6px 0 #e6392f;padding:24px;transform:rotate(.3deg)">
+      <div style="font:19px 'Archivo Black',sans-serif;text-transform:uppercase;color:#ffd23f;margin-bottom:6px">Service box</div>
+      <p style="margin:0 0 16px;font:500 13px/1.5 'Space Grotesk',sans-serif;color:#b5aa9c">Tap 🏆 Grade or 🔧 Repair on any card to add it. One insured shipment, one label.</p>
+      <sc-if value="{{ trayEmpty }}" hint-placeholder-val="{{ true }}">
+        <div style="border:2px dashed rgba(246,240,225,.35);border-radius:12px;padding:22px;text-align:center;font:600 13px 'IBM Plex Mono',monospace;color:#8a7f70">no cards selected yet</div>
+      </sc-if>
+      <sc-if value="{{ trayFilled }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+          <sc-for list="{{ trayItems }}" as="t" hint-placeholder-count="1">
+            <div style="display:flex;align-items:center;gap:10px;background:rgba(246,240,225,.08);border:2px solid rgba(246,240,225,.25);border-radius:10px;padding:9px 12px">
+              <span style="font:16px 'Archivo Black',sans-serif">{{ t.icon }}</span>
+              <div style="flex:1">
+                <div style="font:800 13px 'Space Grotesk',sans-serif;color:#fff">{{ t.name }}</div>
+                <div style="font:600 10.5px 'IBM Plex Mono',monospace;color:#b5aa9c">{{ t.service }}</div>
+              </div>
+              <span style="font:800 13px 'Space Grotesk',sans-serif;color:#ffd23f">{{ t.fee }}</span>
+              <span onClick="{{ t.onRemove }}" style="cursor:pointer;font:800 13px 'Space Grotesk',sans-serif;color:#ff8a7a;padding:0 2px">✕</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid rgba(246,240,225,.25);padding-top:10px;margin-bottom:8px">
+          <span style="font:800 14px 'Space Grotesk',sans-serif;color:#fff">Total</span>
+          <span style="font:26px 'Archivo Black',sans-serif;color:#ffd23f">{{ total }}</span>
+        </div>
+        <a href="CollectorHQ Pricing.dc.html" style="display:block;text-decoration:none;text-align:center;font:600 12px 'IBM Plex Mono',monospace;color:#7fe08a;margin-bottom:14px">members would pay {{ memberTotal }} — save {{ saving }} →</a>
+        <span style="display:block;text-align:center;cursor:pointer;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;padding:13px 0;border-radius:12px">REQUEST SHIPPING LABEL →</span>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- google ad (footer banner) -->
+  <div style="margin:0 48px 50px;border:3px dashed #8a7f70;border-radius:14px;padding:10px;background:#f3ecdc">
+    <div style="background:#fff;border:1px solid #dadce0;border-radius:8px;padding:13px 18px;display:flex;align-items:center;gap:16px;font-family:Arial,sans-serif">
+      <span style="font:400 11px Arial,sans-serif;color:#006621;border:1px solid #006621;border-radius:3px;padding:1px 5px;flex:none">Ad</span>
+      <div style="flex:1">
+        <div style="font:400 16px Arial,sans-serif;color:#1a0dab">Grading Supplies Sale — Toploaders, Sleeves &amp; Card Savers</div>
+        <div style="font:400 12px Arial,sans-serif;color:#006621">www.mintcondition.store/supplies</div>
+        <div style="font:400 12.5px Arial,sans-serif;color:#545454">Protect your grails before shipping. Bulk discounts + free shipping over $35.</div>
+      </div>
+      <span style="font:700 13px Arial,sans-serif;color:#fff;background:#1a73e8;border-radius:4px;padding:8px 16px;flex:none;cursor:pointer">Shop Sale</span>
+    </div>
+  </div>
+  </div>
+  </sc-if>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { picks: {} };
+  renderVals() {
+    const tab = this.state.tab || 'dash';
+    const q = (this.state.q || '').trim().toLowerCase();
+    const onSearch = (e) => this.setState({ q: e.target.value });
+    const filterSeries = (list) => !q ? list : list.map(sg => ({ ...sg, cards: sg.cards.filter(c => (sg.game + ' ' + sg.name + ' ' + c.name + ' ' + c.sub).toLowerCase().includes(q)) })).filter(sg => sg.cards.length);
+    const tabVals = {
+      isDash: tab === 'dash', isAll: tab === 'all',
+      goDash: () => this.setState({ tab: 'dash' }),
+      goAll: () => this.setState({ tab: 'all' }),
+      dashBg: tab === 'dash' ? '#17130f' : '#fff', dashFg: tab === 'dash' ? '#ffd23f' : '#17130f',
+      allBg: tab === 'all' ? '#17130f' : '#fff', allFg: tab === 'all' ? '#ffd23f' : '#17130f',
+      series: filterSeries([
+        { game: 'POKÉMON', chipBg: '#ffd23f', chipFg: '#17130f', name: 'Obsidian Flames', count: 28, value: '$2,340', cards: [
+          { id: 'charizard', slotId: 'br-p1', art: 'art/card-charizard.png', name: 'Charizard ex (SIR)', sub: '223/197 · RAW NM', price: '$204' },
+          { id: 'tyranitar', slotId: 'br-p2', art: 'art/card-crystal.png', name: 'Tyranitar ex (Full Art)', sub: '211/197 · RAW LP', price: '$38' },
+        ]},
+        { game: 'NARUTO', chipBg: '#3a7bd5', chipFg: '#fff', name: 'Kayou Tier 3', count: 24, value: '$610', cards: [
+          { id: 'kakashi', slotId: 'br-n1', art: 'art/card-kakashi.png', name: 'Kakashi Hatake UR', sub: 'UR · RAW MP', price: '$41' },
+          { id: 'narutomr', slotId: 'br-n2', art: 'art/card-narutosp.png', name: 'Naruto Uzumaki MR', sub: 'MR · RAW NM', price: '$29' },
+        ]},
+        { game: 'ONE PIECE', chipBg: '#e6392f', chipFg: '#fff', name: 'OP-05 Awakening', count: 11, value: '$1,310', cards: [
+          { id: 'luffy05', slotId: 'br-o1', art: 'art/card-luffy.png', name: 'Monkey D. Luffy OP05-119', sub: 'MANGA RARE · proxy slot', price: '$1,240' },
+        ]},
+        { game: 'MAGIC', chipBg: '#17130f', chipFg: '#ffd23f', name: 'Tales of Middle-earth', count: 4, value: '$180', cards: [
+          { id: 'onering', slotId: 'br-m1', art: 'art/card-onering.png', name: 'The One Ring (Foil)', sub: '#246 · RAW LP', price: '$148' },
+        ]},
+      ]),
+    };
+    tabVals.noResults = !!q && tabVals.series.length === 0;
+    tabVals.onSearch = onSearch;
+    const GRADE_FEE = 24, REPAIR_FEE = 12, M_GRADE = 18, M_REPAIR = 9;
+    const cards = [
+      { id: 'r1', cid: 'charizard', slotId: 'rc1', art: 'art/card-charizard.png', game: 'POKÉMON', condition: 'RAW · NM', name: 'Charizard ex (SIR)', price: '$204', delta: '▼1.2%', deltaColor: '#c0362c', tilt: -0.3 },
+      { id: 'r2', cid: 'kakashi', slotId: 'rc2', art: 'art/card-kakashi.png', game: 'NARUTO', condition: 'RAW · MP (scratches)', name: 'Kakashi Hatake UR', price: '$41', delta: '▲2.1%', deltaColor: '#1c9e4f', tilt: 0.3 },
+      { id: 'r3', cid: 'luffy05', slotId: 'rc3', art: 'art/card-luffy.png', game: 'ONE PIECE', condition: 'RAW · NM', name: 'Luffy OP05-119 (proxy slot)', price: '$1,240', delta: '▲12.2%', deltaColor: '#1c9e4f', tilt: -0.25 },
+      { id: 'r4', cid: 'onering', slotId: 'rc4', art: 'art/card-onering.png', game: 'MAGIC', condition: 'RAW · LP', name: 'The One Ring (Foil)', price: '$148', delta: '▲5.1%', deltaColor: '#1c9e4f', tilt: 0.25 },
+    ];
+    const picks = this.state.picks;
+    const setPick = (id, kind) => this.setState(s => {
+      const p = { ...s.picks };
+      p[id] = p[id] === kind ? undefined : kind;
+      return { picks: p };
+    });
+    const items = cards.filter(c => picks[c.id]).map(c => {
+      const kind = picks[c.id];
+      return {
+        icon: kind === 'grade' ? '🏆' : '🔧',
+        name: c.name,
+        service: kind === 'grade' ? 'PSA GRADING SUBMISSION' : 'REPAIR + PRESSING',
+        fee: '$' + (kind === 'grade' ? GRADE_FEE : REPAIR_FEE),
+        full: kind === 'grade' ? GRADE_FEE : REPAIR_FEE,
+        member: kind === 'grade' ? M_GRADE : M_REPAIR,
+        onRemove: () => setPick(c.id, kind),
+      };
+    });
+    const fullSum = items.reduce((a, t) => a + t.full, 0);
+    const memberSum = items.reduce((a, t) => a + t.member, 0);
+    return {
+      ...tabVals,
+      cards: cards.map(c => {
+        const pick = picks[c.id];
+        return {
+          ...c,
+          gradeLabel: pick === 'grade' ? 'ADDED ✓' : 'GRADE',
+          gradeBg: pick === 'grade' ? '#17130f' : '#fff', gradeFg: pick === 'grade' ? '#ffd23f' : '#17130f',
+          repairLabel: pick === 'repair' ? 'ADDED ✓' : 'REPAIR',
+          repairBg: pick === 'repair' ? '#17130f' : '#fff', repairFg: pick === 'repair' ? '#ffd23f' : '#17130f',
+          onGrade: () => setPick(c.id, 'grade'),
+          onRepair: () => setPick(c.id, 'repair'),
+        };
+      }),
+      trayEmpty: items.length === 0,
+      trayFilled: items.length > 0,
+      trayItems: items,
+      total: '$' + fullSum,
+      memberTotal: '$' + memberSum,
+      saving: '$' + (fullSum - memberSum),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

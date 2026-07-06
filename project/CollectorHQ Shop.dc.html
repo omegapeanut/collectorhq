@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>body{margin:0;background:#f6f0e1}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-height:100vh;min-width:1200px">
+
+  <!-- nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:#f6f0e1;border-bottom:3px solid #17130f">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:36px;height:36px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:23px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:19px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+      <span style="font:800 11px 'Space Grotesk',sans-serif;background:#17130f;color:#ffd23f;border-radius:4px;padding:4px 10px;transform:rotate(-2deg);letter-spacing:.1em">PARTNER SHOP</span>
+    </a>
+    <div style="display:flex;gap:14px;align-items:center">
+      <div style="display:flex;gap:10px;align-items:center;background:#fff;border:2.5px solid #17130f;border-radius:999px;padding:5px 14px 5px 5px;box-shadow:2px 2px 0 #17130f">
+        <div style="width:28px;height:28px;border-radius:50%;background:#1c9e4f;border:2px solid #17130f;display:grid;place-items:center;font:800 12px 'Space Grotesk',sans-serif;color:#fff">D</div>
+        <span style="font:800 13px 'Space Grotesk',sans-serif">Dragon&rsquo;s Den TCG</span>
+        <span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">SINGAPORE</span>
+      </div>
+      <a href="CollectorHQ Login.dc.html" style="color:inherit;text-decoration:none;font:700 13.5px 'Space Grotesk',sans-serif;border-bottom:2.5px solid #e6392f">Log out</a>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:230px 1fr;gap:0;align-items:start">
+    <!-- sidebar -->
+    <div style="border-right:3px solid #17130f;min-height:calc(100vh - 68px);padding:22px 16px;display:flex;flex-direction:column;gap:6px;background:#fff">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+        <span onClick="{{ n.go }}" style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;border:2.5px solid {{ n.border }};border-radius:10px;padding:11px 14px;background:{{ n.bg }};color:{{ n.fg }};box-shadow:{{ n.shadow }}">{{ n.label }}</span>
+      </sc-for>
+      <div style="margin-top:auto;background:#f6f0e1;border:2.5px dashed #8a7f70;border-radius:12px;padding:14px;font:600 11.5px/1.5 'IBM Plex Mono',monospace;color:#8a7f70">Shop accounts are created by CollectorHQ admin. Contact support to update shop details.</div>
+    </div>
+
+    <!-- main -->
+    <div style="padding:28px 36px">
+      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+        <h1 style="margin:0;font:30px 'Archivo Black',sans-serif;text-transform:uppercase">{{ pageTitle }}</h1>
+        <sc-if value="{{ isPreorders }}" hint-placeholder-val="{{ false }}">
+          <span style="flex:1"></span>
+          <span style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #17130f;border-radius:12px;padding:11px 20px;box-shadow:3px 3px 0 #17130f">+ NEW PREORDER</span>
+        </sc-if>
+      </div>
+
+      <!-- STOCK -->
+      <sc-if value="{{ isStock }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+          <sc-for list="{{ stock }}" as="s" hint-placeholder-count="6">
+            <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+              <div style="display:flex;gap:14px;padding:16px">
+                <image-slot id="{{ s.slotId }}" src="{{ s.art }}" placeholder="product" shape="rounded" radius="6" style="width:62px;height:86px;border:2px solid #17130f;flex:none"></image-slot>
+                <div style="flex:1">
+                  <div style="font:700 10px 'IBM Plex Mono',monospace;color:#8a7f70;letter-spacing:.06em">{{ s.game }}</div>
+                  <div style="font:800 15px 'Space Grotesk',sans-serif">{{ s.name }}</div>
+                  <div style="font:18px 'Archivo Black',sans-serif;color:#e6392f;margin-top:6px">{{ s.price }}</div>
+                </div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;border-top:2.5px dashed #d8cfbf;padding:10px 16px">
+                <span style="font:800 11.5px 'Space Grotesk',sans-serif;background:{{ s.badgeBg }};color:{{ s.badgeFg }};border:2px solid #17130f;border-radius:999px;padding:3px 11px">{{ s.badge }}</span>
+                <span style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">{{ s.qty }} in stock</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- CARD BINDER -->
+      <sc-if value="{{ isBinder }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:30px">
+          <sc-for list="{{ series }}" as="sg" hint-placeholder-count="3">
+            <div>
+              <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;border-bottom:3px solid #17130f;padding-bottom:10px">
+                <span style="font:800 11px 'IBM Plex Mono',monospace;background:{{ sg.chipBg }};color:{{ sg.chipFg }};border:2px solid #17130f;border-radius:5px;padding:3px 9px">{{ sg.game }}</span>
+                <h2 style="margin:0;font:20px 'Archivo Black',sans-serif;text-transform:uppercase">{{ sg.name }}</h2>
+                <span style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">{{ sg.count }} singles listed</span>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+                <sc-for list="{{ sg.cards }}" as="bc" hint-placeholder-count="3">
+                  <a href="CollectorHQ Card.dc.html?card={{ bc.id }}" style="text-decoration:none;color:inherit;background:#fff;border:3px solid #17130f;border-radius:12px;box-shadow:3px 3px 0 #17130f;padding:12px;display:flex;gap:12px;align-items:center" style-hover="box-shadow:5px 5px 0 #e6392f">
+                    <image-slot id="{{ bc.slotId }}" src="{{ bc.art }}" placeholder="card" shape="rounded" radius="5" style="width:44px;height:62px;border:2px solid #17130f;flex:none"></image-slot>
+                    <div style="min-width:0;flex:1">
+                      <div style="font:800 13px 'Space Grotesk',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bc.name }}</div>
+                      <div style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ bc.sub }}</div>
+                      <div style="font:15px 'Archivo Black',sans-serif;color:#e6392f">{{ bc.price }}</div>
+                    </div>
+                    <span style="font:800 10.5px 'Space Grotesk',sans-serif;background:{{ bc.stBg }};color:{{ bc.stFg }};border:2px solid #17130f;border-radius:999px;padding:3px 9px;white-space:nowrap">{{ bc.status }}</span>
+                  </a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- PREORDERS -->
+      <sc-if value="{{ isPreorders }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;overflow:hidden">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 1fr 1fr;gap:12px;padding:12px 20px;background:#17130f;color:#ffd23f;font:800 11.5px 'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:.06em">
+            <span>Product</span><span>Releases</span><span>Slots taken</span><span>Deposit</span><span>Status</span>
+          </div>
+          <sc-for list="{{ preorders }}" as="p" hint-placeholder-count="4">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1.2fr 1fr 1fr;gap:12px;padding:14px 20px;border-top:2px dashed #d8cfbf;font:600 13.5px 'Space Grotesk',sans-serif;align-items:center">
+              <span style="font-weight:800">{{ p.name }} <span style="font:700 10px 'IBM Plex Mono',monospace;color:#8a7f70">{{ p.game }}</span></span>
+              <span style="font:600 12.5px 'IBM Plex Mono',monospace">{{ p.release }}</span>
+              <span>
+                <span style="display:inline-block;width:110px;height:12px;background:#f6f0e1;border:2px solid #17130f;border-radius:999px;overflow:hidden;vertical-align:middle"><span style="display:block;height:100%;width:{{ p.pct }}%;background:{{ p.barColor }}"></span></span>
+                <span style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70"> {{ p.taken }}</span>
+              </span>
+              <span style="font:600 12.5px 'IBM Plex Mono',monospace">{{ p.deposit }}</span>
+              <span onClick="{{ p.toggle }}" style="cursor:pointer;font:800 11.5px 'Space Grotesk',sans-serif;background:{{ p.statusBg }};color:{{ p.statusFg }};border:2px solid #17130f;border-radius:999px;padding:3px 11px;text-align:center">{{ p.status }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:12px;font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">Open preorders are announced on the CollectorHQ home page automatically. Click a status pill to open / close it.</div>
+      </sc-if>
+
+      <!-- ORDERS -->
+      <sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ orders }}" as="o" hint-placeholder-count="4">
+            <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;padding:16px 20px;display:flex;align-items:center;gap:16px">
+              <div style="width:38px;height:38px;border-radius:50%;background:{{ o.avColor }};border:2.5px solid #17130f;display:grid;place-items:center;font:800 14px 'Space Grotesk',sans-serif;color:#fff;flex:none">{{ o.initial }}</div>
+              <div style="flex:1">
+                <div style="font:800 14.5px 'Space Grotesk',sans-serif">{{ o.user }} <span style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">{{ o.time }}</span></div>
+                <div style="font:600 13px 'Space Grotesk',sans-serif;color:#4a4238">{{ o.item }}</div>
+              </div>
+              <span style="font:600 12.5px 'IBM Plex Mono',monospace">deposit {{ o.deposit }}</span>
+              <span style="font:800 11.5px 'Space Grotesk',sans-serif;background:{{ o.badgeBg }};color:{{ o.badgeFg }};border:2px solid #17130f;border-radius:999px;padding:4px 12px">{{ o.badge }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- LUCKY DRAW CLAIMS -->
+      <sc-if value="{{ isClaims }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #ffd23f;padding:18px 22px;margin-bottom:18px;display:flex;align-items:center;gap:18px">
+          <span style="font:38px 'Archivo Black',sans-serif;transform:rotate(6deg)">🎰</span>
+          <div style="flex:1">
+            <div style="font:800 15px 'Space Grotesk',sans-serif;color:#ffd23f;text-transform:uppercase">July lucky draw — your shop is a claim point</div>
+            <div style="font:500 13px 'Space Grotesk',sans-serif;color:#b5aa9c">Winners show their claim code in person. Verify the code, hand over the prize, mark it claimed.</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ claims }}" as="c" hint-placeholder-count="3">
+            <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:4px 4px 0 #17130f;padding:16px 20px;display:flex;align-items:center;gap:16px">
+              <span style="font:800 15px 'IBM Plex Mono',monospace;background:#ffd23f;border:2.5px solid #17130f;border-radius:8px;padding:8px 12px;letter-spacing:.08em">{{ c.code }}</span>
+              <div style="flex:1">
+                <div style="font:800 14.5px 'Space Grotesk',sans-serif">{{ c.user }}</div>
+                <div style="font:600 13px 'Space Grotesk',sans-serif;color:#4a4238">{{ c.prize }}</div>
+              </div>
+              <span style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70">expires {{ c.expires }}</span>
+              <sc-if value="{{ c.claimed }}" hint-placeholder-val="{{ false }}">
+                <span style="font:800 12.5px 'Space Grotesk',sans-serif;background:#1c9e4f;color:#fff;border:2.5px solid #17130f;border-radius:999px;padding:8px 18px">✔ CLAIMED</span>
+              </sc-if>
+              <sc-if value="{{ c.notClaimed }}" hint-placeholder-val="{{ true }}">
+                <span onClick="{{ c.claim }}" style="cursor:pointer;font:800 12.5px 'Space Grotesk',sans-serif;background:#ffd23f;border:2.5px solid #17130f;border-radius:999px;padding:8px 18px;box-shadow:2px 2px 0 #17130f">MARK CLAIMED</span>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- first-login password change modal -->
+  <sc-if value="{{ showPw }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;background:rgba(23,19,15,.65);display:grid;place-items:center;z-index:50">
+      <div style="background:#f6f0e1;border:3px solid #17130f;border-radius:18px;box-shadow:8px 8px 0 #17130f;width:440px;padding:32px">
+        <div style="display:inline-block;font:700 11px 'Space Grotesk',sans-serif;letter-spacing:.12em;background:#e6392f;color:#fff;border:2px solid #17130f;padding:4px 12px;border-radius:999px;transform:rotate(-1.5deg);margin-bottom:14px">FIRST LOGIN</div>
+        <h2 style="margin:0 0 8px;font:24px 'Archivo Black',sans-serif;text-transform:uppercase">Set your own password</h2>
+        <p style="margin:0 0 22px;font:500 14px/1.55 'Space Grotesk',sans-serif;color:#4a4238">Your account was created by the CollectorHQ team with a temporary password. Choose a new one to secure your shop.</p>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:22px">
+          <input type="password" placeholder="Temporary password" style="font:600 14px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:10px;padding:12px 14px;background:#fff;box-shadow:2px 2px 0 #17130f;outline:none" />
+          <input type="password" placeholder="New password" style="font:600 14px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:10px;padding:12px 14px;background:#fff;box-shadow:2px 2px 0 #17130f;outline:none" />
+          <input type="password" placeholder="Confirm new password" style="font:600 14px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:10px;padding:12px 14px;background:#fff;box-shadow:2px 2px 0 #17130f;outline:none" />
+        </div>
+        <span onClick="{{ savePw }}" style="cursor:pointer;display:block;text-align:center;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #17130f;border-radius:12px;padding:13px;box-shadow:3px 3px 0 #17130f">SAVE & ENTER MY SHOP →</span>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;firstLogin&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Demo state&quot;}}">
+class Component extends DCLogic {
+  state = { tab: 'stock', pwDone: false, closed: {}, claimed: {} };
+
+  renderVals() {
+    const tab = this.state.tab;
+    const pick = (t) => () => this.setState({ tab: t });
+    const navDef = [
+      ['stock', '📦 Stock showcase'],
+      ['binder', '🗂 Card binder'],
+      ['preorders', '📅 Preorders'],
+      ['orders', '🧾 Incoming orders'],
+      ['claims', '🎰 Lucky draw claims'],
+    ];
+    const titles = { stock: 'Stock showcase', binder: 'Card binder — singles', preorders: 'Preorder schedule', orders: 'Incoming orders', claims: 'Lucky draw claims' };
+
+    const preordersRaw = [
+      { id: 'pr1', name: 'Prismatic Evolutions ETB', game: 'POKÉMON', release: 'Aug 14', taken: '37 / 60', pct: 62, deposit: '$20', barColor: '#1c9e4f' },
+      { id: 'pr2', name: 'OP-11 Booster Box (JP)', game: 'ONE PIECE', release: 'Aug 29', taken: '34 / 40', pct: 85, deposit: '$15', barColor: '#e6392f' },
+      { id: 'pr3', name: 'Kayou Tier 4 Wave 6', game: 'NARUTO', release: 'Sep 12', taken: '12 / 80', pct: 15, deposit: '$10', barColor: '#1c9e4f' },
+      { id: 'pr4', name: 'Fabled — Illumineer’s Trove', game: 'LORCANA', release: 'Sep 5', taken: '19 / 50', pct: 38, deposit: '$10', barColor: '#1c9e4f' },
+    ];
+    const claimsRaw = [
+      { id: 'c1', code: 'HQ-7F3K', user: '@mint_mika', prize: 'Sealed OP-10 booster box', expires: 'Jul 31' },
+      { id: 'c2', code: 'HQ-2B8N', user: '@binder_baron', prize: 'Prismatic Evolutions ETB', expires: 'Jul 31' },
+      { id: 'c3', code: 'HQ-9Q4T', user: '@sleeved_up', prize: '$50 store credit', expires: 'Aug 15' },
+    ];
+
+    return {
+      showPw: (this.props.firstLogin ?? true) && !this.state.pwDone,
+      savePw: () => this.setState({ pwDone: true }),
+      pageTitle: titles[tab],
+      isStock: tab === 'stock', isBinder: tab === 'binder', isPreorders: tab === 'preorders', isOrders: tab === 'orders', isClaims: tab === 'claims',
+      series: [
+        { game: 'ONE PIECE', chipBg: '#e6392f', chipFg: '#fff', name: 'OP-01 Romance Dawn', count: 34, cards: [
+          { id: 'shanks', slotId: 'sb-o1', art: 'art/card-shanks.png', name: 'Shanks OP01-120 (Alt Art)', sub: 'SEC · NM', price: '$389', status: 'FOR SALE', stBg: '#1c9e4f', stFg: '#fff' },
+          { id: 'zoro', slotId: 'sb-o2', art: 'art/card-zoro.png', name: 'Roronoa Zoro OP01-025 (Alt Art)', sub: 'SR · NM', price: '$178', status: 'FOR SALE', stBg: '#1c9e4f', stFg: '#fff' },
+          { id: 'luffy01', slotId: 'sb-o3', art: 'art/card-luffy.png', name: 'Monkey D. Luffy OP01-003', sub: 'L · NM', price: '$24', status: 'ON HOLD', stBg: '#ffd23f', stFg: '#17130f' },
+        ]},
+        { game: 'POKÉMON', chipBg: '#ffd23f', chipFg: '#17130f', name: 'Evolving Skies', count: 21, cards: [
+          { id: 'umbreon', slotId: 'sb-p1', art: 'art/card-umbreon.png', name: 'Umbreon VMAX (Alt Art Secret)', sub: '215/203 · PSA 10', price: '$612', status: 'FOR SALE', stBg: '#1c9e4f', stFg: '#fff' },
+          { id: 'glaceon', slotId: 'sb-p2', art: 'art/card-crystal.png', name: 'Glaceon VMAX (Alt Art Secret)', sub: '209/203 · NM', price: '$148', status: 'SOLD', stBg: '#fff', stFg: '#8a7f70' },
+        ]},
+        { game: 'NARUTO', chipBg: '#3a7bd5', chipFg: '#fff', name: 'Kayou Tier 4 · Wave 5', count: 40, cards: [
+          { id: 'narutosp', slotId: 'sb-n1', art: 'art/card-narutosp.png', name: 'Naruto Uzumaki SP (Sage Mode)', sub: 'SP · NM', price: '$96', status: 'FOR SALE', stBg: '#1c9e4f', stFg: '#fff' },
+          { id: 'itachi', slotId: 'sb-n2', art: 'art/card-itachi.png', name: 'Itachi Uchiha SSR (Gold Stamp)', sub: 'SSR · SEALED', price: '$118', status: 'FOR SALE', stBg: '#1c9e4f', stFg: '#fff' },
+        ]},
+        { game: 'MAGIC', chipBg: '#17130f', chipFg: '#ffd23f', name: 'Tales of Middle-earth', count: 9, cards: [
+          { id: 'onering', slotId: 'sb-m1', art: 'art/card-onering.png', name: 'The One Ring (Foil)', sub: '#246 · NM', price: '$148', status: 'FOR SALE', stBg: '#1c9e4f', stFg: '#fff' },
+        ]},
+      ],
+      navItems: navDef.map(([t, label]) => ({
+        label, go: pick(t),
+        bg: tab === t ? '#ffd23f' : '#fff',
+        fg: '#17130f',
+        border: tab === t ? '#17130f' : '#d8cfbf',
+        shadow: tab === t ? '3px 3px 0 #17130f' : 'none',
+      })),
+      stock: [
+        { slotId: 'st1', art: 'art/box-pokemon.png', game: 'POKÉMON', name: 'SV 151 Booster Bundle', price: '$34', qty: 18, badge: 'IN STOCK', badgeBg: '#1c9e4f', badgeFg: '#fff' },
+        { slotId: 'st2', art: 'art/box-onepiece.png', game: 'ONE PIECE', name: 'OP-10 Booster Box (EN)', price: '$96', qty: 3, badge: 'LOW STOCK', badgeBg: '#ffd23f', badgeFg: '#17130f' },
+        { slotId: 'st3', art: 'art/box-magic.png', game: 'MAGIC', name: 'Bloomburrow Play Booster', price: '$5.50', qty: 140, badge: 'IN STOCK', badgeBg: '#1c9e4f', badgeFg: '#fff' },
+        { slotId: 'st4', art: 'art/box-naruto.png', game: 'NARUTO', name: 'Kayou Tier 3 Box', price: '$42', qty: 0, badge: 'SOLD OUT', badgeBg: '#e6392f', badgeFg: '#fff' },
+        { slotId: 'st5', art: 'art/box-ygo.png', game: 'YU-GI-OH!', name: 'Rarity Collection II', price: '$58', qty: 9, badge: 'IN STOCK', badgeBg: '#1c9e4f', badgeFg: '#fff' },
+        { slotId: 'st6', art: 'art/box-lorcana.png', game: 'LORCANA', name: 'Shimmering Skies ETB', price: '$49', qty: 5, badge: 'LOW STOCK', badgeBg: '#ffd23f', badgeFg: '#17130f' },
+      ],
+      preorders: preordersRaw.map(p => {
+        const closed = this.state.closed[p.id];
+        return { ...p,
+          status: closed ? 'CLOSED' : 'OPEN',
+          statusBg: closed ? '#fff' : '#1c9e4f',
+          statusFg: closed ? '#8a7f70' : '#fff',
+          toggle: () => this.setState(s => ({ closed: { ...s.closed, [p.id]: !s.closed[p.id] } })),
+        };
+      }),
+      orders: [
+        { initial: 'G', avColor: '#e6392f', user: '@grail_goblin', time: '18 min ago', item: 'Prismatic Evolutions ETB × 2', deposit: '$40', badge: 'PAID', badgeBg: '#1c9e4f', badgeFg: '#fff' },
+        { initial: 'H', avColor: '#3a7bd5', user: '@hokage_hoarder', time: '1 h ago', item: 'OP-11 Booster Box (JP) × 1', deposit: '$15', badge: 'PAID', badgeBg: '#1c9e4f', badgeFg: '#fff' },
+        { initial: 'M', avColor: '#9b59b6', user: '@mint_mika', time: '3 h ago', item: 'Kayou Tier 4 Wave 6 × 4', deposit: '$40', badge: 'AWAITING DEPOSIT', badgeBg: '#ffd23f', badgeFg: '#17130f' },
+        { initial: 'B', avColor: '#1c9e4f', user: '@binder_baron', time: 'Yesterday', item: 'Fabled — Illumineer’s Trove × 1', deposit: '$10', badge: 'PAID', badgeBg: '#1c9e4f', badgeFg: '#fff' },
+      ],
+      claims: claimsRaw.map(c => {
+        const done = this.state.claimed[c.id];
+        return { ...c, claimed: done, notClaimed: !done,
+          claim: () => this.setState(s => ({ claimed: { ...s.claimed, [c.id]: true } })),
+        };
+      }),
+    };
+  }
+}
+</script>
+</body>
+</html>

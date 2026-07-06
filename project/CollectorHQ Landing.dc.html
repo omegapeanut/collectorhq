@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>body{margin:0;background:#f6f0e1}@keyframes chq-marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-width:1200px">
+
+  <!-- festive banner (christmas) -->
+  <sc-if value="{{ isChristmas }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#0f4d2e;color:#fff;text-align:center;padding:8px 0;font:700 13px 'Space Grotesk',sans-serif;border-bottom:3px solid #17130f">❄ ❆ HOLIDAY EVENT — double scan limits all December! ❆ ❄</div>
+  </sc-if>
+  <sc-if value="{{ isCny }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#b3121b;color:#ffd23f;text-align:center;padding:8px 0;font:700 13px 'Space Grotesk',sans-serif;border-bottom:3px solid #17130f">🏮 新年快乐 — Lunar New Year event: lucky red-packet pulls in the community feed! 🏮</div>
+  </sc-if>
+
+  <!-- nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:#f6f0e1;border-bottom:3px solid #17130f;position:relative;z-index:10">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:40px;height:40px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:26px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:21px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+    </a>
+    <div style="display:flex;gap:26px;font:700 14.5px 'Space Grotesk',sans-serif;align-items:center">
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none"><span>Explore</span></a><a href="CollectorHQ Community.dc.html" style="color:inherit;text-decoration:none"><span>Community</span></a><a href="CollectorHQ Leader.dc.html" style="color:inherit;text-decoration:none"><span>Leaders</span></a><a href="CollectorHQ Pricing.dc.html" style="color:inherit;text-decoration:none"><span>Pricing</span></a>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none"><span style="display:inline-block;background:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:3px 13px;transform:rotate(-2deg)">Support Us ♥</span></a>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center">
+      <a href="CollectorHQ Login.dc.html" style="color:inherit;text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif">Log in</a>
+      <a href="CollectorHQ Login.dc.html" style="text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:10px 20px;border-radius:10px;box-shadow:3px 3px 0 #17130f">CREATE ACCOUNT</a>
+    </div>
+  </div>
+
+  <!-- hero -->
+  <div style="position:relative;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;background:radial-gradient(circle, rgba(230,57,47,.13) 1.6px, transparent 1.6px) 0 0/14px 14px, #f6f0e1;overflow:hidden">
+    <sc-if value="{{ isChristmas }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;pointer-events:none;font-size:22px;color:rgba(15,77,46,.35);z-index:1"><span style="position:absolute;left:6%;top:12%">❄</span><span style="position:absolute;left:28%;top:64%">❅</span><span style="position:absolute;left:48%;top:22%">❆</span><span style="position:absolute;left:88%;top:70%">❄</span><span style="position:absolute;left:70%;top:8%">❅</span></div>
+    </sc-if>
+    <sc-if value="{{ isCny }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;inset:0;pointer-events:none;font-size:26px;z-index:1;opacity:.5"><span style="position:absolute;left:4%;top:8%">🏮</span><span style="position:absolute;left:50%;top:6%">🏮</span><span style="position:absolute;left:90%;top:10%">🏮</span></div>
+    </sc-if>
+    <div style="padding:64px 0 64px 48px;position:relative;z-index:2">
+      <div style="display:inline-block;font:700 12.5px 'Space Grotesk',sans-serif;letter-spacing:.1em;background:#17130f;color:#ffd23f;padding:6px 15px;border-radius:4px;transform:rotate(-2deg);margin-bottom:18px;white-space:nowrap">★ 200,000+ CARDS · 14 TCGs · LIVE PRICES</div>
+      <h1 style="margin:0 0 6px;font:62px/1.02 'Archivo Black',sans-serif;letter-spacing:-.02em;text-transform:uppercase">Your cards.</h1>
+      <h1 style="margin:0 0 20px;font:62px/1.02 'Archivo Black',sans-serif;letter-spacing:-.02em;text-transform:uppercase;color:#e6392f;text-shadow:3px 3px 0 #ffd23f">Their true power.</h1>
+      <p style="margin:0 0 30px;font:500 17.5px/1.55 'Space Grotesk',sans-serif;color:#4a4238;max-width:460px">Scan any card, get its live market price, and watch your whole collection power up. Pokémon, One Piece, Naruto, MTG — all in one HQ.</p>
+      <div style="display:flex;gap:16px;align-items:center">
+        <a href="CollectorHQ Scan.dc.html" style="text-decoration:none;font:800 17px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #17130f;padding:15px 28px;border-radius:12px;box-shadow:4px 4px 0 #17130f">⚡ SCAN YOUR FIRST CARD</a>
+        <a href="CollectorHQ Explore.dc.html" style="color:inherit;font:700 15px 'Space Grotesk',sans-serif;border-bottom:3px solid #e6392f;padding-bottom:1px;text-decoration:none">Browse the catalog →</a>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:34px;align-items:center">
+        <div style="display:flex">
+          <div style="width:34px;height:34px;border-radius:50%;background:#e6392f;border:2.5px solid #17130f;display:grid;place-items:center;font:800 13px 'Space Grotesk',sans-serif;color:#fff">K</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:#ffd23f;border:2.5px solid #17130f;display:grid;place-items:center;font:800 13px 'Space Grotesk',sans-serif;margin-left:-10px">R</div>
+          <div style="width:34px;height:34px;border-radius:50%;background:#3a7bd5;border:2.5px solid #17130f;display:grid;place-items:center;font:800 13px 'Space Grotesk',sans-serif;color:#fff;margin-left:-10px">J</div>
+        </div>
+        <span style="font:600 13.5px 'Space Grotesk',sans-serif;color:#4a4238">12,400+ collectors already tracking</span>
+      </div>
+    </div>
+    <!-- character burst -->
+    <div style="position:relative;height:520px">
+      <div style="position:absolute;inset:26px 32px 26px 0;background:repeating-conic-gradient(from 0deg at 62% 55%, #ffd23f 0deg 6deg, #f8b81e 6deg 12deg);border:3px solid #17130f;border-radius:20px;clip-path:polygon(6% 0,100% 0,100% 100%,0 100%,0 12%)"></div>
+      <image-slot id="hero-char" src="art/hero-burst.png" placeholder="Drop a character cutout PNG (e.g. Luffy / Naruto crop)" fit="contain" position="50% 100%" style="position:absolute;left:44px;top:-4px;width:520px;height:500px;background:transparent"></image-slot>
+      <div style="position:absolute;right:44px;top:44px;background:#fff;border:3px solid #17130f;border-radius:14px;padding:11px 16px;transform:rotate(4deg);box-shadow:4px 4px 0 #17130f;z-index:3">
+        <div style="font:700 10.5px 'Space Grotesk',sans-serif;color:#8a7f70">OP-01 · SHANKS</div>
+        <div style="font:22px 'Archivo Black',sans-serif;color:#e6392f">$389 <span style="font:800 13px 'Space Grotesk',sans-serif;color:#1c9e4f">▲8.4%</span></div>
+      </div>
+      <div style="position:absolute;left:18px;bottom:44px;background:#e6392f;color:#fff;border:3px solid #17130f;border-radius:999px;padding:9px 18px;transform:rotate(-5deg);font:800 14px 'Space Grotesk',sans-serif;box-shadow:3px 3px 0 #17130f;z-index:3">PSA 10 GRADED!</div>
+      <div style="position:absolute;right:80px;bottom:110px;background:#fff;border:3px solid #17130f;border-radius:14px;padding:10px 15px;transform:rotate(-3deg);box-shadow:4px 4px 0 #17130f;z-index:3">
+        <div style="font:700 10.5px 'Space Grotesk',sans-serif;color:#8a7f70">YOUR VAULT</div>
+        <div style="font:20px 'Archivo Black',sans-serif">$48,215 <span style="font:800 12px 'Space Grotesk',sans-serif;color:#1c9e4f">▲2.6%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ticker -->
+  <div style="background:#17130f;color:#f6f0e1;border-top:3px solid #17130f;border-bottom:3px solid #17130f;padding:10px 0;overflow:hidden;transform:rotate(-1deg) scale(1.03)">
+    <div style="display:flex;gap:38px;white-space:nowrap;font:700 13.5px 'Space Grotesk',sans-serif;width:max-content;animation:chq-marquee 28s linear infinite">
+      <span>PKM INDEX <span style="color:#7fe08a">+1.8%</span></span><span>✦</span>
+      <span>ONE PIECE <span style="color:#ff8a7a">−0.9%</span></span><span>✦</span>
+      <span>NARUTO KAYOU <span style="color:#7fe08a">+3.1%</span></span><span>✦</span>
+      <span>MTG <span style="color:#7fe08a">+0.6%</span></span><span>✦</span>
+      <span>LORCANA <span style="color:#7fe08a">+2.3%</span></span><span>✦</span>
+      <span>YGO <span style="color:#7fe08a">+0.2%</span></span><span>✦</span>
+      <span>PKM INDEX <span style="color:#7fe08a">+1.8%</span></span><span>✦</span>
+      <span>ONE PIECE <span style="color:#ff8a7a">−0.9%</span></span><span>✦</span>
+      <span>NARUTO KAYOU <span style="color:#7fe08a">+3.1%</span></span><span>✦</span>
+      <span>MTG <span style="color:#7fe08a">+0.6%</span></span><span>✦</span>
+      <span>LORCANA <span style="color:#7fe08a">+2.3%</span></span><span>✦</span>
+      <span>YGO <span style="color:#7fe08a">+0.2%</span></span><span>✦</span>
+    </div>
+  </div>
+
+  <!-- how it works: manga panels -->
+  <div style="padding:70px 48px 30px">
+    <div style="text-align:center;margin-bottom:8px"><span style="display:inline-block;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.14em;background:#e6392f;color:#fff;border:2px solid #17130f;padding:4px 14px;border-radius:999px;transform:rotate(-1.5deg)">HOW IT WORKS</span></div>
+    <h2 style="margin:0 0 40px;text-align:center;font:40px 'Archivo Black',sans-serif;text-transform:uppercase">Three moves to power up</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:6px 6px 0 #17130f;transform:rotate(-.7deg);overflow:hidden">
+        <div style="background:repeating-conic-gradient(from 0deg at 50% 120%, #ffd23f 0deg 8deg, #f8b81e 8deg 16deg);border-bottom:3px solid #17130f;height:160px;display:grid;place-items:center;position:relative">
+          <div style="font:64px 'Archivo Black',sans-serif;color:#17130f;transform:rotate(-4deg)">📸</div>
+          <div style="position:absolute;top:12px;left:12px;width:34px;height:34px;background:#17130f;color:#ffd23f;border-radius:50%;display:grid;place-items:center;font:18px 'Archivo Black',sans-serif">1</div>
+        </div>
+        <div style="padding:20px 22px 24px">
+          <div style="font:20px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:8px">Scan it</div>
+          <p style="margin:0;font:500 14.5px/1.55 'Space Grotesk',sans-serif;color:#4a4238">Snap or upload any card. Our recognition AI identifies it and prefills set, number and rarity in seconds.</p>
+        </div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:6px 6px 0 #17130f;transform:rotate(.6deg);overflow:hidden">
+        <div style="background:radial-gradient(circle, rgba(230,57,47,.18) 1.6px, transparent 1.6px) 0 0/12px 12px, #ffe9e7;border-bottom:3px solid #17130f;height:160px;display:grid;place-items:center;position:relative">
+          <div style="font:64px 'Archivo Black',sans-serif;transform:rotate(3deg)">📈</div>
+          <div style="position:absolute;top:12px;left:12px;width:34px;height:34px;background:#17130f;color:#ffd23f;border-radius:50%;display:grid;place-items:center;font:18px 'Archivo Black',sans-serif">2</div>
+        </div>
+        <div style="padding:20px 22px 24px">
+          <div style="font:20px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:8px">Track it</div>
+          <p style="margin:0;font:500 14.5px/1.55 'Space Grotesk',sans-serif;color:#4a4238">Raw, graded or sealed — live market pricing, price history charts, gains and losses across your whole vault.</p>
+        </div>
+      </div>
+      <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:6px 6px 0 #17130f;transform:rotate(-.5deg);overflow:hidden">
+        <div style="background:repeating-linear-gradient(-45deg,#e8f3ff,#e8f3ff 10px,#d8eaff 10px,#d8eaff 20px);border-bottom:3px solid #17130f;height:160px;display:grid;place-items:center;position:relative">
+          <div style="font:64px 'Archivo Black',sans-serif;transform:rotate(-3deg)">🏆</div>
+          <div style="position:absolute;top:12px;left:12px;width:34px;height:34px;background:#17130f;color:#ffd23f;border-radius:50%;display:grid;place-items:center;font:18px 'Archivo Black',sans-serif">3</div>
+        </div>
+        <div style="padding:20px 22px 24px">
+          <div style="font:20px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:8px">Flex it</div>
+          <p style="margin:0;font:500 14.5px/1.55 'Space Grotesk',sans-serif;color:#4a4238">Showcase your grails, follow collectors and leaders, and run trade checks so no deal ever robs you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- movers -->
+  <div style="padding:50px 48px 60px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:20px">
+      <h2 style="margin:0;font:28px 'Archivo Black',sans-serif;text-transform:uppercase">This week's movers</h2>
+      <span style="font:700 12px 'Space Grotesk',sans-serif;background:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:3px 11px;transform:rotate(2deg)">HOT!</span>
+      <span style="flex:1"></span>
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none;font:700 13.5px 'Space Grotesk',sans-serif;border-bottom:2.5px solid #e6392f">See the full market →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+      <sc-for list="{{ movers }}" as="m" hint-placeholder-count="4">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;padding:16px;box-shadow:5px 5px 0 #17130f;transform:rotate({{ m.tilt }}deg)">
+          <div style="display:flex;gap:12px;align-items:center">
+            <image-slot id="{{ m.slotId }}" src="{{ m.art }}" placeholder="card" shape="rounded" radius="6" style="width:54px;height:75px;border:2px solid #17130f;flex:none"></image-slot>
+            <div>
+              <div style="font:700 10px 'IBM Plex Mono',monospace;color:#8a7f70;letter-spacing:.06em">{{ m.game }}</div>
+              <div style="font:800 15px 'Space Grotesk',sans-serif">{{ m.name }}</div>
+              <div style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">{{ m.sub }}</div>
+              <div style="font:18px 'Archivo Black',sans-serif;color:#e6392f;margin-top:4px">{{ m.price }} <span style="font:800 12px 'Space Grotesk',sans-serif;color:{{ m.deltaColor }}">{{ m.delta }}</span></div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- shop preorders -->
+  <div style="padding:10px 48px 60px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:20px">
+      <h2 style="margin:0;font:28px 'Archivo Black',sans-serif;text-transform:uppercase">New preorders</h2>
+      <span style="font:700 12px 'Space Grotesk',sans-serif;background:#17130f;color:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:3px 11px;transform:rotate(-2deg)">FROM PARTNER SHOPS</span>
+      <span style="flex:1"></span>
+      <a href="CollectorHQ Shop.dc.html" style="color:inherit;text-decoration:none;font:700 13.5px 'Space Grotesk',sans-serif;border-bottom:2.5px solid #e6392f">All partner shops →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+      <sc-for list="{{ preorders }}" as="po" hint-placeholder-count="3">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:14px;box-shadow:5px 5px 0 #17130f;transform:rotate({{ po.tilt }}deg);overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;background:#17130f;color:#f6f0e1;padding:9px 16px">
+            <span style="font:800 12px 'Space Grotesk',sans-serif;text-transform:uppercase">🏪 {{ po.shop }}</span>
+            <span style="font:600 10.5px 'IBM Plex Mono',monospace;color:#ffd23f">{{ po.city }}</span>
+          </div>
+          <div style="display:flex;gap:14px;padding:16px">
+            <image-slot id="{{ po.slotId }}" src="{{ po.art }}" placeholder="box art" shape="rounded" radius="6" style="width:70px;height:96px;border:2px solid #17130f;flex:none"></image-slot>
+            <div style="flex:1">
+              <div style="font:700 10px 'IBM Plex Mono',monospace;color:#8a7f70;letter-spacing:.06em">{{ po.game }}</div>
+              <div style="font:800 15.5px 'Space Grotesk',sans-serif">{{ po.name }}</div>
+              <div style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin:3px 0 6px">Releases {{ po.release }}</div>
+              <div style="font:18px 'Archivo Black',sans-serif;color:#e6392f">{{ po.price }}</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;border-top:2.5px dashed #d8cfbf;padding:11px 16px">
+            <span style="font:700 12px 'Space Grotesk',sans-serif;color:{{ po.slotsColor }}">{{ po.slots }}</span>
+            <a href="CollectorHQ Shop.dc.html" style="text-decoration:none;font:800 12.5px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:2.5px solid #17130f;border-radius:999px;padding:7px 16px;box-shadow:2px 2px 0 #17130f">PREORDER →</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- lucky draw strip -->
+  <div style="margin:0 48px 60px;background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:20px;box-shadow:6px 6px 0 #ffd23f;padding:30px 40px;display:flex;align-items:center;gap:28px;transform:rotate(.4deg)">
+    <div style="font:54px 'Archivo Black',sans-serif;transform:rotate(6deg)">🎰</div>
+    <div style="flex:1">
+      <div style="font:22px 'Archivo Black',sans-serif;text-transform:uppercase;color:#ffd23f;margin-bottom:6px">Monthly lucky draw — win a sealed booster box</div>
+      <div style="font:500 15px 'Space Grotesk',sans-serif;color:#b5aa9c">Every scan this month earns entries. Winners claim their prize in person at a partner shop near them.</div>
+    </div>
+    <a href="CollectorHQ Community.dc.html" style="text-decoration:none;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;padding:13px 24px;border-radius:12px;white-space:nowrap">SEE THIS MONTH'S DRAW →</a>
+  </div>
+
+  <!-- TCG strip -->
+  <div style="background:#e6392f;border-top:3px solid #17130f;border-bottom:3px solid #17130f;padding:26px 48px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+    <sc-for list="{{ games }}" as="g" hint-placeholder-count="8">
+      <span style="font:800 14px 'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;border:2.5px solid #17130f;border-radius:999px;padding:8px 18px;box-shadow:2px 2px 0 #17130f">{{ g }}</span>
+    </sc-for>
+  </div>
+
+  <!-- leaders -->
+  <div style="padding:70px 48px;background:#17130f;color:#f6f0e1;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(circle, rgba(255,210,63,.08) 1.6px, transparent 1.6px) 0 0/16px 16px"></div>
+    <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+      <div>
+        <div style="display:inline-block;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.14em;background:#ffd23f;color:#17130f;border:2px solid #f6f0e1;padding:4px 14px;border-radius:999px;transform:rotate(-1.5deg);margin-bottom:16px">LEADER PROGRAM</div>
+        <h2 style="margin:0 0 16px;font:40px/1.05 'Archivo Black',sans-serif;text-transform:uppercase;color:#fff">Become the main character</h2>
+        <p style="margin:0 0 26px;font:500 16px/1.6 'Space Grotesk',sans-serif;color:#b5aa9c;max-width:440px">Members can apply for Leader status: a public showcase page, follower count, leader badge, and your collection on display at its own URL.</p>
+        <a href="CollectorHQ Leader.dc.html" style="text-decoration:none;display:inline-block;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;padding:13px 24px;border-radius:12px;box-shadow:4px 4px 0 rgba(255,255,255,.25)">APPLY FOR LEADER STATUS</a>
+      </div>
+      <div style="display:flex;gap:16px;justify-content:center">
+        <div style="background:#f6f0e1;color:#17130f;border:3px solid #ffd23f;border-radius:16px;padding:18px;width:200px;transform:rotate(-3deg);box-shadow:6px 6px 0 rgba(255,210,63,.4)">
+          <image-slot id="leader1" src="art/av-g.png" placeholder="avatar" shape="circle" style="width:56px;height:56px;border:2.5px solid #17130f;margin-bottom:10px"></image-slot>
+          <div style="font:800 15px 'Space Grotesk',sans-serif">@grail_goblin <span style="font-size:11px;background:#ffd23f;border:1.5px solid #17130f;border-radius:999px;padding:1px 6px">★</span></div>
+          <div style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70;margin:4px 0 8px">8.2k followers</div>
+          <div style="font:700 13px 'Space Grotesk',sans-serif;color:#e6392f">Vault: $112,480</div>
+        </div>
+        <div style="background:#f6f0e1;color:#17130f;border:3px solid #ffd23f;border-radius:16px;padding:18px;width:200px;transform:rotate(2.5deg);box-shadow:6px 6px 0 rgba(255,210,63,.4);margin-top:30px">
+          <image-slot id="leader2" src="art/av-s.png" placeholder="avatar" shape="circle" style="width:56px;height:56px;border:2.5px solid #17130f;margin-bottom:10px"></image-slot>
+          <div style="font:800 15px 'Space Grotesk',sans-serif">@sleeved_up <span style="font-size:11px;background:#ffd23f;border:1.5px solid #17130f;border-radius:999px;padding:1px 6px">★</span></div>
+          <div style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70;margin:4px 0 8px">5.6k followers</div>
+          <div style="font:700 13px 'Space Grotesk',sans-serif;color:#e6392f">Vault: $64,900</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pricing -->
+  <div style="padding:70px 48px">
+    <div style="text-align:center;margin-bottom:8px"><span style="display:inline-block;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.14em;background:#e6392f;color:#fff;border:2px solid #17130f;padding:4px 14px;border-radius:999px;transform:rotate(1.5deg)">PRICING</span></div>
+    <h2 style="margin:0 0 40px;text-align:center;font:40px 'Archivo Black',sans-serif;text-transform:uppercase">Pick your rank</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:900px;margin:0 auto">
+      <div style="background:#fff;border:3px solid #17130f;border-radius:18px;padding:30px;box-shadow:6px 6px 0 #17130f;transform:rotate(-.6deg)">
+        <div style="font:22px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:4px">Rookie</div>
+        <div style="font:38px 'Archivo Black',sans-serif;color:#e6392f;margin-bottom:14px">FREE</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font:500 14.5px 'Space Grotesk',sans-serif;color:#4a4238;margin-bottom:22px">
+          <span>✔ 15 scans a day</span>
+          <span>✔ Track unlimited cards</span>
+          <span>✔ Live pricing & basic filters</span>
+          <span>✔ Community feed</span>
+          <span style="color:#8a7f70">— Supported by ads</span>
+        </div>
+        <a href="CollectorHQ Login.dc.html" style="color:inherit;text-decoration:none;display:inline-block;font:800 15px 'Space Grotesk',sans-serif;border:3px solid #17130f;padding:12px 24px;border-radius:12px;box-shadow:3px 3px 0 #17130f">START FREE</a>
+      </div>
+      <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:18px;padding:30px;box-shadow:6px 6px 0 #e6392f;transform:rotate(.6deg);position:relative">
+        <div style="position:absolute;top:-16px;right:22px;background:#ffd23f;color:#17130f;border:2.5px solid #17130f;border-radius:999px;padding:4px 14px;font:800 12px 'Space Grotesk',sans-serif;transform:rotate(3deg)">MOST POPULAR</div>
+        <div style="font:22px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:4px;color:#ffd23f">Member</div>
+        <div style="font:38px 'Archivo Black',sans-serif;margin-bottom:2px">$4.99<span style="font:700 15px 'Space Grotesk',sans-serif;color:#b5aa9c">/mo</span></div>
+        <div style="font:600 12.5px 'Space Grotesk',sans-serif;color:#b5aa9c;margin-bottom:14px">or $39/yr — save 35%</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font:500 14.5px 'Space Grotesk',sans-serif;margin-bottom:22px">
+          <span style="color:#ffd23f">★ Unlimited scans, zero ads</span>
+          <span>✔ All filters + CSV export</span>
+          <span>✔ Grading & repair discounts</span>
+          <span>✔ Custom profile backgrounds</span>
+          <span>✔ Can apply for Leader status</span>
+        </div>
+        <a href="CollectorHQ Login.dc.html" style="text-decoration:none;display:inline-block;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;padding:12px 24px;border-radius:12px">GO MEMBER →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- support us strip -->
+  <div style="margin:0 48px 70px;background:#ffd23f;border:3px solid #17130f;border-radius:20px;box-shadow:6px 6px 0 #17130f;padding:34px 40px;display:flex;align-items:center;gap:30px;transform:rotate(-.4deg)">
+    <div style="font:56px 'Archivo Black',sans-serif;transform:rotate(-6deg)">♥</div>
+    <div style="flex:1">
+      <div style="font:24px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:6px">Not into subscriptions? Support the HQ.</div>
+      <div style="font:500 15px 'Space Grotesk',sans-serif;color:#4a4238">One-off donations by bank transfer or Bitcoin keep the servers running. Supporters get a spot on the wall of fame.</div>
+    </div>
+    <a href="CollectorHQ Support Us.dc.html" style="text-decoration:none;font:800 15px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:13px 24px;border-radius:12px;box-shadow:3px 3px 0 #17130f;white-space:nowrap">DONATE →</a>
+  </div>
+
+  <!-- footer -->
+  <div style="background:#17130f;color:#b5aa9c;padding:44px 48px;display:flex;justify-content:space-between;align-items:flex-start;gap:40px">
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="width:30px;height:30px;background:#e6392f;border:2.5px solid #f6f0e1;border-radius:6px;display:grid;place-items:center;font:18px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg)">C</div>
+        <span style="font:16px 'Archivo Black',sans-serif;color:#f6f0e1">COLLECTORHQ</span>
+      </div>
+      <div style="font:500 13px 'Space Grotesk',sans-serif;max-width:280px">The collector's headquarters. Track, trade and flex across 14 TCGs.</div>
+    </div>
+    <div style="display:flex;gap:60px;font:500 13.5px 'Space Grotesk',sans-serif">
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:800;color:#f6f0e1">Product</span><span>Explore</span><span>Scan</span><span>Pricing</span><span>Perks</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:800;color:#f6f0e1">Community</span><span>Feed</span><span>Leaders</span><span>Supporters wall</span></div>
+      <div style="display:flex;flex-direction:column;gap:8px"><span style="font-weight:800;color:#f6f0e1">Company</span><span>Support Us</span><span>Terms</span><span>Privacy</span></div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;default&quot;, &quot;options&quot;: [&quot;default&quot;, &quot;christmas&quot;, &quot;cny&quot;], &quot;tsType&quot;: &quot;'default' | 'christmas' | 'cny'&quot;, &quot;section&quot;: &quot;Festive theme&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const theme = this.props.theme ?? 'default';
+    return {
+      isChristmas: theme === 'christmas',
+      isCny: theme === 'cny',
+      movers: [
+        { slotId: 'mv1', art: 'art/card-umbreon.png', game: 'POKÉMON', name: 'Umbreon VMAX Alt', sub: 'PSA 10', price: '$612', delta: '▲8.4%', deltaColor: '#1c9e4f', tilt: -0.6 },
+        { slotId: 'mv2', art: 'art/card-shanks.png', game: 'ONE PIECE', name: 'Shanks OP01-120', sub: 'RAW · NM', price: '$389', delta: '▼3.6%', deltaColor: '#c0362c', tilt: 0.8 },
+        { slotId: 'mv3', art: 'art/box-naruto.png', game: 'NARUTO', name: 'Kayou Tier 4 Box', sub: 'SEALED', price: '$118', delta: '▲3.1%', deltaColor: '#1c9e4f', tilt: -0.4 },
+        { slotId: 'mv4', art: 'art/card-onering.png', game: 'MAGIC', name: 'The One Ring (Foil)', sub: 'RAW · NM', price: '$148', delta: '▲5.1%', deltaColor: '#1c9e4f', tilt: 0.5 },
+      ],
+      preorders: [
+        { slotId: 'po1', art: 'art/box-pokemon.png', shop: 'Dragon\u2019s Den TCG', city: 'SINGAPORE', game: 'POKÉMON', name: 'Prismatic Evolutions ETB', release: 'Aug 14', price: '$89 deposit $20', slots: '23 / 60 slots left', slotsColor: '#1c9e4f', tilt: -0.5 },
+        { slotId: 'po2', art: 'art/box-onepiece.png', shop: 'Mint Condition', city: 'MANILA', game: 'ONE PIECE', name: 'OP-11 Booster Box (JP)', release: 'Aug 29', price: '$74 deposit $15', slots: '6 / 40 slots left', slotsColor: '#e6392f', tilt: 0.6 },
+        { slotId: 'po3', art: 'art/box-lorcana.png', shop: 'Top Deck Games', city: 'KUALA LUMPUR', game: 'LORCANA', name: 'Fabled \u2014 Illumineer\u2019s Trove', release: 'Sep 5', price: '$62 deposit $10', slots: '31 / 50 slots left', slotsColor: '#1c9e4f', tilt: -0.4 },
+      ],
+      games: ['POKÉMON', 'ONE PIECE', 'NARUTO KAYOU', 'MAGIC: THE GATHERING', 'YU-GI-OH!', 'LORCANA', 'DRAGON BALL', 'DIGIMON', 'STAR WARS', 'WEISS SCHWARZ'],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#f6f0e1}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:radial-gradient(circle, rgba(230,57,47,.13) 1.6px, transparent 1.6px) 0 0/14px 14px, #f6f0e1;min-width:1200px;min-height:100vh;display:flex;flex-direction:column">
+
+  <!-- nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:3px solid #17130f;background:#f6f0e1">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:40px;height:40px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:26px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:21px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+    </a>
+    <div style="display:flex;gap:26px;font:700 14.5px 'Space Grotesk',sans-serif;align-items:center">
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none"><span>Explore</span></a>
+      <a href="CollectorHQ Community.dc.html" style="color:inherit;text-decoration:none"><span>Community</span></a>
+      <a href="CollectorHQ Leader.dc.html" style="color:inherit;text-decoration:none"><span>Leaders</span></a>
+      <a href="CollectorHQ Pricing.dc.html" style="color:inherit;text-decoration:none"><span>Pricing</span></a>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none"><span style="display:inline-block;background:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:3px 13px;transform:rotate(-2deg)">Support Us ♥</span></a>
+    </div>
+    <div style="width:120px"></div>
+  </div>
+
+  <!-- card -->
+  <div style="flex:1;display:grid;place-items:center;padding:50px 48px">
+    <div style="width:440px;background:#fff;border:3px solid #17130f;border-radius:20px;box-shadow:8px 8px 0 #17130f;overflow:hidden;transform:rotate(-.4deg)">
+      <div style="display:flex;border-bottom:3px solid #17130f">
+        <span onClick="{{ pickLogin }}" style="cursor:pointer;flex:1;text-align:center;padding:15px 0;font:800 14.5px 'Space Grotesk',sans-serif;background:{{ loginBg }};color:{{ loginFg }}">LOG IN</span>
+        <span onClick="{{ pickJoin }}" style="cursor:pointer;flex:1;text-align:center;padding:15px 0;font:800 14.5px 'Space Grotesk',sans-serif;background:{{ joinBg }};color:{{ joinFg }};border-left:3px solid #17130f">CREATE ACCOUNT</span>
+      </div>
+      <div style="padding:30px 32px 34px">
+        <h1 style="margin:0 0 6px;font:26px 'Archivo Black',sans-serif;text-transform:uppercase">{{ heading }}</h1>
+        <p style="margin:0 0 22px;font:500 14px/1.5 'Space Grotesk',sans-serif;color:#4a4238">{{ sub }}</p>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-if value="{{ isJoin }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label style="font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.06em">COLLECTOR HANDLE</label>
+              <input placeholder="@your_handle" style="font:600 15px 'Space Grotesk',sans-serif;padding:12px 15px;border:3px solid #17130f;border-radius:10px;background:#fdf9ef;outline:none">
+            </div>
+          </sc-if>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.06em">EMAIL</label>
+            <input placeholder="you@example.com" style="font:600 15px 'Space Grotesk',sans-serif;padding:12px 15px;border:3px solid #17130f;border-radius:10px;background:#fdf9ef;outline:none">
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <label style="font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.06em">PASSWORD</label>
+            <input type="password" placeholder="••••••••" style="font:600 15px 'Space Grotesk',sans-serif;padding:12px 15px;border:3px solid #17130f;border-radius:10px;background:#fdf9ef;outline:none">
+          </div>
+          <a href="CollectorHQ Vault.dc.html" style="text-decoration:none;text-align:center;font:800 15px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:14px 0;border-radius:12px;box-shadow:4px 4px 0 #17130f;margin-top:6px">{{ cta }}</a>
+          <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+            <span style="text-align:center;font:600 12.5px 'Space Grotesk',sans-serif;color:#8a7f70;border-bottom:none">Forgot password?</span>
+          </sc-if>
+          <sc-if value="{{ isJoin }}" hint-placeholder-val="{{ false }}">
+            <span style="text-align:center;font:600 12px/1.5 'Space Grotesk',sans-serif;color:#8a7f70">Free forever · 15 scans a day · no card required</span>
+          </sc-if>
+        </div>
+      </div>
+      <div style="background:#ffd23f;border-top:3px solid #17130f;padding:13px 32px;font:700 12.5px 'Space Grotesk',sans-serif;text-align:center">★ 12,400+ collectors already tracking their vaults</div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="background:#17130f;color:#b5aa9c;padding:24px 48px;display:flex;justify-content:space-between;align-items:center">
+    <span onClick="{{ onSecretTap }}" style="cursor:default;user-select:none;font:16px 'Archivo Black',sans-serif;color:#f6f0e1">COLLECTORHQ{{ secretHint }}</span>
+    <div style="display:flex;gap:28px;font:500 13.5px 'Space Grotesk',sans-serif">
+      <a href="CollectorHQ Landing.dc.html" style="color:inherit;text-decoration:none">Home</a>
+      <a href="CollectorHQ Pricing.dc.html" style="color:inherit;text-decoration:none">Pricing</a>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none">Support Us</a>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mode: 'login', taps: 0 };
+  renderVals() {
+    const join = this.state.mode === 'join';
+    const taps = this.state.taps;
+    return {
+      onSecretTap: () => {
+        const n = taps + 1;
+        if (n >= 10) { window.location.href = 'CollectorHQ Admin.dc.html'; return; }
+        this.setState({ taps: n });
+      },
+      secretHint: taps >= 5 ? ' · ' + (10 - taps) : '',
+      isJoin: join,
+      isLogin: !join,
+      pickLogin: () => this.setState({ mode: 'login' }),
+      pickJoin: () => this.setState({ mode: 'join' }),
+      loginBg: join ? '#fff' : '#17130f', loginFg: join ? '#17130f' : '#ffd23f',
+      joinBg: join ? '#e6392f' : '#fff', joinFg: join ? '#fff' : '#17130f',
+      heading: join ? 'Create your account' : 'Welcome back',
+      sub: join ? 'Claim your handle and start scanning \u2014 free forever.' : 'Log in to your vault. Your cards missed you.',
+      cta: join ? 'CREATE MY VAULT \u2192' : 'LOG IN \u2192',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

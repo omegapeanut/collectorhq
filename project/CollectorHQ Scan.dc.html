@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>body{margin:0;background:#f6f0e1}@keyframes chq-scanline{0%{top:8%}50%{top:88%}100%{top:8%}}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-width:1200px;min-height:100vh">
+
+  <!-- nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:#f6f0e1;border-bottom:3px solid #17130f">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:40px;height:40px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:26px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:21px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+    </a>
+    <div style="display:flex;gap:26px;font:700 14.5px 'Space Grotesk',sans-serif;align-items:center">
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none"><span>Explore</span></a>
+      <span style="border-bottom:3px solid #e6392f;padding-bottom:1px">Scan</span>
+      <a href="CollectorHQ Vault.dc.html" style="color:inherit;text-decoration:none"><span>My Vault</span></a><a href="CollectorHQ Community.dc.html" style="color:inherit;text-decoration:none"><span>Community</span></a>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center">
+      <span style="font:700 12px 'IBM Plex Mono',monospace;background:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:4px 12px">{{ scansLeftLabel }}</span>
+      <div style="width:38px;height:38px;border-radius:50%;background:#3a7bd5;border:2.5px solid #17130f;display:grid;place-items:center;font:800 14px 'Space Grotesk',sans-serif;color:#fff">K</div>
+    </div>
+  </div>
+
+  <!-- header -->
+  <div style="padding:44px 48px 8px;text-align:center">
+    <div style="display:inline-block;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.14em;background:#e6392f;color:#fff;border:2px solid #17130f;padding:4px 14px;border-radius:999px;transform:rotate(-1.5deg);margin-bottom:12px">CARD RECOGNITION</div>
+    <h1 style="margin:0 0 10px;font:44px 'Archivo Black',sans-serif;text-transform:uppercase">Scan your card</h1>
+    <p style="margin:0 auto;font:500 16px/1.55 'Space Grotesk',sans-serif;color:#4a4238;max-width:520px">Snap it or drop it. The recognition AI identifies the card and prefills everything — you just confirm and it lands in your vault.</p>
+  </div>
+
+  <!-- main: scanner + result -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:36px 48px 60px;align-items:start">
+
+    <!-- scanner panel -->
+    <div style="background:#fff;border:3px solid #17130f;border-radius:18px;box-shadow:6px 6px 0 #17130f;overflow:hidden;transform:rotate(-.4deg)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:3px solid #17130f;background:#ffd23f">
+        <span style="font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">📸 Scanner</span>
+        <span style="font:600 11px 'IBM Plex Mono',monospace">STEP 1 / 2</span>
+      </div>
+      <div style="position:relative;margin:22px;border:3px dashed #17130f;border-radius:14px;background:radial-gradient(circle, rgba(230,57,47,.1) 1.6px, transparent 1.6px) 0 0/12px 12px, #fdf9ef;height:420px;overflow:hidden">
+        <image-slot id="scan-upload" src="art/card-charizard.png" placeholder="Drop a card photo here — or tap to use camera" fit="contain" style="position:absolute;inset:14px;background:transparent"></image-slot>
+        <sc-if value="{{ scanning }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;left:6%;right:6%;height:4px;background:#e6392f;border-radius:2px;box-shadow:0 0 18px rgba(230,57,47,.7);animation:chq-scanline 2.2s ease-in-out infinite"></div>
+        </sc-if>
+      </div>
+      <div style="display:flex;gap:12px;padding:0 22px 22px">
+        <button onClick="{{ startScan }}" style="flex:1;font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #17130f;padding:14px 0;border-radius:12px;box-shadow:4px 4px 0 #17130f;cursor:pointer">{{ scanButtonLabel }}</button>
+        <button style="font:700 14px 'Space Grotesk',sans-serif;background:#fff;border:3px solid #17130f;padding:14px 20px;border-radius:12px;box-shadow:4px 4px 0 #17130f;cursor:pointer">Manual entry</button>
+      </div>
+    </div>
+
+    <!-- result panel -->
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <sc-if value="{{ showResult }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:18px;box-shadow:6px 6px 0 #17130f;overflow:hidden;transform:rotate(.4deg)">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:3px solid #17130f;background:#e6392f;color:#fff">
+            <span style="font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">⚡ Match found!</span>
+            <span style="font:600 11px 'IBM Plex Mono',monospace;background:#fff;color:#17130f;border-radius:999px;padding:3px 10px;border:2px solid #17130f">98% CONFIDENT</span>
+          </div>
+          <div style="display:flex;gap:18px;padding:20px">
+            <image-slot id="scan-match" src="art/card-shanks.png" placeholder="card" shape="rounded" radius="8" style="width:110px;height:154px;border:2.5px solid #17130f;flex:none"></image-slot>
+            <div style="flex:1">
+              <div style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70;letter-spacing:.06em">ONE PIECE · OP-01 ROMANCE DAWN</div>
+              <div style="font:24px 'Archivo Black',sans-serif;margin:4px 0 2px">Shanks</div>
+              <div style="font:600 12.5px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:12px">OP01-120 · SECRET RARE · ALT ART</div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <div style="background:#fdf9ef;border:2px solid #17130f;border-radius:10px;padding:8px 14px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8a7f70">RAW NM</div><div style="font:17px 'Archivo Black',sans-serif;color:#e6392f">$389</div></div>
+                <div style="background:#fdf9ef;border:2px solid #17130f;border-radius:10px;padding:8px 14px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8a7f70">PSA 9</div><div style="font:17px 'Archivo Black',sans-serif;color:#e6392f">$710</div></div>
+                <div style="background:#fdf9ef;border:2px solid #17130f;border-radius:10px;padding:8px 14px"><div style="font:600 10px 'IBM Plex Mono',monospace;color:#8a7f70">PSA 10</div><div style="font:17px 'Archivo Black',sans-serif;color:#e6392f">$1,240</div></div>
+              </div>
+            </div>
+          </div>
+          <!-- confirm form -->
+          <div style="border-top:3px solid #17130f;padding:18px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;background:#fdf9ef">
+            <div>
+              <div style="font:700 11px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:6px">CONDITION</div>
+              <select onChange="{{ setCondition }}" style="width:100%;font:700 14px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:10px;padding:10px 12px;background:#fff">
+                <option>Raw · Near Mint</option><option>Raw · Lightly Played</option><option>Graded · PSA 10</option><option>Graded · PSA 9</option><option>Sealed</option>
+              </select>
+            </div>
+            <div>
+              <div style="font:700 11px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:6px">QUANTITY</div>
+              <input type="number" defaultValue="1" min="1" style="width:100%;box-sizing:border-box;font:700 14px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:10px;padding:10px 12px;background:#fff">
+            </div>
+            <div>
+              <div style="font:700 11px 'IBM Plex Mono',monospace;color:#8a7f70;margin-bottom:6px">COLLECTION</div>
+              <select style="width:100%;font:700 14px 'Space Grotesk',sans-serif;border:2.5px solid #17130f;border-radius:10px;padding:10px 12px;background:#fff">
+                <option>Main Vault</option><option>Trade Binder</option><option>Sealed Vault</option><option>+ New collection…</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;padding:18px 20px 20px;background:#fdf9ef">
+            <button onClick="{{ addToVault }}" style="flex:1;font:800 15px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:14px 0;border-radius:12px;box-shadow:4px 4px 0 #17130f;cursor:pointer">{{ addButtonLabel }}</button>
+            <button style="font:700 14px 'Space Grotesk',sans-serif;background:#fff;border:3px solid #17130f;padding:14px 18px;border-radius:12px;box-shadow:4px 4px 0 #17130f;cursor:pointer">Wrong card?</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- recent scans -->
+      <div style="background:#fff;border:3px solid #17130f;border-radius:18px;box-shadow:6px 6px 0 #17130f;padding:18px 20px;transform:rotate(-.3deg)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px">
+          <span style="font:800 14px 'Space Grotesk',sans-serif;text-transform:uppercase">Recent scans</span>
+          <span style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">TODAY</span>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ recentScans }}" as="r" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-top:2px dashed rgba(23,19,15,.15)">
+              <div style="width:34px;height:48px;border-radius:5px;background:repeating-linear-gradient(45deg,#efe7d2,#efe7d2 4px,#e6dcc2 4px,#e6dcc2 8px);border:2px solid #17130f;flex:none"></div>
+              <div style="flex:1"><div style="font:700 13.5px 'Space Grotesk',sans-serif">{{ r.name }}</div><div style="font:600 11px 'IBM Plex Mono',monospace;color:#8a7f70">{{ r.sub }}</div></div>
+              <div style="text-align:right"><div style="font:800 14px 'Space Grotesk',sans-serif;color:#e6392f">{{ r.price }}</div><div style="font:600 10.5px 'IBM Plex Mono',monospace;color:#1c9e4f">{{ r.status }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;scanLimit&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 15, &quot;min&quot;: 1, &quot;max&quot;: 999, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Plan&quot;}}">
+class Component extends DCLogic {
+  state = { scanning: false, showResult: true, scansUsed: 3, added: false };
+  renderVals() {
+    const limit = this.props.scanLimit ?? 15;
+    return {
+      scanning: this.state.scanning,
+      showResult: this.state.showResult,
+      scansLeftLabel: (limit - this.state.scansUsed) + ' / ' + limit + ' SCANS LEFT',
+      scanButtonLabel: this.state.scanning ? 'SCANNING…' : '⚡ SCAN IT',
+      addButtonLabel: this.state.added ? '✔ ADDED TO VAULT!' : 'ADD TO VAULT →',
+      startScan: () => {
+        if (this.state.scanning) return;
+        this.setState({ scanning: true, showResult: false, added: false });
+        clearTimeout(this._t);
+        this._t = setTimeout(() => this.setState(s => ({ scanning: false, showResult: true, scansUsed: s.scansUsed + 1 })), 2400);
+      },
+      addToVault: () => this.setState({ added: true }),
+      setCondition: () => {},
+      recentScans: [
+        { name: 'Umbreon VMAX Alt Art', sub: 'POKÉMON · EVOLVING SKIES', price: '$612', status: 'IN VAULT' },
+        { name: 'Kayou Tier 4 Naruto SSR', sub: 'NARUTO · KAYOU', price: '$118', status: 'IN VAULT' },
+        { name: 'The One Ring (Foil)', sub: 'MAGIC · LTR', price: '$148', status: 'IN VAULT' },
+      ],
+    };
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+}
+</script>
+</body>
+</html>

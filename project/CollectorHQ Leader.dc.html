@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>body{margin:0;background:#f6f0e1}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-width:1200px;min-height:100vh">
+
+  <!-- nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:3px solid #17130f">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:40px;height:40px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:26px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:21px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+    </a>
+    <div style="display:flex;gap:26px;font:700 14.5px 'Space Grotesk',sans-serif;align-items:center">
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none"><span>Explore</span></a><a href="CollectorHQ Community.dc.html" style="color:inherit;text-decoration:none"><span>Community</span></a>
+      <span style="border-bottom:3px solid #e6392f;padding-bottom:1px">Leaders</span>
+      <a href="CollectorHQ Pricing.dc.html" style="color:inherit;text-decoration:none"><span>Pricing</span></a>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center">
+      <a href="CollectorHQ Login.dc.html" style="color:inherit;text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif">Log in</a>
+      <a href="CollectorHQ Login.dc.html" style="text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:10px 20px;border-radius:10px;box-shadow:3px 3px 0 #17130f">CREATE ACCOUNT</a>
+    </div>
+  </div>
+
+  <!-- leader profile header -->
+  <div style="position:relative;background:radial-gradient(circle, rgba(230,57,47,.13) 1.6px, transparent 1.6px) 0 0/14px 14px, #f6f0e1;border-bottom:3px solid #17130f">
+    <!-- custom banner -->
+    <image-slot id="leader-banner" src="art/banner-leader.png" placeholder="Custom profile banner (Member perk) — drop an image" fit="cover" style="display:block;width:100%;height:220px;border-bottom:3px solid #17130f;background:repeating-linear-gradient(-45deg,#ffe9a8,#ffe9a8 18px,#ffd23f 18px,#ffd23f 36px)"></image-slot>
+    <div style="display:flex;align-items:flex-start;gap:24px;padding:14px 48px 26px;position:relative">
+      <image-slot id="leader-avatar" src="art/av-g.png" placeholder="avatar" shape="rounded" radius="18" style="width:128px;height:128px;border:4px solid #17130f;background:#fff;box-shadow:5px 5px 0 #17130f;flex:none;margin-top:-78px"></image-slot>
+      <div style="flex:1;padding-bottom:4px">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <h1 style="margin:0;font:34px 'Archivo Black',sans-serif">@grail_goblin</h1>
+          <span style="font:800 12px 'Space Grotesk',sans-serif;background:#ffd23f;border:2.5px solid #17130f;border-radius:999px;padding:4px 13px;transform:rotate(-2deg);box-shadow:2px 2px 0 #17130f">★ LEADER</span>
+          <span style="font:700 11px 'IBM Plex Mono',monospace;background:#fff;border:2px solid #17130f;border-radius:999px;padding:3px 11px">MEMBER SINCE 2024</span>
+        </div>
+        <div style="font:500 15px 'Space Grotesk',sans-serif;color:#4a4238;margin-top:8px;max-width:560px">Vintage Pokémon degenerate. If it's holo and from 1999, it's already in my vault. Weekly binder tours & pull-rate math.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;padding-bottom:8px">
+        <button onClick="{{ toggleFollow }}" style="font:800 15px 'Space Grotesk',sans-serif;color:{{ followColor }};background:{{ followBg }};border:3px solid #17130f;padding:13px 26px;border-radius:12px;box-shadow:4px 4px 0 #17130f;cursor:pointer">{{ followLabel }}</button>
+        <button style="font:700 14px 'Space Grotesk',sans-serif;background:#fff;border:3px solid #17130f;padding:13px 18px;border-radius:12px;box-shadow:4px 4px 0 #17130f;cursor:pointer">Share ↗</button>
+      </div>
+    </div>
+    <!-- stats strip -->
+    <div style="display:flex;gap:0;border-top:3px solid #17130f;background:#fff">
+      <div style="flex:1;text-align:center;padding:16px 0;border-right:3px solid #17130f"><div style="font:24px 'Archivo Black',sans-serif;color:#e6392f">{{ followerLabel }}</div><div style="font:700 11px 'IBM Plex Mono',monospace;color:#8a7f70">FOLLOWERS</div></div>
+      <div style="flex:1;text-align:center;padding:16px 0;border-right:3px solid #17130f"><div style="font:24px 'Archivo Black',sans-serif">1,204</div><div style="font:700 11px 'IBM Plex Mono',monospace;color:#8a7f70">CARDS SHOWCASED</div></div>
+      <div style="flex:1;text-align:center;padding:16px 0;border-right:3px solid #17130f"><div style="font:24px 'Archivo Black',sans-serif">$112,480</div><div style="font:700 11px 'IBM Plex Mono',monospace;color:#8a7f70">PUBLIC VAULT VALUE</div></div>
+      <div style="flex:1;text-align:center;padding:16px 0"><div style="font:24px 'Archivo Black',sans-serif;color:#1c9e4f">▲ 6.2%</div><div style="font:700 11px 'IBM Plex Mono',monospace;color:#8a7f70">30-DAY CHANGE</div></div>
+    </div>
+  </div>
+
+  <!-- profile tabs -->
+  <div style="display:flex;gap:10px;padding:28px 48px 0">
+    <span onClick="{{ goShowcase }}" style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;border:3px solid #17130f;border-radius:999px;padding:10px 22px;background:{{ showBg }};color:{{ showFg }};box-shadow:3px 3px 0 #17130f">🏆 GRAIL SHOWCASE</span>
+    <span onClick="{{ goAll }}" style="cursor:pointer;font:800 13.5px 'Space Grotesk',sans-serif;border:3px solid #17130f;border-radius:999px;padding:10px 22px;background:{{ allBg }};color:{{ allFg }};box-shadow:3px 3px 0 #17130f">🗂 ALL CARDS · 1,204</span>
+  </div>
+
+  <!-- all cards binder -->
+  <sc-if value="{{ isAll }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:30px 48px 40px">
+    <div style="display:flex;flex-direction:column;gap:34px">
+      <sc-for list="{{ series }}" as="sg" hint-placeholder-count="3">
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px;border-bottom:3px solid #17130f;padding-bottom:10px">
+            <span style="font:800 11px 'IBM Plex Mono',monospace;background:{{ sg.chipBg }};color:{{ sg.chipFg }};border:2px solid #17130f;border-radius:5px;padding:3px 9px">{{ sg.game }}</span>
+            <h2 style="margin:0;font:22px 'Archivo Black',sans-serif;text-transform:uppercase">{{ sg.name }}</h2>
+            <span style="font:600 12px 'IBM Plex Mono',monospace;color:#8a7f70">{{ sg.count }} cards · {{ sg.value }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+            <sc-for list="{{ sg.cards }}" as="bc" hint-placeholder-count="4">
+              <div style="background:#fff;border:3px solid #17130f;border-radius:12px;box-shadow:3px 3px 0 #17130f;padding:12px;display:flex;gap:12px;align-items:center">
+                <image-slot id="{{ bc.slotId }}" src="{{ bc.art }}" placeholder="card" shape="rounded" radius="5" style="width:44px;height:62px;border:2px solid #17130f;flex:none"></image-slot>
+                <div style="min-width:0">
+                  <div style="font:800 13px 'Space Grotesk',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ bc.name }}</div>
+                  <div style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ bc.sub }}</div>
+                  <div style="font:15px 'Archivo Black',sans-serif;color:#e6392f">{{ bc.price }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- showcase -->
+  <sc-if value="{{ isShowcase }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:30px 48px 24px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:22px">
+      <h2 style="margin:0;font:28px 'Archivo Black',sans-serif;text-transform:uppercase">Grail showcase</h2>
+      <span style="font:700 12px 'Space Grotesk',sans-serif;background:#e6392f;color:#fff;border:2px solid #17130f;border-radius:999px;padding:3px 11px;transform:rotate(2deg)">TOP 6</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <sc-for list="{{ grails }}" as="g" hint-placeholder-count="6">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;overflow:hidden;transform:rotate({{ g.tilt }}deg)">
+          <div style="position:relative;background:radial-gradient(circle, rgba(230,57,47,.08) 1.6px, transparent 1.6px) 0 0/12px 12px, #fdf9ef;border-bottom:3px solid #17130f;padding:20px;display:grid;place-items:center">
+            <image-slot id="{{ g.slotId }}" src="{{ g.art }}" placeholder="card photo" shape="rounded" radius="8" style="width:150px;height:210px;border:2.5px solid #17130f;box-shadow:4px 4px 0 rgba(23,19,15,.25)"></image-slot>
+            <div style="position:absolute;top:12px;right:12px;font:800 11px 'Space Grotesk',sans-serif;background:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:3px 10px;transform:rotate(4deg)">{{ g.grade }}</div>
+          </div>
+          <div style="padding:14px 18px 18px">
+            <div style="font:700 10px 'IBM Plex Mono',monospace;color:#8a7f70;letter-spacing:.06em">{{ g.set }}</div>
+            <div style="font:800 16px 'Space Grotesk',sans-serif;margin:2px 0 6px">{{ g.name }}</div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline">
+              <span style="font:20px 'Archivo Black',sans-serif;color:#e6392f">{{ g.price }}</span>
+              <span style="font:800 12px 'Space Grotesk',sans-serif;color:{{ g.deltaColor }}">{{ g.delta }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- become a leader CTA -->
+  <div style="margin:36px 48px 70px;background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:20px;box-shadow:6px 6px 0 #e6392f;padding:34px 40px;display:flex;align-items:center;gap:30px;transform:rotate(-.3deg)">
+    <div style="font:52px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg)">★</div>
+    <div style="flex:1">
+      <div style="font:24px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:6px;color:#ffd23f">Want a page like this?</div>
+      <div style="font:500 15px 'Space Grotesk',sans-serif;color:#b5aa9c">Members can apply for Leader status — public showcase at your own URL, follower count, and the leader badge.</div>
+    </div>
+    <span style="font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #f6f0e1;padding:13px 24px;border-radius:12px;white-space:nowrap">APPLY NOW →</span>
+  </div>
+
+  <div style="background:#17130f;color:#b5aa9c;padding:24px 48px;text-align:center;font:500 13px 'Space Grotesk',sans-serif">Built with passion, for real collectors. © 2026 CollectorHQ</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { following: false };
+  renderVals() {
+    const base = 8213;
+    const tab = this.state.tab || 'showcase';
+    return {
+      isShowcase: tab === 'showcase', isAll: tab === 'all',
+      goShowcase: () => this.setState({ tab: 'showcase' }),
+      goAll: () => this.setState({ tab: 'all' }),
+      showBg: tab === 'showcase' ? '#17130f' : '#fff', showFg: tab === 'showcase' ? '#ffd23f' : '#17130f',
+      allBg: tab === 'all' ? '#17130f' : '#fff', allFg: tab === 'all' ? '#ffd23f' : '#17130f',
+      series: [
+        { game: 'POKÉMON', chipBg: '#ffd23f', chipFg: '#17130f', name: 'Base Set 1999', count: 88, value: '$21,400', cards: [
+          { slotId: 'bl-p1', art: 'art/card-charizard.png', name: 'Charizard 4/102 Holo', sub: 'PSA 9', price: '$1,890' },
+          { slotId: 'bl-p2', art: 'art/card-crystal.png', name: 'Blastoise 2/102 Holo', sub: 'PSA 8', price: '$640' },
+        ]},
+        { game: 'POKÉMON', chipBg: '#ffd23f', chipFg: '#17130f', name: 'Evolving Skies', count: 130, value: '$9,850', cards: [
+          { slotId: 'bl-p3', art: 'art/card-umbreon.png', name: 'Umbreon VMAX Alt Art', sub: '#215 · PSA 10', price: '$612' },
+          { slotId: 'bl-p4', art: 'art/card-kakashi.png', name: 'Sylveon VMAX Alt', sub: '#212 · PSA 9', price: '$310' },
+        ]},
+        { game: 'ONE PIECE', chipBg: '#e6392f', chipFg: '#fff', name: 'OP-01 Romance Dawn', count: 64, value: '$3,120', cards: [
+          { slotId: 'bl-o1', art: 'art/card-shanks.png', name: 'Shanks OP01-120', sub: 'SEC · RAW NM', price: '$389' },
+          { slotId: 'bl-o2', art: 'art/card-zoro.png', name: 'Zoro OP01-025 Alt', sub: 'SR · PSA 10', price: '$178' },
+        ]},
+        { game: 'NARUTO', chipBg: '#3a7bd5', chipFg: '#fff', name: 'Kayou · all tiers', count: 210, value: '$2,480', cards: [
+          { slotId: 'bl-n1', art: 'art/card-itachi.png', name: 'Itachi SSR Gold', sub: 'SSR · SEALED', price: '$118' },
+          { slotId: 'bl-n2', art: 'art/card-narutosp.png', name: 'Naruto Uzumaki SP', sub: 'SP · RAW NM', price: '$96' },
+        ]},
+        { game: 'MAGIC', chipBg: '#17130f', chipFg: '#ffd23f', name: 'Tales of Middle-earth', count: 22, value: '$980', cards: [
+          { slotId: 'bl-m1', art: 'art/card-onering.png', name: 'The One Ring (Foil)', sub: '#246 · RAW NM', price: '$148' },
+        ]},
+      ],
+      following: this.state.following,
+      followLabel: this.state.following ? '✔ FOLLOWING' : '+ FOLLOW',
+      followBg: this.state.following ? '#fff' : '#e6392f',
+      followColor: this.state.following ? '#17130f' : '#fff',
+      followerLabel: (this.state.following ? base + 1 : base).toLocaleString('en-US'),
+      toggleFollow: () => this.setState(s => ({ following: !s.following })),
+      grails: [
+        { slotId: 'g1', art: 'art/card-charizard.png', set: 'POKÉMON · BASE SET 1999', name: 'Charizard 4/102 Holo', grade: 'PSA 9', price: '$1,890', delta: '▲4.2%', deltaColor: '#1c9e4f', tilt: -0.6 },
+        { slotId: 'g2', art: 'art/card-umbreon.png', set: 'POKÉMON · EVOLVING SKIES', name: 'Umbreon VMAX Alt Art', grade: 'PSA 10', price: '$612', delta: '▲8.4%', deltaColor: '#1c9e4f', tilt: 0.5 },
+        { slotId: 'g3', art: 'art/card-shanks.png', set: 'ONE PIECE · OP-01', name: 'Shanks OP01-120', grade: 'RAW NM', price: '$389', delta: '▼3.6%', deltaColor: '#c0362c', tilt: -0.4 },
+        { slotId: 'g4', art: 'art/card-crystal.png', set: 'POKÉMON · SKYRIDGE', name: 'Crystal Charizard', grade: 'CGC 8.5', price: '$2,340', delta: '▲1.9%', deltaColor: '#1c9e4f', tilt: 0.6 },
+        { slotId: 'g5', art: 'art/card-onering.png', set: 'MAGIC · LTR', name: 'The One Ring (Foil)', grade: 'RAW NM', price: '$148', delta: '▲5.1%', deltaColor: '#1c9e4f', tilt: -0.5 },
+        { slotId: 'g6', art: 'art/card-itachi.png', set: 'NARUTO · KAYOU', name: 'Itachi SSR Gold', grade: 'SEALED', price: '$118', delta: '▲3.1%', deltaColor: '#1c9e4f', tilt: 0.4 },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

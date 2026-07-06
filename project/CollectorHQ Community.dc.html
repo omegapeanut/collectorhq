@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Archivo+Black&display=swap" rel="stylesheet">
+<script src="image-slot.js"></script>
+<style>body{margin:0;background:#f6f0e1}</style>
+</helmet>
+
+<div style="font-family:'Space Grotesk',sans-serif;color:#17130f;background:#f6f0e1;min-width:1200px;min-height:100vh">
+
+  <!-- nav -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:#f6f0e1;border-bottom:3px solid #17130f">
+    <a href="CollectorHQ Landing.dc.html" style="display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit">
+      <div style="width:40px;height:40px;background:#e6392f;border:3px solid #17130f;border-radius:8px;display:grid;place-items:center;font:26px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg);box-shadow:3px 3px 0 #17130f">C</div>
+      <span style="font:21px 'Archivo Black',sans-serif;letter-spacing:-.01em">COLLECTOR<span style="color:#e6392f">HQ</span></span>
+    </a>
+    <div style="display:flex;gap:26px;font:700 14.5px 'Space Grotesk',sans-serif;align-items:center">
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none"><span>Explore</span></a>
+      <span style="border-bottom:3px solid #e6392f;padding-bottom:1px">Community</span>
+      <a href="CollectorHQ Leader.dc.html" style="color:inherit;text-decoration:none"><span>Leaders</span></a>
+      <a href="CollectorHQ Pricing.dc.html" style="color:inherit;text-decoration:none"><span>Pricing</span></a>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none"><span style="display:inline-block;background:#ffd23f;border:2px solid #17130f;border-radius:999px;padding:3px 13px;transform:rotate(-2deg)">Support Us ♥</span></a>
+    </div>
+    <div style="display:flex;gap:14px;align-items:center">
+      <a href="CollectorHQ Login.dc.html" style="color:inherit;text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif">Log in</a>
+      <a href="CollectorHQ Scan.dc.html" style="text-decoration:none;font:700 14.5px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:10px 20px;border-radius:10px;box-shadow:3px 3px 0 #17130f">⚡ SCAN A CARD</a>
+    </div>
+  </div>
+
+  <!-- header -->
+  <div style="padding:44px 48px 30px;background:radial-gradient(circle, rgba(230,57,47,.13) 1.6px, transparent 1.6px) 0 0/14px 14px, #f6f0e1;border-bottom:3px solid #17130f;display:flex;align-items:flex-end;justify-content:space-between;gap:30px">
+    <div>
+      <div style="display:inline-block;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.14em;background:#e6392f;color:#fff;border:2px solid #17130f;padding:4px 14px;border-radius:999px;transform:rotate(-1.5deg);margin-bottom:12px">THE FEED</div>
+      <h1 style="margin:0 0 8px;font:44px 'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:-.01em">Community</h1>
+      <p style="margin:0;font:500 16px 'Space Grotesk',sans-serif;color:#4a4238;max-width:520px">Pulls, grails, grades and trades — 12,400 collectors flexing in real time.</p>
+    </div>
+    <span style="font:800 15px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #17130f;padding:13px 24px;border-radius:12px;box-shadow:4px 4px 0 #17130f;white-space:nowrap">+ SHARE A PULL</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:28px;padding:36px 48px 60px;align-items:start">
+
+    <!-- feed -->
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;overflow:hidden;transform:rotate({{ p.tilt }}deg)">
+          <div style="display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:3px solid #17130f;background:#fdf9ef">
+            <image-slot id="{{ p.avatarSlot }}" src="{{ p.av }}" placeholder="avatar" shape="circle" style="width:44px;height:44px;border:2.5px solid #17130f;flex:none"></image-slot>
+            <div style="flex:1">
+              <div style="font:800 15px 'Space Grotesk',sans-serif">{{ p.user }} <sc-if value="{{ p.leader }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;background:#ffd23f;border:1.5px solid #17130f;border-radius:999px;padding:1px 6px">★ LEADER</span></sc-if></div>
+              <div style="font:600 11.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ p.time }}</div>
+            </div>
+            <span style="font:800 11px 'Space Grotesk',sans-serif;background:{{ p.tagBg }};color:{{ p.tagFg }};border:2px solid #17130f;border-radius:999px;padding:3px 11px;transform:rotate(2deg)">{{ p.tag }}</span>
+          </div>
+          <div style="display:flex;gap:18px;padding:20px">
+            <image-slot id="{{ p.cardSlot }}" src="{{ p.art }}" placeholder="tap to add the pull — card or character pic" shape="rounded" radius="8" style="width:130px;height:182px;border:2.5px solid #17130f;box-shadow:4px 4px 0 rgba(23,19,15,.22);flex:none"></image-slot>
+            <div style="flex:1">
+              <p style="margin:0 0 12px;font:500 15px/1.55 'Space Grotesk',sans-serif">{{ p.text }}</p>
+              <div style="display:inline-flex;align-items:baseline;gap:8px;background:#fdf9ef;border:2.5px solid #17130f;border-radius:10px;padding:8px 14px">
+                <span style="font:700 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ p.cardLabel }}</span>
+                <span style="font:20px 'Archivo Black',sans-serif;color:#e6392f">{{ p.price }}</span>
+                <span style="font:800 12px 'Space Grotesk',sans-serif;color:{{ p.deltaColor }}">{{ p.delta }}</span>
+              </div>
+              <div style="display:flex;gap:18px;margin-top:14px;font:700 13.5px 'Space Grotesk',sans-serif;color:#4a4238">
+                <span onClick="{{ p.onLike }}" style="cursor:pointer;color:{{ p.likeColor }}">♥ {{ p.likes }}</span>
+                <span>💬 {{ p.comments }}</span>
+                <span>↗ Share</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- sidebar -->
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <!-- lucky draw -->
+      <div style="background:#e6392f;color:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;padding:22px;transform:rotate(-.4deg)">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+          <span style="font:32px 'Archivo Black',sans-serif;transform:rotate(6deg)">🎰</span>
+          <div style="font:18px 'Archivo Black',sans-serif;text-transform:uppercase;color:#ffd23f">July lucky draw</div>
+        </div>
+        <p style="margin:0 0 14px;font:500 13.5px/1.5 'Space Grotesk',sans-serif">Win a sealed OP-11 booster box. Every scan this month = 1 entry. Draw closes <b>Jul 31</b>.</p>
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#17130f;border:2.5px solid #ffd23f;border-radius:10px;padding:10px 14px;margin-bottom:14px">
+          <span style="font:600 11px 'IBM Plex Mono',monospace;color:#b5aa9c">YOUR ENTRIES</span>
+          <span style="font:22px 'Archivo Black',sans-serif;color:#ffd23f">{{ drawEntries }}</span>
+        </div>
+        <a href="CollectorHQ Scan.dc.html" style="display:block;text-align:center;text-decoration:none;font:800 13.5px 'Space Grotesk',sans-serif;color:#17130f;background:#ffd23f;border:3px solid #17130f;padding:10px 0;border-radius:10px;box-shadow:3px 3px 0 #17130f">⚡ SCAN TO EARN ENTRIES</a>
+        <div style="font:600 10.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.75);margin-top:10px;text-align:center">winners claim prizes at a partner shop</div>
+      </div>
+
+      <!-- open preorders -->
+      <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;padding:22px;transform:rotate(.4deg)">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
+          <div style="font:18px 'Archivo Black',sans-serif;text-transform:uppercase">Open preorders</div>
+          <a href="CollectorHQ Shop.dc.html" style="color:inherit;text-decoration:none;font:700 12px 'Space Grotesk',sans-serif;border-bottom:2px solid #e6392f">All →</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ sidebarPreorders }}" as="sp" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:10px;border:2.5px solid #17130f;border-radius:10px;padding:10px 12px;background:#fdf9ef">
+              <div style="flex:1">
+                <div style="font:800 13px 'Space Grotesk',sans-serif">{{ sp.name }}</div>
+                <div style="font:600 10.5px 'IBM Plex Mono',monospace;color:#8a7f70">{{ sp.shop }} · rel. {{ sp.release }}</div>
+              </div>
+              <span style="font:800 12px 'Space Grotesk',sans-serif;color:#e6392f;white-space:nowrap">{{ sp.deposit }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#17130f;color:#f6f0e1;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #e6392f;padding:22px;transform:rotate(.4deg)">
+        <div style="font:18px 'Archivo Black',sans-serif;text-transform:uppercase;color:#ffd23f;margin-bottom:14px">Top collectors this week</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ leaders }}" as="l" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="font:18px 'Archivo Black',sans-serif;color:#ffd23f;width:24px">{{ l.rank }}</span>
+              <image-slot id="{{ l.avatarSlot }}" src="{{ l.av }}" placeholder="avatar" shape="circle" style="width:38px;height:38px;border:2.5px solid #ffd23f;flex:none"></image-slot>
+              <div style="flex:1">
+                <div style="font:800 14px 'Space Grotesk',sans-serif;color:#fff">{{ l.user }}</div>
+                <div style="font:600 11px 'IBM Plex Mono',monospace;color:#b5aa9c">{{ l.stat }}</div>
+              </div>
+              <span style="font:800 12.5px 'Space Grotesk',sans-serif;color:#7fe08a">{{ l.gain }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#ffd23f;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;padding:22px;transform:rotate(-.5deg)">
+        <div style="font:18px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:8px">Trade check</div>
+        <p style="margin:0 0 14px;font:500 13.5px/1.5 'Space Grotesk',sans-serif;color:#4a4238">Post both sides of a trade and the HQ prices it — no deal ever robs you.</p>
+        <span style="display:inline-block;font:800 13.5px 'Space Grotesk',sans-serif;color:#fff;background:#e6392f;border:3px solid #17130f;padding:10px 18px;border-radius:10px;box-shadow:3px 3px 0 #17130f">RUN A TRADE CHECK</span>
+      </div>
+
+      <!-- google ad (sidebar) -->
+      <div style="border:3px dashed #8a7f70;border-radius:16px;padding:10px;background:#f3ecdc">
+        <div style="background:#fff;border:1px solid #dadce0;border-radius:8px;padding:16px 18px;font-family:Arial,sans-serif">
+          <span style="font:400 11px Arial,sans-serif;color:#006621;border:1px solid #006621;border-radius:3px;padding:1px 5px">Ad</span>
+          <div style="font:400 16px Arial,sans-serif;color:#1a0dab;margin-top:8px">Local Card Shop Finder — Tournaments Near You</div>
+          <div style="font:400 12px Arial,sans-serif;color:#006621">www.lgslocator.com/events</div>
+          <div style="font:400 12.5px Arial,sans-serif;color:#545454;margin:4px 0 12px">Find weekly One Piece &amp; Pokémon locals, trade nights and prerelease events.</div>
+          <span style="display:inline-block;font:700 13px Arial,sans-serif;color:#fff;background:#1a73e8;border-radius:4px;padding:8px 16px;cursor:pointer">Find Shops</span>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:3px solid #17130f;border-radius:16px;box-shadow:5px 5px 0 #17130f;padding:22px;transform:rotate(.3deg)">
+        <div style="font:18px 'Archivo Black',sans-serif;text-transform:uppercase;margin-bottom:12px">Trending tags</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ tags }}" as="t" hint-placeholder-count="6">
+            <span style="font:700 12.5px 'Space Grotesk',sans-serif;border:2px solid #17130f;border-radius:999px;padding:5px 13px;background:#fdf9ef">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="background:#17130f;color:#b5aa9c;padding:36px 48px;display:flex;justify-content:space-between;align-items:center">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;background:#e6392f;border:2.5px solid #f6f0e1;border-radius:6px;display:grid;place-items:center;font:18px 'Archivo Black',sans-serif;color:#ffd23f;transform:rotate(-6deg)">C</div>
+      <span style="font:16px 'Archivo Black',sans-serif;color:#f6f0e1">COLLECTORHQ</span>
+    </div>
+    <div style="display:flex;gap:28px;font:500 13.5px 'Space Grotesk',sans-serif">
+      <a href="CollectorHQ Landing.dc.html" style="color:inherit;text-decoration:none">Home</a>
+      <a href="CollectorHQ Explore.dc.html" style="color:inherit;text-decoration:none">Explore</a>
+      <a href="CollectorHQ Leader.dc.html" style="color:inherit;text-decoration:none">Leaders</a>
+      <a href="CollectorHQ Support Us.dc.html" style="color:inherit;text-decoration:none">Support Us</a>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { liked: {} };
+  renderVals() {
+    const posts = [
+      { key: 'p1', av: 'art/av-g.png', art: 'art/card-luffy.png', avatarSlot: 'cm-av1', cardSlot: 'cm-card1', user: '@grail_goblin', leader: true, time: '12 min ago · Tokyo', tag: 'GRAIL PULL', tagBg: '#e6392f', tagFg: '#fff', text: 'IT FINALLY HAPPENED. Pulled the Luffy manga rare from my third box of OP-05. Hands were SHAKING. Straight into a sleeve, straight to grading.', cardLabel: 'OP05-119 · MANGA RARE', price: '$1,240', delta: '▲12.2%', deltaColor: '#1c9e4f', likes: 482, comments: 96, tilt: -0.4 },
+      { key: 'p2', av: 'art/av-h.png', art: 'art/card-charizard.png', avatarSlot: 'cm-av2', cardSlot: 'cm-card2', user: '@hokage_hoarder', leader: false, time: '1 h ago · Manila', tag: 'GRADE BACK', tagBg: '#ffd23f', tagFg: '#17130f', text: 'PSA 9 on my Naruto Kayou SP! Was praying for a 10 but the corner ding said otherwise. Still up 6.8% this week so no complaints.', cardLabel: 'KAYOU TIER 4 · SP', price: '$96', delta: '▲6.8%', deltaColor: '#1c9e4f', likes: 217, comments: 41, tilt: 0.4 },
+      { key: 'p3', av: 'art/av-s.png', art: 'art/card-umbreon.png', avatarSlot: 'cm-av3', cardSlot: 'cm-card3', user: '@sleeved_up', leader: true, time: '3 h ago · Berlin', tag: 'TRADE WIN', tagBg: '#fff', tagFg: '#17130f', text: 'Trade check saved me AGAIN. Almost swapped my Umbreon alt for a stack that priced out $180 lighter. Ran the numbers, countered, walked away with the win.', cardLabel: 'EVS 215 · PSA 10', price: '$612', delta: '▲8.4%', deltaColor: '#1c9e4f', likes: 158, comments: 27, tilt: -0.3 },
+    ];
+    const liked = this.state.liked;
+    const drawEntries = 42;
+    const sidebarPreorders = [
+      { name: 'Prismatic Evolutions ETB', shop: 'Dragon\u2019s Den TCG', release: 'Aug 14', deposit: '$20 dep.' },
+      { name: 'OP-11 Booster Box (JP)', shop: 'Mint Condition', release: 'Aug 29', deposit: '$15 dep.' },
+      { name: 'Fabled \u2014 Illumineer\u2019s Trove', shop: 'Top Deck Games', release: 'Sep 5', deposit: '$10 dep.' },
+    ];
+    return {
+      drawEntries,
+      sidebarPreorders,
+      posts: posts.map(p => ({
+        ...p,
+        likes: liked[p.key] ? p.likes + 1 : p.likes,
+        likeColor: liked[p.key] ? '#e6392f' : '#4a4238',
+        onLike: () => this.setState(s => ({ liked: { ...s.liked, [p.key]: !s.liked[p.key] } })),
+      })),
+      leaders: [
+        { rank: '1', avatarSlot: 'cm-lead1', av: 'art/av-g.png', user: '@grail_goblin', stat: 'Vault $112,480', gain: '+9.2%' },
+        { rank: '2', avatarSlot: 'cm-lead2', av: 'art/av-s.png', user: '@sleeved_up', stat: 'Vault $64,900', gain: '+7.7%' },
+        { rank: '3', avatarSlot: 'cm-lead3', av: 'art/av-h.png', user: '@hokage_hoarder', stat: 'Vault $31,240', gain: '+6.1%' },
+        { rank: '4', avatarSlot: 'cm-lead4', av: 'art/av-b.png', user: '@binder_baron', stat: 'Vault $28,050', gain: '+4.9%' },
+      ],
+      tags: ['#OP05', '#KayouNaruto', '#PSAreturns', '#tradecheck', '#grailwatch', '#pokemon151'],
+    };
+  }
+}
+
+</script>
+</body>
+</html>
