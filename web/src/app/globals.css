@@ -1,0 +1,24 @@
+:root {
+  --font-sans: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), monospace;
+  --font-display: var(--font-archivo-black), sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #f6f0e1;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+a {
+  color: inherit;
+}
