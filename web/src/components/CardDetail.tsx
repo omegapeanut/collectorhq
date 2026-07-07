@@ -45,7 +45,11 @@ export default function CardDetail({ card }: { card: Card }) {
         <div className={styles.navRight}>
           <span className={styles.badge}>★ MEMBER</span>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/art/av-h.png" alt="" className={styles.avatar} />
+          <img
+            src="https://res.cloudinary.com/du3f8jjrp/image/upload/v1783400585/av-h.png"
+            alt=""
+            className={styles.avatar}
+          />
           <div>
             <div className={styles.username}>@hokage_hoarder</div>
             <Link href="/login" className={styles.logout}>
