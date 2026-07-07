@@ -1,0 +1,522 @@
+.page {
+  font-family: var(--font-sans);
+  color: #17130f;
+  background: #f6f0e1;
+  min-width: 1200px;
+  min-height: 100vh;
+}
+.demoBar {
+  background: #17130f;
+  color: #b5aa9c;
+  text-align: center;
+  padding: 7px 0;
+  font: 700 12px var(--font-mono);
+}
+.demoActive {
+  color: #ffd23f;
+  border-bottom: 2px solid #e6392f;
+}
+.demoLink {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: 700 12px var(--font-mono);
+}
+
+.header {
+  padding: 36px 48px 26px;
+  background:
+    radial-gradient(circle, rgba(230, 57, 47, 0.13) 1.6px, transparent 1.6px) 0 0/14px 14px,
+    #f6f0e1;
+  border-bottom: 3px solid #17130f;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.vaultLabel {
+  font: 700 12px var(--font-sans);
+  letter-spacing: 0.12em;
+  color: #8a7f70;
+  margin-bottom: 4px;
+}
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.value {
+  font: 52px var(--font-display);
+  letter-spacing: -0.01em;
+}
+.change {
+  font: 800 17px var(--font-sans);
+  color: #1c9e4f;
+}
+.statsRow {
+  display: flex;
+  gap: 14px;
+}
+.statCard {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  padding: 14px 20px;
+  box-shadow: 4px 4px 0 #17130f;
+}
+.statLabel {
+  font: 700 10.5px var(--font-mono);
+  color: #8a7f70;
+}
+.statValue {
+  font: 24px var(--font-display);
+}
+.statValueRed {
+  composes: statValue;
+  color: #e6392f;
+}
+.scanBtn {
+  text-decoration: none;
+  align-self: center;
+  font: 800 15px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #17130f;
+  padding: 14px 22px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #17130f;
+}
+
+.adBanner {
+  margin: 26px 48px 0;
+  border: 3px dashed #8a7f70;
+  border-radius: 14px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: repeating-linear-gradient(-45deg, #fdf9ef, #fdf9ef 12px, #f3ecdc 12px, #f3ecdc 24px);
+}
+.adInner {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: Arial, sans-serif;
+}
+.removeAdsLink {
+  text-decoration: none;
+  font: 800 12.5px var(--font-sans);
+  color: #e6392f;
+  border-bottom: 2.5px solid #e6392f;
+  white-space: nowrap;
+}
+
+.tabsRow {
+  display: flex;
+  gap: 10px;
+  padding: 18px 48px 0;
+}
+.tab {
+  cursor: pointer;
+  font: 800 13.5px var(--font-sans);
+  border: 3px solid #17130f;
+  border-radius: 999px;
+  padding: 10px 22px;
+  box-shadow: 3px 3px 0 #17130f;
+}
+
+.binderWrap {
+  padding: 30px 48px 60px;
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 #17130f;
+  padding: 4px 8px 4px 18px;
+  max-width: 520px;
+  margin-bottom: 26px;
+}
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: 600 14.5px var(--font-sans);
+  padding: 10px 0;
+  color: #17130f;
+}
+.noResults {
+  padding: 30px 0 50px;
+  font: 800 15px var(--font-sans);
+  color: #8a7f70;
+}
+.seriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+.seriesHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+  border-bottom: 3px solid #17130f;
+  padding-bottom: 10px;
+}
+.seriesChip {
+  font: 800 11px var(--font-mono);
+  border: 2px solid #17130f;
+  border-radius: 5px;
+  padding: 3px 9px;
+}
+.seriesName {
+  margin: 0;
+  font: 22px var(--font-display);
+  text-transform: uppercase;
+}
+.seriesMeta {
+  font: 600 12px var(--font-mono);
+  color: #8a7f70;
+}
+.binderGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.binderCard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 #17130f;
+  overflow: hidden;
+}
+.binderCard:hover {
+  box-shadow: 6px 6px 0 #e6392f;
+}
+.binderImg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 7;
+  border-bottom: 3px solid #17130f;
+  object-fit: cover;
+}
+.binderImgPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border-bottom: 3px solid #17130f;
+  background: repeating-linear-gradient(135deg, #efe7d3 0 14px, #e6dcc3 14px 28px);
+  font: 700 10px var(--font-mono);
+  color: #8a7f70;
+}
+.binderBody {
+  padding: 12px 14px;
+}
+.binderName {
+  font: 800 15px var(--font-sans);
+}
+.binderSub {
+  font: 600 11px var(--font-mono);
+  color: #8a7f70;
+  margin: 3px 0 7px;
+}
+.binderPrice {
+  font: 20px var(--font-display);
+  color: #e6392f;
+}
+
+.servicesSection {
+  padding: 34px 48px 8px;
+}
+.servicesHeadRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.servicesTitle {
+  margin: 0;
+  font: 24px var(--font-display);
+  text-transform: uppercase;
+}
+.memberDiscountBadge {
+  font: 700 12px var(--font-sans);
+  background: #ffd23f;
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  padding: 3px 11px;
+  transform: rotate(2deg);
+}
+.rookiePriceBadge {
+  text-decoration: none;
+  font: 700 12px var(--font-sans);
+  background: #fff;
+  color: #17130f;
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  padding: 3px 11px;
+  transform: rotate(2deg);
+  display: inline-block;
+}
+.servicesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.serviceCard {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 #17130f;
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.serviceIcon {
+  width: 64px;
+  height: 64px;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font: 32px var(--font-display);
+  flex: none;
+}
+.serviceTitle {
+  font: 19px var(--font-display);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.serviceDesc {
+  margin: 0 0 12px;
+  font: 500 13.5px/1.5 var(--font-sans);
+  color: #4a4238;
+}
+.servicePrice {
+  font: 700 13px var(--font-mono);
+  color: #e6392f;
+}
+.strikePrice {
+  color: #8a7f70;
+  text-decoration: line-through;
+}
+.mutedPrice {
+  color: #8a7f70;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 26px;
+  padding: 30px 48px 60px;
+  align-items: start;
+}
+.topCardsTitle {
+  margin: 0 0 16px;
+  font: 24px var(--font-display);
+  text-transform: uppercase;
+}
+.topCardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.topCardRow {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 #17130f;
+  padding: 14px 18px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.topCardLink {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+.topCardImg {
+  width: 50px;
+  height: 70px;
+  border: 2px solid #17130f;
+  border-radius: 6px;
+  flex: none;
+  object-fit: cover;
+}
+.topCardMeta {
+  font: 700 10px var(--font-mono);
+  color: #8a7f70;
+  letter-spacing: 0.06em;
+}
+.topCardName {
+  font: 800 15.5px var(--font-sans);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.topCardPrice {
+  font: 18px var(--font-display);
+  color: #e6392f;
+}
+.topCardDelta {
+  font: 800 12px var(--font-sans);
+}
+.topCardActions {
+  display: flex;
+  gap: 8px;
+}
+.pickBtn {
+  cursor: pointer;
+  font: 800 12px var(--font-sans);
+  border: 2.5px solid #17130f;
+  border-radius: 999px;
+  padding: 7px 14px;
+  box-shadow: 2px 2px 0 #17130f;
+  white-space: nowrap;
+  background: none;
+}
+
+.tray {
+  position: sticky;
+  top: 20px;
+  background: #17130f;
+  color: #f6f0e1;
+  border: 3px solid #17130f;
+  border-radius: 16px;
+  box-shadow: 6px 6px 0 #e6392f;
+  padding: 24px;
+  transform: rotate(0.3deg);
+}
+.trayTitle {
+  font: 19px var(--font-display);
+  text-transform: uppercase;
+  color: #ffd23f;
+  margin-bottom: 6px;
+}
+.trayDesc {
+  margin: 0 0 16px;
+  font: 500 13px/1.5 var(--font-sans);
+  color: #b5aa9c;
+}
+.trayEmpty {
+  border: 2px dashed rgba(246, 240, 225, 0.35);
+  border-radius: 12px;
+  padding: 22px;
+  text-align: center;
+  font: 600 13px var(--font-mono);
+  color: #8a7f70;
+}
+.trayItems {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.trayItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(246, 240, 225, 0.08);
+  border: 2px solid rgba(246, 240, 225, 0.25);
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+.trayItemIcon {
+  font: 16px var(--font-display);
+}
+.trayItemName {
+  font: 800 13px var(--font-sans);
+  color: #fff;
+}
+.trayItemService {
+  font: 600 10.5px var(--font-mono);
+  color: #b5aa9c;
+}
+.trayItemFee {
+  font: 800 13px var(--font-sans);
+  color: #ffd23f;
+}
+.trayItemRemove {
+  cursor: pointer;
+  font: 800 13px var(--font-sans);
+  color: #ff8a7a;
+  padding: 0 2px;
+  background: none;
+  border: none;
+}
+.trayDiscountRow {
+  display: flex;
+  justify-content: space-between;
+  font: 600 13px var(--font-mono);
+  color: #b5aa9c;
+  margin-bottom: 4px;
+}
+.trayTotalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 2px solid rgba(246, 240, 225, 0.25);
+  padding-top: 10px;
+  margin-bottom: 16px;
+}
+.trayTotalRowUpsell {
+  composes: trayTotalRow;
+  margin-bottom: 8px;
+}
+.trayTotalLabel {
+  font: 800 14px var(--font-sans);
+  color: #fff;
+}
+.trayTotalValue {
+  font: 26px var(--font-display);
+  color: #ffd23f;
+}
+.upsellLink {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font: 600 12px var(--font-mono);
+  color: #7fe08a;
+  margin-bottom: 14px;
+}
+.shippingBtn {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  font: 800 15px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #f6f0e1;
+  padding: 13px 0;
+  border-radius: 12px;
+}
+
+.footerAd {
+  margin: 0 48px 50px;
+  border: 3px dashed #8a7f70;
+  border-radius: 14px;
+  padding: 10px;
+  background: #f3ecdc;
+}
