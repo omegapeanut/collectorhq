@@ -1,0 +1,312 @@
+.page {
+  font-family: var(--font-sans);
+  color: #17130f;
+  background: #f6f0e1;
+  min-width: 1200px;
+  min-height: 100vh;
+}
+.header {
+  padding: 44px 48px 8px;
+  text-align: center;
+}
+.kicker {
+  display: inline-block;
+  font: 700 12px var(--font-sans);
+  letter-spacing: 0.14em;
+  background: #e6392f;
+  color: #fff;
+  border: 2px solid #17130f;
+  padding: 4px 14px;
+  border-radius: 999px;
+  transform: rotate(-1.5deg);
+  margin-bottom: 12px;
+}
+.title {
+  margin: 0 0 10px;
+  font: 44px var(--font-display);
+  text-transform: uppercase;
+}
+.subtitle {
+  margin: 0 auto;
+  font: 500 16px/1.55 var(--font-sans);
+  color: #4a4238;
+  max-width: 520px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 36px 48px 60px;
+  align-items: start;
+}
+
+.scannerPanel {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 #17130f;
+  overflow: hidden;
+  transform: rotate(-0.4deg);
+}
+.panelHeadYellow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 3px solid #17130f;
+  background: #ffd23f;
+}
+.panelHeadTitle {
+  font: 800 14px var(--font-sans);
+  text-transform: uppercase;
+}
+.panelHeadStep {
+  font: 600 11px var(--font-mono);
+}
+.scanBox {
+  position: relative;
+  margin: 22px;
+  border: 3px dashed #17130f;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle, rgba(230, 57, 47, 0.1) 1.6px, transparent 1.6px) 0 0/12px 12px,
+    #fdf9ef;
+  height: 420px;
+  overflow: hidden;
+}
+.scanImg {
+  position: absolute;
+  inset: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  object-fit: contain;
+  background: transparent;
+}
+@keyframes chqScanline {
+  0% {
+    top: 8%;
+  }
+  50% {
+    top: 88%;
+  }
+  100% {
+    top: 8%;
+  }
+}
+.scanline {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  height: 4px;
+  background: #e6392f;
+  border-radius: 2px;
+  box-shadow: 0 0 18px rgba(230, 57, 47, 0.7);
+  animation: chqScanline 2.2s ease-in-out infinite;
+}
+.scannerActions {
+  display: flex;
+  gap: 12px;
+  padding: 0 22px 22px;
+}
+.scanBtn {
+  flex: 1;
+  font: 800 15px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #17130f;
+  padding: 14px 0;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #17130f;
+  cursor: pointer;
+}
+.manualBtn {
+  font: 700 14px var(--font-sans);
+  background: #fff;
+  border: 3px solid #17130f;
+  padding: 14px 20px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #17130f;
+  cursor: pointer;
+}
+
+.resultCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.resultPanel {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 #17130f;
+  overflow: hidden;
+  transform: rotate(0.4deg);
+}
+.panelHeadRed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 3px solid #17130f;
+  background: #e6392f;
+  color: #fff;
+}
+.confidence {
+  font: 600 11px var(--font-mono);
+  background: #fff;
+  color: #17130f;
+  border-radius: 999px;
+  padding: 3px 10px;
+  border: 2px solid #17130f;
+}
+.matchBody {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+}
+.matchImg {
+  width: 110px;
+  height: 154px;
+  border: 2.5px solid #17130f;
+  border-radius: 8px;
+  flex: none;
+  object-fit: cover;
+}
+.matchMeta {
+  font: 700 10.5px var(--font-mono);
+  color: #8a7f70;
+  letter-spacing: 0.06em;
+}
+.matchName {
+  font: 24px var(--font-display);
+  margin: 4px 0 2px;
+}
+.matchSub {
+  font: 600 12.5px var(--font-mono);
+  color: #8a7f70;
+  margin-bottom: 12px;
+}
+.priceChips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.priceChip {
+  background: #fdf9ef;
+  border: 2px solid #17130f;
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+.priceChipLabel {
+  font: 600 10px var(--font-mono);
+  color: #8a7f70;
+}
+.priceChipValue {
+  font: 17px var(--font-display);
+  color: #e6392f;
+}
+.confirmForm {
+  border-top: 3px solid #17130f;
+  padding: 18px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  background: #fdf9ef;
+}
+.fieldLabel {
+  font: 700 11px var(--font-mono);
+  color: #8a7f70;
+  margin-bottom: 6px;
+}
+.select,
+.numInput {
+  width: 100%;
+  box-sizing: border-box;
+  font: 700 14px var(--font-sans);
+  border: 2.5px solid #17130f;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+.confirmActions {
+  display: flex;
+  gap: 12px;
+  padding: 18px 20px 20px;
+  background: #fdf9ef;
+}
+.addBtn {
+  flex: 1;
+  font: 800 15px var(--font-sans);
+  color: #fff;
+  background: #e6392f;
+  border: 3px solid #17130f;
+  padding: 14px 0;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #17130f;
+  cursor: pointer;
+}
+.wrongBtn {
+  font: 700 14px var(--font-sans);
+  background: #fff;
+  border: 3px solid #17130f;
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #17130f;
+  cursor: pointer;
+}
+
+.recentPanel {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 #17130f;
+  padding: 18px 20px;
+  transform: rotate(-0.3deg);
+}
+.recentHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+.recentTitle {
+  font: 800 14px var(--font-sans);
+  text-transform: uppercase;
+}
+.recentWhen {
+  font: 600 11px var(--font-mono);
+  color: #8a7f70;
+}
+.recentRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 2px dashed rgba(23, 19, 15, 0.15);
+}
+.recentThumb {
+  width: 34px;
+  height: 48px;
+  border-radius: 5px;
+  background: repeating-linear-gradient(45deg, #efe7d2, #efe7d2 4px, #e6dcc2 4px, #e6dcc2 8px);
+  border: 2px solid #17130f;
+  flex: none;
+}
+.recentName {
+  font: 700 13.5px var(--font-sans);
+}
+.recentSub {
+  font: 600 11px var(--font-mono);
+  color: #8a7f70;
+}
+.recentPrice {
+  font: 800 14px var(--font-sans);
+  color: #e6392f;
+  text-align: right;
+}
+.recentStatus {
+  font: 600 10.5px var(--font-mono);
+  color: #1c9e4f;
+  text-align: right;
+}
