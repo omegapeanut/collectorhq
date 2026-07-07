@@ -2,8 +2,8 @@
   font-family: var(--font-sans);
   color: #17130f;
   background: #f6f0e1;
-  min-width: 1200px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 .header {
   text-align: center;
@@ -230,4 +230,43 @@
   border-radius: 12px;
   box-shadow: 3px 3px 0 #17130f;
   white-space: nowrap;
+}
+
+@media (max-width: 1000px) {
+  .plansGrid {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+  }
+  .faqGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 40px 20px 8px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .plansGrid {
+    padding: 0 20px 24px;
+  }
+  .plan {
+    transform: none !important;
+  }
+  .faqSection {
+    padding: 24px 20px 40px;
+  }
+  .supportStrip {
+    margin: 0 20px 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 24px 22px;
+  }
+  .supportBtn {
+    width: 100%;
+    text-align: center;
+  }
 }

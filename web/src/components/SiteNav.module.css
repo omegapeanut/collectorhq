@@ -7,6 +7,28 @@
   border-bottom: 3px solid #17130f;
   position: relative;
   z-index: 10;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.menuBtn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border: 2.5px solid #17130f;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  padding: 0;
+}
+.menuBtnBar {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  margin: 0 auto;
+  background: #17130f;
 }
 .logo {
   display: flex;
@@ -110,4 +132,39 @@
   font: 600 11px var(--font-mono);
   color: #8a7f70;
   text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    padding: 14px 20px;
+  }
+  .menuBtn {
+    display: flex;
+  }
+  .collapsible {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    order: 3;
+    padding-top: 14px;
+    border-top: 2px dashed rgba(23, 19, 15, 0.15);
+  }
+  .collapsibleOpen {
+    display: flex;
+  }
+  .links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .right,
+  .rightLoggedIn {
+    width: 100%;
+  }
+  .createBtn {
+    flex: 1;
+    text-align: center;
+  }
 }

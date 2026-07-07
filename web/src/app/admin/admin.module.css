@@ -2,10 +2,10 @@
   font-family: var(--font-sans);
   color: #17130f;
   background: #f6f0e1;
-  min-width: 1200px;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 230px 1fr;
+  overflow-x: hidden;
 }
 
 .sidebar {
@@ -481,4 +481,86 @@
   box-shadow: 3px 3px 0 #17130f;
   cursor: pointer;
   margin-top: 4px;
+}
+
+@media (max-width: 1100px) {
+  .twoCol,
+  .applicationsGrid,
+  .shopsGrid,
+  .drawGrid {
+    grid-template-columns: 1fr;
+  }
+  .kpiGrid,
+  .kpiGrid3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .themeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .settingsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    min-height: auto;
+    padding: 14px 0;
+  }
+  .sidebarGroupLabel,
+  .sidebarVersion {
+    display: none;
+  }
+  .sidebarGroup {
+    flex-direction: row;
+  }
+  .sidebarItem {
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 5px solid transparent;
+  }
+  .tableWrap {
+    overflow-x: auto;
+  }
+  .tableHeadRow,
+  .tableRow {
+    min-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .main {
+    padding: 20px 20px 40px;
+  }
+  .topRow {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .pageTitle {
+    font-size: 22px;
+  }
+  .kpiGrid,
+  .kpiGrid3 {
+    grid-template-columns: 1fr;
+  }
+  .actionsGrid {
+    grid-template-columns: 1fr;
+  }
+  .themeGrid {
+    grid-template-columns: 1fr;
+  }
+  .drawStatsGrid {
+    grid-template-columns: 1fr;
+  }
+  .flagRow {
+    flex-wrap: wrap;
+  }
+  .appRow {
+    flex-wrap: wrap;
+  }
 }

@@ -1,8 +1,8 @@
 .page {
   color: #17130f;
   background: #f6f0e1;
-  min-width: 1200px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ---- back bar ---- */
@@ -340,4 +340,54 @@
   padding: 12px 22px;
   border-radius: 12px;
   white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .left {
+    position: static;
+    max-width: 340px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .backBar {
+    padding: 14px 20px 0;
+  }
+  .layout {
+    padding: 20px 20px 40px;
+    gap: 24px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .price {
+    font-size: 34px;
+  }
+  .panel {
+    padding: 18px 16px;
+  }
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .salesCard {
+    overflow-x: auto;
+  }
+  .salesHead,
+  .saleRow {
+    min-width: 480px;
+  }
+  .cta {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
 }

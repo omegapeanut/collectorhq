@@ -49,7 +49,7 @@ export default function LoginPage() {
             COLLECTOR<span style={{ color: '#e6392f' }}>HQ</span>
           </span>
         </Link>
-        <div style={{ display: 'flex', gap: 26, font: '700 14.5px var(--font-sans)', alignItems: 'center' }}>
+        <div className={styles.navLinks}>
           <Link href="/explore" style={{ color: 'inherit', textDecoration: 'none' }}>
             Explore
           </Link>
@@ -77,7 +77,7 @@ export default function LoginPage() {
             </span>
           </Link>
         </div>
-        <div style={{ width: 120 }} />
+        <div className={styles.navSpacer} style={{ width: 120 }} />
       </div>
 
       <div className={styles.cardWrap}>

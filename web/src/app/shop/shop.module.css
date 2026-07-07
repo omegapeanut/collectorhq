@@ -3,7 +3,7 @@
   color: #17130f;
   background: #f6f0e1;
   min-height: 100vh;
-  min-width: 1200px;
+  overflow-x: hidden;
 }
 .nav {
   display: flex;
@@ -534,4 +534,76 @@
   border-radius: 12px;
   padding: 13px;
   box-shadow: 3px 3px 0 #17130f;
+}
+
+@media (max-width: 900px) {
+  .preorderTable {
+    overflow-x: auto;
+  }
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 3px solid #17130f;
+  }
+  .sidebarNote {
+    display: none;
+  }
+  .stockGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .binderGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .preorderHeadRow,
+  .preorderRow {
+    min-width: 640px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 12px 20px;
+  }
+  .navRight {
+    gap: 8px;
+  }
+  .partnerTag {
+    display: none;
+  }
+  .shopChipCity {
+    display: none;
+  }
+  .shopChipName {
+    max-width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .logoText {
+    font-size: 16px;
+  }
+  .main {
+    padding: 22px 20px;
+  }
+  .stockGrid {
+    grid-template-columns: 1fr;
+  }
+  .binderGrid {
+    grid-template-columns: 1fr;
+  }
+  .orderRow,
+  .claimRow {
+    flex-wrap: wrap;
+  }
+  .modal {
+    width: 100%;
+  }
+  .modalOverlay {
+    padding: 20px;
+  }
 }

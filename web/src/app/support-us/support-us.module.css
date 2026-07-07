@@ -2,8 +2,8 @@
   font-family: var(--font-sans);
   color: #17130f;
   background: #f6f0e1;
-  min-width: 1200px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 .hero {
   text-align: center;
@@ -222,4 +222,30 @@
   padding: 24px 48px;
   text-align: center;
   font: 500 13px var(--font-sans);
+}
+
+@media (max-width: 800px) {
+  .donationGrid {
+    grid-template-columns: 1fr;
+    padding: 20px 20px 40px;
+  }
+  .card {
+    transform: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 40px 20px 30px;
+  }
+  .heroTitle {
+    font-size: 32px;
+  }
+  .wallSection {
+    padding: 30px 20px 50px;
+  }
+  .btcRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
