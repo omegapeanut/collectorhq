@@ -1,6 +1,12 @@
 // CollectorHQ card catalog: price history + recent sales, generated
 // deterministically from a seed so each card's chart/table stay stable
 // across renders. Ported from the Claude Design prototype's cards-data.js.
+//
+// Raw catalog fields (name, price, set, ...) live in Firestore's `cards`
+// collection when configured (see firebaseClient.ts); CARDS below is both
+// the seed data for that collection and the offline fallback.
+
+import { getDb } from './firebaseClient';
 
 export type Game = 'POKÉMON' | 'ONE PIECE' | 'NARUTO' | 'MAGIC';
 
@@ -133,8 +139,22 @@ export const CARDS: Record<string, CardRaw> = {
 
 export const DEFAULT_CARD_ID = 'umbreon';
 
-export function getCard(id: string): Card | null {
-  const c = CARDS[id];
+async function getRawCard(id: string): Promise<CardRaw | null> {
+  const db = getDb();
+  if (db) {
+    try {
+      const { doc, getDoc } = await import('firebase/firestore');
+      const snap = await getDoc(doc(db, 'cards', id));
+      if (snap.exists()) return snap.data() as CardRaw;
+    } catch (e) {
+      console.warn(`Firestore lookup for card "${id}" failed, falling back to local catalog:`, e);
+    }
+  }
+  return CARDS[id] ?? null;
+}
+
+export async function getCard(id: string): Promise<Card | null> {
+  const c = await getRawCard(id);
   if (!c) return null;
   const history = genHistory(c.seed, c.start, c.price, c.deltaPct);
   const sales = genSales(c, history);
