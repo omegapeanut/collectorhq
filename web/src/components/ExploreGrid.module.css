@@ -1,0 +1,135 @@
+.resultsHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.resultsTitle {
+  margin: 0;
+  font: 24px var(--font-display);
+  text-transform: uppercase;
+}
+.resultsCount {
+  font: 600 13px var(--font-mono);
+  color: #8a7f70;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 #17130f;
+  overflow: hidden;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.card:hover {
+  box-shadow: 7px 7px 0 #e6392f;
+}
+.imgWrap {
+  position: relative;
+}
+.img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 7;
+  border-bottom: 3px solid #17130f;
+  object-fit: cover;
+}
+.imgPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border-bottom: 3px solid #17130f;
+  background: repeating-linear-gradient(135deg, #efe7d3 0 14px, #e6dcc3 14px 28px);
+  font: 700 11px var(--font-mono);
+  color: #8a7f70;
+}
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font: 800 10.5px var(--font-sans);
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  padding: 3px 10px;
+  transform: rotate(3deg);
+}
+.body {
+  padding: 14px 16px 18px;
+}
+.game {
+  font: 700 10px var(--font-mono);
+  color: #8a7f70;
+  letter-spacing: 0.06em;
+}
+.name {
+  font: 800 15.5px var(--font-sans);
+  margin: 2px 0;
+}
+.sub {
+  font: 600 11px var(--font-mono);
+  color: #8a7f70;
+}
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.price {
+  font: 20px var(--font-display);
+  color: #e6392f;
+}
+.delta {
+  font: 800 12.5px var(--font-sans);
+}
+
+.searchRow {
+  display: flex;
+  gap: 12px;
+  max-width: 720px;
+}
+.searchInput {
+  flex: 1;
+  font: 600 16px var(--font-sans);
+  padding: 14px 18px;
+  border: 3px solid #17130f;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 4px 4px 0 #17130f;
+  outline: none;
+}
+.searchBtn {
+  font: 800 15px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #17130f;
+  padding: 14px 24px;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #17130f;
+  white-space: nowrap;
+}
+.filterRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.filterPill {
+  cursor: pointer;
+  font: 700 13px var(--font-sans);
+  border: 2.5px solid #17130f;
+  border-radius: 999px;
+  padding: 7px 16px;
+  box-shadow: 2px 2px 0 #17130f;
+}

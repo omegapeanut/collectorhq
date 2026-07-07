@@ -1,0 +1,83 @@
+.page {
+  font-family: var(--font-sans);
+  color: #17130f;
+  background: #f6f0e1;
+  min-width: 1200px;
+  min-height: 100vh;
+}
+.header {
+  padding: 44px 48px 26px;
+  background:
+    radial-gradient(circle, rgba(230, 57, 47, 0.13) 1.6px, transparent 1.6px) 0 0/14px 14px,
+    #f6f0e1;
+  border-bottom: 3px solid #17130f;
+}
+.kicker {
+  display: inline-block;
+  font: 700 12px var(--font-sans);
+  letter-spacing: 0.14em;
+  background: #17130f;
+  color: #ffd23f;
+  padding: 5px 14px;
+  border-radius: 4px;
+  transform: rotate(-1.5deg);
+  margin-bottom: 12px;
+}
+.title {
+  margin: 0 0 8px;
+  font: 44px var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.subtitle {
+  margin: 0 0 22px;
+  font: 500 16px var(--font-sans);
+  color: #4a4238;
+}
+.adSlot {
+  margin: 26px 48px 0;
+}
+.resultsSection {
+  padding: 36px 48px 60px;
+}
+.ctaStrip {
+  margin: 0 48px 60px;
+  background: #17130f;
+  color: #f6f0e1;
+  border: 3px solid #17130f;
+  border-radius: 20px;
+  box-shadow: 6px 6px 0 #e6392f;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  transform: rotate(-0.3deg);
+}
+.ctaBolt {
+  font: 46px var(--font-display);
+  transform: rotate(-6deg);
+  color: #ffd23f;
+}
+.ctaBody {
+  flex: 1;
+}
+.ctaTitle {
+  font: 22px var(--font-display);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color: #fff;
+}
+.ctaDesc {
+  font: 500 15px var(--font-sans);
+  color: #b5aa9c;
+}
+.ctaBtn {
+  text-decoration: none;
+  font: 800 15px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #f6f0e1;
+  padding: 13px 24px;
+  border-radius: 12px;
+  white-space: nowrap;
+}

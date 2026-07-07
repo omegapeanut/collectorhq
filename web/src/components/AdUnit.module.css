@@ -1,0 +1,53 @@
+.wrap {
+  border: 3px dashed #8a7f70;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #f3ecdc;
+}
+.inner {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 13px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: Arial, sans-serif;
+}
+.adTag {
+  font: 400 11px Arial, sans-serif;
+  color: #006621;
+  border: 1px solid #006621;
+  border-radius: 3px;
+  padding: 1px 5px;
+  flex: none;
+}
+.body {
+  flex: 1;
+}
+.headline {
+  font: 400 16px Arial, sans-serif;
+  color: #1a0dab;
+}
+.domain {
+  font: 400 12px Arial, sans-serif;
+  color: #006621;
+}
+.desc {
+  font: 400 12.5px Arial, sans-serif;
+  color: #545454;
+}
+.cta {
+  font: 700 13px Arial, sans-serif;
+  color: #fff;
+  background: #1a73e8;
+  border-radius: 4px;
+  padding: 8px 16px;
+  flex: none;
+  cursor: pointer;
+  border: none;
+}

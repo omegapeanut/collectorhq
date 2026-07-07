@@ -1,0 +1,38 @@
+.footer {
+  background: #17130f;
+  color: #b5aa9c;
+  padding: 36px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logoMark {
+  width: 30px;
+  height: 30px;
+  background: #e6392f;
+  border: 2.5px solid #f6f0e1;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  font: 18px var(--font-display);
+  color: #ffd23f;
+  transform: rotate(-6deg);
+}
+.logoText {
+  font: 16px var(--font-display);
+  color: #f6f0e1;
+}
+.links {
+  display: flex;
+  gap: 28px;
+  font: 500 13.5px var(--font-sans);
+}
+.link {
+  color: inherit;
+  text-decoration: none;
+}
