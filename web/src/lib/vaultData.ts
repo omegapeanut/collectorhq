@@ -31,7 +31,7 @@ export interface TopCard {
   tilt: number;
 }
 
-async function binderCard(id: string, subOverride?: string): Promise<BinderCard> {
+export async function binderCard(id: string, subOverride?: string): Promise<BinderCard> {
   const c = (await getCard(id))!;
   return {
     id: c.id,

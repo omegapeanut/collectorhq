@@ -1,0 +1,537 @@
+.page {
+  font-family: var(--font-sans);
+  color: #17130f;
+  background: #f6f0e1;
+  min-height: 100vh;
+  min-width: 1200px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  background: #f6f0e1;
+  border-bottom: 3px solid #17130f;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: inherit;
+}
+.logoMark {
+  width: 36px;
+  height: 36px;
+  background: #e6392f;
+  border: 3px solid #17130f;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font: 23px var(--font-display);
+  color: #ffd23f;
+  transform: rotate(-6deg);
+  box-shadow: 3px 3px 0 #17130f;
+}
+.logoText {
+  font: 19px var(--font-display);
+  letter-spacing: -0.01em;
+}
+.partnerTag {
+  font: 800 11px var(--font-sans);
+  background: #17130f;
+  color: #ffd23f;
+  border-radius: 4px;
+  padding: 4px 10px;
+  transform: rotate(-2deg);
+  letter-spacing: 0.1em;
+}
+.navRight {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.shopChip {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+  border: 2.5px solid #17130f;
+  border-radius: 999px;
+  padding: 5px 14px 5px 5px;
+  box-shadow: 2px 2px 0 #17130f;
+}
+.shopChipAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1c9e4f;
+  border: 2px solid #17130f;
+  display: grid;
+  place-items: center;
+  font: 800 12px var(--font-sans);
+  color: #fff;
+}
+.shopChipName {
+  font: 800 13px var(--font-sans);
+}
+.shopChipCity {
+  font: 600 10.5px var(--font-mono);
+  color: #8a7f70;
+}
+.logoutLink {
+  color: inherit;
+  text-decoration: none;
+  font: 700 13.5px var(--font-sans);
+  border-bottom: 2.5px solid #e6392f;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  align-items: start;
+}
+.sidebar {
+  border-right: 3px solid #17130f;
+  min-height: calc(100vh - 68px);
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #fff;
+}
+.sidebarBtn {
+  cursor: pointer;
+  font: 800 13.5px var(--font-sans);
+  border-radius: 10px;
+  padding: 11px 14px;
+  border-style: solid;
+  border-width: 2.5px;
+}
+.sidebarNote {
+  margin-top: auto;
+  background: #f6f0e1;
+  border: 2.5px dashed #8a7f70;
+  border-radius: 12px;
+  padding: 14px;
+  font: 600 11.5px/1.5 var(--font-mono);
+  color: #8a7f70;
+}
+
+.main {
+  padding: 28px 36px;
+}
+.pageHeadRow {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.pageTitle {
+  margin: 0;
+  font: 30px var(--font-display);
+  text-transform: uppercase;
+}
+.newPreorderBtn {
+  cursor: pointer;
+  font: 800 13.5px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #17130f;
+  border-radius: 12px;
+  padding: 11px 20px;
+  box-shadow: 3px 3px 0 #17130f;
+}
+
+.stockGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.stockCard {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 #17130f;
+  overflow: hidden;
+}
+.stockBody {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+}
+.stockImg {
+  width: 62px;
+  height: 86px;
+  border: 2px solid #17130f;
+  border-radius: 6px;
+  flex: none;
+  object-fit: cover;
+}
+.stockGame {
+  font: 700 10px var(--font-mono);
+  color: #8a7f70;
+  letter-spacing: 0.06em;
+}
+.stockName {
+  font: 800 15px var(--font-sans);
+}
+.stockPrice {
+  font: 18px var(--font-display);
+  color: #e6392f;
+  margin-top: 6px;
+}
+.stockFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2.5px dashed #d8cfbf;
+  padding: 10px 16px;
+}
+.stockBadge {
+  font: 800 11.5px var(--font-sans);
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  padding: 3px 11px;
+}
+.stockQty {
+  font: 600 12px var(--font-mono);
+  color: #8a7f70;
+}
+
+.seriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.seriesHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+  border-bottom: 3px solid #17130f;
+  padding-bottom: 10px;
+}
+.seriesChip {
+  font: 800 11px var(--font-mono);
+  border: 2px solid #17130f;
+  border-radius: 5px;
+  padding: 3px 9px;
+}
+.seriesName {
+  margin: 0;
+  font: 20px var(--font-display);
+  text-transform: uppercase;
+}
+.seriesMeta {
+  font: 600 12px var(--font-mono);
+  color: #8a7f70;
+}
+.binderGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.binderCard {
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 12px;
+  box-shadow: 3px 3px 0 #17130f;
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.binderCard:hover {
+  box-shadow: 5px 5px 0 #e6392f;
+}
+.binderImg {
+  width: 44px;
+  height: 62px;
+  border: 2px solid #17130f;
+  border-radius: 5px;
+  flex: none;
+  object-fit: cover;
+}
+.binderName {
+  font: 800 13px var(--font-sans);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.binderSub {
+  font: 600 10.5px var(--font-mono);
+  color: #8a7f70;
+}
+.binderPrice {
+  font: 15px var(--font-display);
+  color: #e6392f;
+}
+.binderStatus {
+  font: 800 10.5px var(--font-sans);
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+.preorderTable {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 #17130f;
+  overflow: hidden;
+}
+.preorderHeadRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1fr 1fr;
+  gap: 12px;
+  padding: 12px 20px;
+  background: #17130f;
+  color: #ffd23f;
+  font: 800 11.5px var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.preorderRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1fr 1fr;
+  gap: 12px;
+  padding: 14px 20px;
+  border-top: 2px dashed #d8cfbf;
+  font: 600 13.5px var(--font-sans);
+  align-items: center;
+}
+.preorderProductGame {
+  font: 700 10px var(--font-mono);
+  color: #8a7f70;
+}
+.preorderRelease {
+  font: 600 12.5px var(--font-mono);
+}
+.progressBar {
+  display: inline-block;
+  width: 110px;
+  height: 12px;
+  background: #f6f0e1;
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.progressFill {
+  display: block;
+  height: 100%;
+}
+.progressTaken {
+  font: 600 11.5px var(--font-mono);
+  color: #8a7f70;
+}
+.preorderDeposit {
+  font: 600 12.5px var(--font-mono);
+}
+.preorderStatusBtn {
+  cursor: pointer;
+  font: 800 11.5px var(--font-sans);
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  padding: 3px 11px;
+  text-align: center;
+}
+.preorderNote {
+  margin-top: 12px;
+  font: 600 12px var(--font-mono);
+  color: #8a7f70;
+}
+
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.orderRow {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 #17130f;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.orderAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2.5px solid #17130f;
+  display: grid;
+  place-items: center;
+  font: 800 14px var(--font-sans);
+  color: #fff;
+  flex: none;
+}
+.orderUser {
+  font: 800 14.5px var(--font-sans);
+}
+.orderTime {
+  font: 600 11px var(--font-mono);
+  color: #8a7f70;
+}
+.orderItem {
+  font: 600 13px var(--font-sans);
+  color: #4a4238;
+}
+.orderDeposit {
+  font: 600 12.5px var(--font-mono);
+}
+.orderBadge {
+  font: 800 11.5px var(--font-sans);
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.claimsBanner {
+  background: #17130f;
+  color: #f6f0e1;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 #ffd23f;
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.claimsBannerEmoji {
+  font: 38px var(--font-display);
+  transform: rotate(6deg);
+}
+.claimsBannerTitle {
+  font: 800 15px var(--font-sans);
+  color: #ffd23f;
+  text-transform: uppercase;
+}
+.claimsBannerDesc {
+  font: 500 13px var(--font-sans);
+  color: #b5aa9c;
+}
+.claimsList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.claimRow {
+  background: #fff;
+  border: 3px solid #17130f;
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 #17130f;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.claimCode {
+  font: 800 15px var(--font-mono);
+  background: #ffd23f;
+  border: 2.5px solid #17130f;
+  border-radius: 8px;
+  padding: 8px 12px;
+  letter-spacing: 0.08em;
+}
+.claimUser {
+  font: 800 14.5px var(--font-sans);
+}
+.claimPrize {
+  font: 600 13px var(--font-sans);
+  color: #4a4238;
+}
+.claimExpires {
+  font: 600 11.5px var(--font-mono);
+  color: #8a7f70;
+}
+.claimDoneBadge {
+  font: 800 12.5px var(--font-sans);
+  background: #1c9e4f;
+  color: #fff;
+  border: 2.5px solid #17130f;
+  border-radius: 999px;
+  padding: 8px 18px;
+}
+.claimBtn {
+  cursor: pointer;
+  font: 800 12.5px var(--font-sans);
+  background: #ffd23f;
+  border: 2.5px solid #17130f;
+  border-radius: 999px;
+  padding: 8px 18px;
+  box-shadow: 2px 2px 0 #17130f;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 19, 15, 0.65);
+  display: grid;
+  place-items: center;
+  z-index: 50;
+}
+.modal {
+  background: #f6f0e1;
+  border: 3px solid #17130f;
+  border-radius: 18px;
+  box-shadow: 8px 8px 0 #17130f;
+  width: 440px;
+  padding: 32px;
+}
+.modalKicker {
+  display: inline-block;
+  font: 700 11px var(--font-sans);
+  letter-spacing: 0.12em;
+  background: #e6392f;
+  color: #fff;
+  border: 2px solid #17130f;
+  padding: 4px 12px;
+  border-radius: 999px;
+  transform: rotate(-1.5deg);
+  margin-bottom: 14px;
+}
+.modalTitle {
+  margin: 0 0 8px;
+  font: 24px var(--font-display);
+  text-transform: uppercase;
+}
+.modalDesc {
+  margin: 0 0 22px;
+  font: 500 14px/1.55 var(--font-sans);
+  color: #4a4238;
+}
+.modalFields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.modalInput {
+  font: 600 14px var(--font-sans);
+  border: 2.5px solid #17130f;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  box-shadow: 2px 2px 0 #17130f;
+  outline: none;
+}
+.modalSaveBtn {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  font: 800 15px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #17130f;
+  border-radius: 12px;
+  padding: 13px;
+  box-shadow: 3px 3px 0 #17130f;
+}
