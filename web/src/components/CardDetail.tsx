@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { Card } from '@/lib/cards';
 import { RANGES, Range, computePriceChart } from '@/lib/priceChart';
+import SiteNav from './SiteNav';
+import { DEMO_MEMBER_SESSION } from '@/lib/session';
 import styles from './CardDetail.module.css';
 
 export default function CardDetail({ card }: { card: Card }) {
@@ -20,44 +22,7 @@ export default function CardDetail({ card }: { card: Card }) {
 
   return (
     <div className={styles.page}>
-      {/* logged-in nav */}
-      <div className={styles.nav}>
-        <Link href="/" className={styles.navLogo}>
-          <div className={styles.logoMark}>C</div>
-          <span className={styles.logoText}>
-            COLLECTOR<span className={styles.logoTextHq}>HQ</span>
-          </span>
-        </Link>
-        <div className={styles.navLinks}>
-          <Link href="/explore" className={styles.navLink}>
-            <span className={styles.navLinkActive}>Explore</span>
-          </Link>
-          <Link href="/scan" className={styles.navLink}>
-            <span>Scan</span>
-          </Link>
-          <Link href="/vault" className={styles.navLink}>
-            <span>My Vault</span>
-          </Link>
-          <Link href="/community" className={styles.navLink}>
-            <span>Community</span>
-          </Link>
-        </div>
-        <div className={styles.navRight}>
-          <span className={styles.badge}>★ MEMBER</span>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://res.cloudinary.com/du3f8jjrp/image/upload/v1783400585/av-h.png"
-            alt=""
-            className={styles.avatar}
-          />
-          <div>
-            <div className={styles.username}>@hokage_hoarder</div>
-            <Link href="/login" className={styles.logout}>
-              log out
-            </Link>
-          </div>
-        </div>
-      </div>
+      <SiteNav active="Explore" session={DEMO_MEMBER_SESSION} />
 
       {/* back bar */}
       <div className={styles.backBar}>
