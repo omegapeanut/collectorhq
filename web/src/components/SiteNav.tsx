@@ -48,7 +48,9 @@ export default function SiteNav({
         ))}
         {!session && (
           <Link href="/support-us" className={styles.link}>
-            <span className={styles.pill}>Support Us ♥</span>
+            <span className={`${styles.pill} ${active === 'Support Us' ? styles.pillActive : ''}`}>
+              Support Us ♥
+            </span>
           </Link>
         )}
       </div>

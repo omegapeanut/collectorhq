@@ -57,6 +57,9 @@
   padding: 3px 13px;
   transform: rotate(-2deg);
 }
+.pillActive {
+  border-bottom-width: 3px;
+}
 .right {
   display: flex;
   gap: 14px;

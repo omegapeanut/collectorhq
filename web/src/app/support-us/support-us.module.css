@@ -1,0 +1,225 @@
+.page {
+  font-family: var(--font-sans);
+  color: #17130f;
+  background: #f6f0e1;
+  min-width: 1200px;
+  min-height: 100vh;
+}
+.hero {
+  text-align: center;
+  padding: 56px 48px 40px;
+  background:
+    radial-gradient(circle, rgba(230, 57, 47, 0.13) 1.6px, transparent 1.6px) 0 0/14px 14px,
+    #f6f0e1;
+}
+.heroHeart {
+  font: 64px var(--font-display);
+  color: #e6392f;
+  transform: rotate(-6deg);
+  display: inline-block;
+  text-shadow: 3px 3px 0 #ffd23f;
+}
+.heroTitle {
+  margin: 8px 0 12px;
+  font: 48px var(--font-display);
+  text-transform: uppercase;
+}
+.heroDesc {
+  margin: 0 auto;
+  font: 500 17px/1.6 var(--font-sans);
+  color: #4a4238;
+  max-width: 560px;
+}
+
+.donationGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding: 20px 48px 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.card {
+  border: 3px solid #17130f;
+  border-radius: 18px;
+  padding: 28px;
+}
+.cardBank {
+  background: #fff;
+  box-shadow: 6px 6px 0 #17130f;
+  transform: rotate(-0.5deg);
+}
+.cardBtc {
+  background: #17130f;
+  color: #f6f0e1;
+  box-shadow: 6px 6px 0 #e6392f;
+  transform: rotate(0.5deg);
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.iconBank {
+  width: 44px;
+  height: 44px;
+  background: #ffd23f;
+  border: 2.5px solid #17130f;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+.iconBtc {
+  width: 44px;
+  height: 44px;
+  background: #f7931a;
+  border: 2.5px solid #f6f0e1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font: 22px var(--font-display);
+  color: #fff;
+}
+.cardTitle {
+  font: 20px var(--font-display);
+  text-transform: uppercase;
+}
+.cardDesc {
+  margin: 0 0 18px;
+  font: 500 14.5px/1.55 var(--font-sans);
+}
+.bankDetails {
+  background: #fdf9ef;
+  border: 2.5px dashed #17130f;
+  border-radius: 12px;
+  padding: 16px;
+  font: 600 13px var(--font-mono);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bankRow {
+  display: flex;
+  justify-content: space-between;
+}
+.bankLabel {
+  color: #8a7f70;
+}
+.copyBtn {
+  margin-top: 16px;
+  width: 100%;
+  font: 800 14px var(--font-sans);
+  background: #ffd23f;
+  border: 3px solid #17130f;
+  padding: 13px 0;
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 #17130f;
+  cursor: pointer;
+}
+.copyBtnBtc {
+  margin-top: 16px;
+  width: 100%;
+  font: 800 14px var(--font-sans);
+  color: #17130f;
+  background: #ffd23f;
+  border: 3px solid #f6f0e1;
+  padding: 13px 0;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.btcRow {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.qr {
+  width: 110px;
+  height: 110px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 8px;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+.walletLabel {
+  font: 600 10.5px var(--font-mono);
+  color: #8a7f70;
+  margin-bottom: 6px;
+}
+.walletAddress {
+  font: 600 12px var(--font-mono);
+  word-break: break-all;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.wallSection {
+  padding: 40px 48px 70px;
+}
+.wallKickerWrap {
+  text-align: center;
+  margin-bottom: 8px;
+}
+.wallKicker {
+  display: inline-block;
+  font: 700 12px var(--font-sans);
+  letter-spacing: 0.14em;
+  background: #e6392f;
+  color: #fff;
+  border: 2px solid #17130f;
+  padding: 4px 14px;
+  border-radius: 999px;
+  transform: rotate(1.5deg);
+}
+.wallTitle {
+  margin: 0 0 30px;
+  text-align: center;
+  font: 34px var(--font-display);
+  text-transform: uppercase;
+}
+.supporterGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.supporterPill {
+  background: #fff;
+  border: 2.5px solid #17130f;
+  border-radius: 999px;
+  padding: 9px 18px;
+  box-shadow: 3px 3px 0 #17130f;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.supporterName {
+  font: 800 14px var(--font-sans);
+}
+.supporterNote {
+  font: 600 11px var(--font-mono);
+  color: #8a7f70;
+}
+.wallFootnote {
+  margin: 26px auto 0;
+  text-align: center;
+  font: 500 13.5px var(--font-sans);
+  color: #8a7f70;
+  max-width: 460px;
+}
+
+.footerStrip {
+  background: #17130f;
+  color: #b5aa9c;
+  padding: 24px 48px;
+  text-align: center;
+  font: 500 13px var(--font-sans);
+}
