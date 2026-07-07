@@ -1,6 +1,12 @@
-import { redirect } from "next/navigation";
-import { DEFAULT_CARD_ID } from "@/lib/cards";
+import Landing from '@/components/Landing';
+import { getCard } from '@/lib/cards';
 
-export default function RootPage() {
-  redirect(`/card?card=${DEFAULT_CARD_ID}`);
+export default async function RootPage() {
+  const [umbreon, shanks, onering] = await Promise.all([
+    getCard('umbreon'),
+    getCard('shanks'),
+    getCard('onering'),
+  ]);
+  const movers = [umbreon!, shanks!, onering!] as const;
+  return <Landing movers={movers} />;
 }
