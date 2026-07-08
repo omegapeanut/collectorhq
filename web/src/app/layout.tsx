@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, IBM_Plex_Mono, Archivo_Black } from "next/font/google";
 import "./globals.css";
 
@@ -23,6 +23,11 @@ const archivoBlack = Archivo_Black({
 export const metadata: Metadata = {
   title: "CollectorHQ",
   description: "CollectorHQ — track your TCG collection's value.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
