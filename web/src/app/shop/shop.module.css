@@ -536,7 +536,7 @@
   box-shadow: 3px 3px 0 #17130f;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
   .preorderTable {
     overflow-x: auto;
   }
