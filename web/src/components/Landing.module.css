@@ -5,6 +5,66 @@
   overflow-x: hidden;
 }
 
+/* ---- hero carousel ---- */
+.heroViewport {
+  position: relative;
+  overflow: hidden;
+}
+.heroTrack {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.heroSlide {
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+.heroArrow {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 40px;
+  height: 40px;
+  border: 2.5px solid #17130f;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 3px 3px 0 #17130f;
+  font-size: 20px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+.heroArrowLeft {
+  left: 16px;
+}
+.heroArrowRight {
+  right: 16px;
+}
+.heroDots {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+}
+.heroDot {
+  cursor: pointer;
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 2px solid #17130f;
+  border-radius: 999px;
+  background: rgba(246, 240, 225, 0.6);
+  transition: width 0.2s, background 0.2s;
+}
+.heroDotActive {
+  width: 26px;
+  background: #e6392f;
+}
+
 /* ---- hero ---- */
 .hero {
   position: relative;
@@ -112,6 +172,12 @@
   border: 3px solid #17130f;
   border-radius: 20px;
   clip-path: polygon(6% 0, 100% 0, 100% 100%, 0 100%, 0 12%);
+}
+.heroBgBlue {
+  background: repeating-conic-gradient(from 0deg at 62% 55%, #6fa8ff 0deg 6deg, #3a7bd5 6deg 12deg);
+}
+.heroBgGreen {
+  background: repeating-conic-gradient(from 0deg at 62% 55%, #6fe0a8 0deg 6deg, #1c9e4f 6deg 12deg);
 }
 .heroCharImg {
   position: absolute;
@@ -803,6 +869,9 @@
 }
 
 @media (max-width: 1000px) {
+  .heroArrow {
+    display: none;
+  }
   .hero {
     grid-template-columns: 1fr;
   }

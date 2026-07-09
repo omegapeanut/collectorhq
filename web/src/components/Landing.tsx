@@ -1,8 +1,69 @@
 import Link from 'next/link';
 import SiteNav from './SiteNav';
+import HeroCarousel, { type HeroSlideData } from './HeroCarousel';
 import styles from './Landing.module.css';
 import type { Card } from '@/lib/cards';
 import { fmtMoney } from '@/lib/cards';
+
+const HERO_SLIDES: HeroSlideData[] = [
+  {
+    badge: '★ 200,000+ CARDS · 14 TCGs · LIVE PRICES',
+    titleLine1: 'Your cards.',
+    titleLine2: 'Their true power.',
+    desc: 'Scan any card, get its live market price, and watch your whole collection power up. Pokémon, One Piece, Naruto, MTG — all in one HQ.',
+    ctaPrimaryLabel: '⚡ SCAN YOUR FIRST CARD',
+    ctaPrimaryHref: '/scan',
+    ctaSecondaryLabel: 'Browse the catalog →',
+    ctaSecondaryHref: '/explore',
+    bgVariant: 'yellow',
+    statALabel: 'OP-01 · SHANKS',
+    statAValue: '$389',
+    statADelta: '▲8.4%',
+    ribbon: 'PSA 10 GRADED!',
+    statBLabel: 'YOUR VAULT',
+    statBValue: '$48,215',
+    statBDelta: '▲2.6%',
+    socialText: '12,400+ collectors already tracking',
+  },
+  {
+    badge: '★ MEMBER PERKS · ZERO ADS · 25% OFF GRADING',
+    titleLine1: 'Go pro.',
+    titleLine2: 'Unlock member pricing.',
+    desc: 'Unlimited scans, every filter, custom profile backgrounds, and 25% off grading & repair — all for less than a booster pack a month.',
+    ctaPrimaryLabel: '★ SEE MEMBER PLANS',
+    ctaPrimaryHref: '/pricing',
+    ctaSecondaryLabel: 'Compare all plans →',
+    ctaSecondaryHref: '/pricing',
+    bgVariant: 'blue',
+    statALabel: 'MEMBER PLAN',
+    statAValue: '$4.99',
+    statADelta: '/mo',
+    ribbon: 'UNLIMITED SCANS',
+    statBLabel: 'YOU SAVE',
+    statBValue: '25%',
+    statBDelta: 'grading',
+    socialText: '4,900+ collectors already upgraded',
+  },
+  {
+    badge: '★ LEADER PROGRAM · PUBLIC SHOWCASE · GET FOLLOWED',
+    titleLine1: 'Become the',
+    titleLine2: 'main character.',
+    desc: 'Apply for Leader status, get a public vault showcase, a leader badge, and grow a following of collectors who trust your calls.',
+    ctaPrimaryLabel: '🏆 APPLY FOR LEADER STATUS',
+    ctaPrimaryHref: '/leader',
+    ctaSecondaryLabel: 'See top leaders →',
+    ctaSecondaryHref: '/leader',
+    bgVariant: 'green',
+    statALabel: 'TOP LEADER VAULT',
+    statAValue: '$712K',
+    statADelta: '▲8.1%',
+    ribbon: 'TOP 1% COLLECTOR',
+    statBLabel: 'FOLLOWERS',
+    statBValue: '2,140',
+    statBDelta: '▲180/wk',
+    socialText: '340+ leaders already showcasing',
+  },
+];
 
 interface Mover {
   art: string;
@@ -98,57 +159,7 @@ export default function Landing({ movers }: { movers: readonly [Card, Card, Card
       <SiteNav />
 
       {/* hero */}
-      <div className={styles.hero}>
-        <div className={styles.heroLeft}>
-          <div className={styles.heroBadge}>★ 200,000+ CARDS · 14 TCGs · LIVE PRICES</div>
-          <h1 className={styles.heroTitle}>Your cards.</h1>
-          <h1 className={styles.heroTitleRed}>Their true power.</h1>
-          <p className={styles.heroDesc}>
-            Scan any card, get its live market price, and watch your whole collection power up.
-            Pokémon, One Piece, Naruto, MTG — all in one HQ.
-          </p>
-          <div className={styles.heroCtas}>
-            <Link href="/scan" className={styles.heroCtaPrimary}>
-              ⚡ SCAN YOUR FIRST CARD
-            </Link>
-            <Link href="/explore" className={styles.heroCtaSecondary}>
-              Browse the catalog →
-            </Link>
-          </div>
-          <div className={styles.heroSocial}>
-            <div className={styles.avatarStack}>
-              <div className={styles.avatarStackItem} style={{ background: '#e6392f', color: '#fff' }}>
-                K
-              </div>
-              <div className={styles.avatarStackItem} style={{ background: '#ffd23f' }}>
-                R
-              </div>
-              <div className={styles.avatarStackItem} style={{ background: '#3a7bd5', color: '#fff' }}>
-                J
-              </div>
-            </div>
-            <span className={styles.heroSocialText}>12,400+ collectors already tracking</span>
-          </div>
-        </div>
-        <div className={styles.heroRight}>
-          <div className={styles.heroBg} />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/art/hero-burst.png" alt="" className={styles.heroCharImg} />
-          <div className={styles.heroPriceCard}>
-            <div className={styles.heroPriceLabel}>OP-01 · SHANKS</div>
-            <div className={styles.heroPriceValue}>
-              $389 <span style={{ font: '800 13px var(--font-sans)', color: '#1c9e4f' }}>▲8.4%</span>
-            </div>
-          </div>
-          <div className={styles.heroPsaBadge}>PSA 10 GRADED!</div>
-          <div className={styles.heroVaultCard}>
-            <div className={styles.heroVaultLabel}>YOUR VAULT</div>
-            <div className={styles.heroVaultValue}>
-              $48,215 <span style={{ font: '800 12px var(--font-sans)', color: '#1c9e4f' }}>▲2.6%</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <HeroCarousel slides={HERO_SLIDES} />
 
       {/* ticker */}
       <div className={styles.ticker}>
