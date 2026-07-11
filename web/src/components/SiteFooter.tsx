@@ -12,6 +12,9 @@ export default function SiteFooter() {
         <Link href="/" className={styles.link}>
           Home
         </Link>
+        <Link href="/catalog" className={styles.link}>
+          Catalog
+        </Link>
         <Link href="/community" className={styles.link}>
           Community
         </Link>

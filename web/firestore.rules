@@ -8,5 +8,18 @@ service cloud.firestore {
       allow read: if true;
       allow write: if false;
     }
+
+    // Full multi-TCG catalog (name/set/number/rarity/finish/image, no price —
+    // price stays a live external reference, per product decision). Public
+    // read-only. Writes only via the Admin SDK: scripts/import-catalog.ts for
+    // bulk set imports, and the /api/admin/catalog route for one-off adds.
+    match /catalog/{cardId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    match /catalogSets/{setId} {
+      allow read: if true;
+      allow write: if false;
+    }
   }
 }

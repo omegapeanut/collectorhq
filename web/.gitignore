@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# catalog import — local image drops and generated reports, not source code
+/scripts/import/images/*
+!/scripts/import/images/.gitkeep
+/scripts/import/missing-images.csv
